@@ -8,6 +8,7 @@
 - [ ] Set up GitHub repo with branch protection on `main`
 - [ ] Configure GitHub Actions CI pipeline (lint → type-check → test → build)
 - [ ] Set up Vercel project with Git-based deploys + PR preview deployments
+- [ ] Configure beta subdomain (`beta.holidayriverexpeditions.com`) on Vercel for stakeholder testing
 - [ ] Set up Vitest for unit/integration tests + Playwright for E2E tests
 - [ ] Create `CLAUDE.md` with project conventions
 - [ ] Build core layout: header, footer, navigation (responsive)
