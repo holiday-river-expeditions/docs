@@ -1,0 +1,49 @@
+---
+title: HRE Project Docs
+description: Internal project documentation for the Holiday River Expeditions website rebuild.
+template: splash
+hero:
+  tagline: Internal documentation for the Holiday River Expeditions website rebuild — tech decisions, architecture, design, and progress.
+  actions:
+    - text: Project Overview
+      link: /notes/project/overview/
+      icon: right-arrow
+    - text: Architecture
+      link: /notes/project/architecture/
+      icon: document
+      variant: minimal
+---
+
+import { Card, CardGrid, LinkCard } from '@astrojs/starlight/components';
+
+## Quick Links
+
+<CardGrid>
+	<LinkCard title="Tech Stack" href="/notes/project/tech-stack/" description="Next.js 16, Sanity, Tailwind, Vercel, and why." />
+	<LinkCard title="Build Phases" href="/notes/project/build-phases/" description="6-phase rollout tracked in GitHub Issues." />
+	<LinkCard title="Open Decisions" href="/notes/project/open-decisions/" description="What's still being decided." />
+	<LinkCard title="Design Direction" href="/notes/design/direction/" description="Colors, typography, UI patterns." />
+</CardGrid>
+
+## Documentation Structure
+
+<CardGrid>
+	<Card title="project/" icon="document">
+		Core project plans — overview, tech stack, architecture, build phases, environments, testing, and API integration.
+	</Card>
+	<Card title="design/" icon="pencil">
+		Design direction, brand colors, typography specs, and assets.
+	</Card>
+	<Card title="research/" icon="open-book">
+		Technical research — CMS comparison, domain analysis, font alternatives.
+	</Card>
+	<Card title="reference/" icon="setting">
+		API endpoint reference and other technical reference material.
+	</Card>
+	<Card title="meetings/" icon="list-format">
+		Chronological meeting notes and decisions.
+	</Card>
+	<Card title="progress/" icon="rocket">
+		Daily progress updates from development sessions.
+	</Card>
+</CardGrid>

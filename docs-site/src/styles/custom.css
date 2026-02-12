@@ -1,0 +1,28 @@
+/* HRE Brand Colors */
+:root {
+	--sl-color-accent-low: #3d0506;
+	--sl-color-accent: #a30d11;
+	--sl-color-accent-high: #f4c4c5;
+	--sl-color-white: #f4f4f4;
+	--sl-color-gray-1: #e0deda;
+	--sl-color-gray-2: #bab7b0;
+	--sl-color-gray-3: #7e7d78;
+	--sl-color-gray-4: #4e4d48;
+	--sl-color-gray-5: #33322e;
+	--sl-color-gray-6: #212121;
+	--sl-color-black: #181818;
+
+	--sl-font: 'Open Sans', sans-serif;
+}
+
+/* Stardos Stencil for headings */
+:is(h1, h2) {
+	font-family: 'Stardos Stencil', cursive !important;
+	letter-spacing: -0.03em;
+}
+
+/* Site title in header */
+.site-title {
+	font-family: 'Stardos Stencil', cursive !important;
+	font-weight: 700;
+}
