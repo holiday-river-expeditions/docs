@@ -56,3 +56,4 @@ Runs on every PR and push to `main`:
 ## Related
 - [[architecture]] — Site structure built on this stack
 - [[build-phases]] — How we roll this out incrementally
+- [[testing]] — Practical guide to running and writing tests
