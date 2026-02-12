@@ -1,5 +1,7 @@
 # Build Phases
 
+> **Tracking has moved to GitHub Issues.** Each item below is now tracked as an issue on the [website repo](https://github.com/holiday-river-expeditions/website/issues), organized into milestones by phase. See the [project board](https://github.com/orgs/holiday-river-expeditions/projects/1) for a visual overview.
+
 ## Phase 1: Project Foundation
 - [x] Initialize Next.js 15 project with App Router and TypeScript (strict mode)
 - [x] Configure ESLint + Prettier for consistent code style
