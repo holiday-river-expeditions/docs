@@ -1,7 +1,5 @@
-# Obsidian - exclude local workspace state but keep config
-.obsidian/workspace.json
-.obsidian/workspace-mobile.json
-.obsidian/cache
+# Obsidian
+.obsidian/
 
 # OS
 .DS_Store
