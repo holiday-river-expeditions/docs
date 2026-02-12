@@ -1,16 +1,16 @@
 # Build Phases
 
 ## Phase 1: Project Foundation
-- [ ] Initialize Next.js 15 project with App Router and TypeScript (strict mode)
-- [ ] Configure ESLint + Prettier for consistent code style
-- [ ] Set up Tailwind CSS with brand design tokens (colors, typography, spacing)
+- [x] Initialize Next.js 15 project with App Router and TypeScript (strict mode)
+- [x] Configure ESLint + Prettier for consistent code style
+- [ ] Set up Tailwind CSS with brand design tokens (colors, typography, spacing) — *Tailwind v4 configured; brand tokens still needed*
 - [ ] Configure Sanity Studio project with initial content models (typed schemas)
-- [ ] Set up GitHub repo with branch protection on `main`
-- [ ] Configure GitHub Actions CI pipeline (lint → type-check → test → build)
-- [ ] Set up Vercel project with Git-based deploys + PR preview deployments
-- [ ] Configure beta subdomain (`beta.holidayriverexpeditions.com`) on Vercel for stakeholder testing
-- [ ] Set up Vitest for unit/integration tests + Playwright for E2E tests
-- [ ] Create `CLAUDE.md` with project conventions
+- [ ] Set up GitHub repo with branch protection on `main` — *repo created; verify branch protection rules*
+- [x] Configure GitHub Actions CI pipeline (lint → type-check → test → build)
+- [ ] Set up Vercel project with Git-based deploys + PR preview deployments — *verify manually*
+- [ ] Configure beta subdomain (`beta.holidayriverexpeditions.com`) on Vercel for stakeholder testing — *verify manually*
+- [x] Set up Vitest for unit/integration tests + Playwright for E2E tests
+- [x] Create `CLAUDE.md` with project conventions
 - [ ] Build core layout: header, footer, navigation (responsive)
 - [ ] Establish component library basics (buttons, cards, section containers)
 - [ ] Generate TypeScript types for Sanity schemas (sanity-typegen) and Arctic API responses
