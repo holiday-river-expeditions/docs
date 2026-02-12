@@ -2,11 +2,10 @@
 
 Items that need to be resolved before or during the build. Tag with #decision-needed.
 
-## Domain #decision-needed
-Finalize exact domain name. Options discussed:
-- holidayriverexpeditions.com
-- holidayriver.com
-- Other?
+## Domain
+**Recommendation: holidayriverexpeditions.com** — already owned by Holiday (currently redirects to bikeraft.com). Exact brand match, strong SEO, zero acquisition cost. See [[domain-name]] for full research.
+- holidayriver.com is likely registered by a third party and would require acquisition
+- bikeraft.com can remain as a short redirect for print/merch
 
 ## Arctic API Credentials #decision-needed
 Contact Arctic Reservations support to obtain:
