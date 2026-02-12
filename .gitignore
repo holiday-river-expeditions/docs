@@ -1,5 +1,6 @@
-# Obsidian
-.obsidian/
+# Obsidian (keep app.json for starlight-obsidian vault detection)
+.obsidian/*
+!.obsidian/app.json
 
 # OS
 .DS_Store
