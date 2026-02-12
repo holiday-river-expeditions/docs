@@ -5,7 +5,6 @@
 - [x] Configure ESLint + Prettier for consistent code style
 - [ ] Set up Tailwind CSS with brand design tokens (colors, typography, spacing) — *Tailwind v4 configured; brand tokens still needed*
 - [ ] Configure Sanity Studio project with initial content models (typed schemas)
-- [ ] Set up GitHub repo with branch protection on `main` — *repo created; verify branch protection rules*
 - [x] Configure GitHub Actions CI pipeline (lint → type-check → test → build)
 - [ ] Set up Vercel project with Git-based deploys + PR preview deployments — *verify manually*
 - [ ] Configure beta subdomain (`beta.holidayriverexpeditions.com`) on Vercel for stakeholder testing — *verify manually*
