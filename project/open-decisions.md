@@ -4,10 +4,10 @@
 
 Items that need to be resolved before or during the build. Tag with #decision-needed.
 
-## Domain
-**Recommendation: holidayriverexpeditions.com** — already owned by Holiday (currently redirects to bikeraft.com). Exact brand match, strong SEO, zero acquisition cost. See [[domain-name]] for full research.
-- holidayriver.com is likely registered by a third party and would require acquisition
-- bikeraft.com can remain as a short redirect for print/merch
+## Domain ✅ Decided
+**holidayriverexpeditions.com** — already owned, exact brand match, strong SEO, zero acquisition cost.
+- bikeraft.com becomes a redirect to the new domain
+- Once the new site is live, de-index bikeraft.com (301 redirect entire domain or robots.txt disallow) to prevent duplicate content in search
 
 ## Arctic API Credentials #decision-needed
 Contact Arctic Reservations support to obtain:
@@ -18,25 +18,14 @@ Required before Phase 3 (Arctic API integration) can begin.
 ## Payment Processing #decision-needed
 Does Arctic handle payment end-to-end, or do we need Stripe or another payment gateway on our side?
 
-## Brand Assets #decision-needed
-Gather from Holiday River:
-- Logo files (SVG preferred)
-- Brand colors (current palette)
-- Fonts in use
-- Any existing brand guidelines
+## Brand Assets ✅ Resolved
+Darius has current brand assets (logo, colors, fonts). No further action needed.
 
-## Content Migration #decision-needed
-Which specific content (if any) to carry forward from the old WordPress site vs. write fresh?
-- Trip descriptions — rewrite or adapt existing?
-- Photos — which to keep?
-- Blog posts — starting fresh (confirmed), but any evergreen posts worth keeping?
+## Content Migration ✅ Resolved
+Will migrate content manually — no automated migration from WordPress. Trip descriptions, photos, and blog posts will be reviewed and selectively carried over or rewritten as part of the content buildout phase.
 
-## Reviews Strategy #decision-needed
-Confirmed: push visitors to 3rd party platforms (TripAdvisor, Google) rather than self-hosted reviews.
-Still open:
-- Migrate any reviews from the WordPress database?
-- TripAdvisor widget embed vs. API integration?
-- Google Reviews display approach?
+## Reviews Strategy ✅ Resolved
+Push visitors to third-party review platforms (TripAdvisor, Google) rather than hosting reviews on the site. May embed TripAdvisor/Google widgets but no self-hosted review system. No migration of WordPress reviews needed.
 
 ## Related
 - [[arctic-api]] — API credential details

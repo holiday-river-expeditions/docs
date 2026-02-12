@@ -5,12 +5,12 @@
 | Layer | Choice | Rationale |
 |-------|--------|-----------|
 | **Language** | TypeScript (strict mode) | Type safety across the entire codebase — components, API clients, CMS types, Arctic API responses |
-| **Framework** | Next.js 15 (App Router) | Server components for Arctic API integration, API routes for proxying requests, dynamic routes for trips/blog, native Vercel deployment |
+| **Framework** | Next.js 16 (App Router) | Server components for Arctic API integration, API routes for proxying requests, dynamic routes for trips/blog, native Vercel deployment |
 | **CMS** | Sanity | Visual editing studio for non-technical staff, structured content with custom fields (replaces WP custom fields), real-time preview, generous free tier, excellent Next.js integration |
 | **Styling** | Tailwind CSS | Rapid responsive development, design system consistency, small bundle size |
 | **Hosting** | Vercel | Native Next.js support, global CDN, serverless functions for API proxying, Git-based deploys |
 | **Booking** | Arctic Reservations REST API | Replace iframes with native UI — public API for availability/search, authenticated API for reservations |
-| **Analytics** | Google Analytics + PostHog + Meta Pixel | GA for standard metrics, PostHog for product analytics, Meta pixel for retargeting |
+| **Analytics** | Google Analytics + Meta Pixel (PostHog added later for product analytics) | GA for standard metrics, Meta pixel for retargeting. PostHog added once booking flow is live for conversion/funnel analysis |
 | **Testing** | Vitest + Playwright | Vitest for unit/integration tests, Playwright for E2E browser tests |
 | **CI/CD** | GitHub Actions | Automated lint, type-check, test, and build on every PR. Deploy previews via Vercel. |
 | **Package Manager** | pnpm | Fast, disk-efficient, strict dependency resolution |

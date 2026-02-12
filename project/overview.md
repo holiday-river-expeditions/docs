@@ -4,7 +4,7 @@
 **Holiday River Expeditions** is a guided white water rafting and outdoor experience company operating across Colorado and Utah for 60+ years.
 
 - Current website: bikeraft.com (WordPress)
-- New domain: holidayriverexpeditions.com (TBD — see [[open-decisions]])
+- New domain: holidayriverexpeditions.com
 
 ## Why We're Rebuilding
 The current WordPress site at bikeraft.com has accumulated years of technical debt:
@@ -26,7 +26,7 @@ The current WordPress site at bikeraft.com has accumulated years of technical de
 4. Strong SEO foundation — clean slate, no legacy content pollution
 5. Dynamic open seats page generated from Arctic API
 6. Reviews strategy: push to 3rd party platforms (TripAdvisor, Google)
-7. Analytics: Google Analytics + PostHog + Meta retargeting
+7. Analytics: Google Analytics + Meta Pixel at launch (PostHog added later for product analytics)
 
 ## Key Links
 - [[tech-stack]] — Technology choices
