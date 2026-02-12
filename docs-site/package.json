@@ -20,5 +20,8 @@
       "esbuild",
       "sharp"
     ]
+  },
+  "devDependencies": {
+    "vercel": "^50.16.0"
   }
 }
