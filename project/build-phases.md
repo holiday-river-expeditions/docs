@@ -9,7 +9,7 @@
 - [ ] Configure Sanity Studio project with initial content models (typed schemas)
 - [x] Configure GitHub Actions CI pipeline (lint → type-check → test → build)
 - [x] Set up Vercel project with Git-based deploys + PR preview deployments
-- [x] Configure beta subdomain (`beta.holidayriverexpeditions.com`) on Vercel for stakeholder testing
+- [x] Configure beta subdomain on Vercel for stakeholder testing
 - [x] Set up Vitest for unit/integration tests + Playwright for E2E tests
 - [x] Create `CLAUDE.md` with project conventions
 - [ ] Build core layout: header, footer, navigation (responsive)

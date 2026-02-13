@@ -12,6 +12,12 @@ Open this directory as an [Obsidian](https://obsidian.md/) vault for the best ex
 - **research/** — Technical research (CMS comparison, etc.)
 - **reference/** — API docs and reference material
 
+## Key Pages
+
+- [[github-guide]] — How to use the project board and file issues (non-technical guide)
+- [[build-phases]] — What's planned in each build phase
+- [[open-decisions]] — Open questions and blockers
+
 ## Related
 
 - Website codebase: [holiday-river-expeditions/website](https://github.com/holiday-river-expeditions/website)
