@@ -1,6 +1,6 @@
-# GitHub Reference Guide
+# GitHub Guide for the Website Project
 
-A quick-start guide for navigating the project board, viewing issues, and filing new ones. No technical background needed.
+A quick reference for navigating the project board, viewing issues, and filing new ones. No technical background needed.
 
 ## Quick Links
 
@@ -96,6 +96,8 @@ Use this when something on the site isn't working correctly.
 5. **URL / page affected** — The page URL where you found the bug.
 6. **Screenshots** — Attach images showing the problem (drag and drop into the field).
 
+Give the issue a short, descriptive title — e.g., "Book Now button leads to blank page on trip detail."
+
 ### Feature Request
 
 Use this to suggest a new feature or improvement.
@@ -109,6 +111,12 @@ Use this to suggest a new feature or improvement.
 
 3. **Proposed solution** — If you have an idea for how to fix it, describe it here.
 4. **Additional context** — Screenshots, examples, links, or anything else that helps explain the request.
+
+Give the issue a short, descriptive title — e.g., "Add guest packing list to trip detail pages."
+
+### Doesn't fit a template?
+
+Email Darius at dariuscarrick@gmail.com if your request doesn't fit either template.
 
 ## Related
 
