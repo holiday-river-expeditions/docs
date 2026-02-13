@@ -8,7 +8,7 @@ Open this directory as an [Obsidian](https://obsidian.md/) vault for the best ex
 
 - **project/** — Active project plans, architecture decisions, and build phases
 - **meetings/** — Chronological meeting notes
-- **design/** — Design direction and brand assets
+- **design/** — Brand guidelines, UI patterns, and assets
 - **research/** — Technical research (CMS comparison, etc.)
 - **reference/** — API docs and reference material
 

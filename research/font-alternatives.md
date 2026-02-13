@@ -97,4 +97,4 @@ For premium: **Rufina Stencil** is the natural upgrade path from Stardos Stencil
 - [ ] Implement via `next/font/google` in layout
 
 ## Related
-- [[direction]] — Current typography specs
+- [[brand-guidelines]] — Current typography specs

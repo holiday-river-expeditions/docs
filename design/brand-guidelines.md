@@ -1,27 +1,20 @@
-# Design Direction
+# Brand Guidelines
 
 ## Approach
 Partial brand refresh — keep the existing logo and brand identity, modernize the visual style for the web.
-
-## Principles
-- **Photography-forward**: Big hero images of river and canyon landscapes. Let the experience sell itself.
-- **Clean and modern**: Generous whitespace, clear typography, uncluttered layouts
-- **Mobile-first**: Responsive design starting from mobile, scaling up
-- **Fast**: Contrast with the current slow WordPress site — every interaction should feel snappy
-- **Trustworthy**: Authority and social proof prominent throughout (60+ years, reviews, certifications)
 
 ## Color Palette
 
 | Swatch | Name          | Hex       | RGB                |
 | ------ | ------------- | --------- | ------------------ |
-| 🔴     | Brand Red     | `#A30D11` | rgb(163, 13, 17)   |
-| ⬛      | Taupe Gray    | `#4E4D48` | rgb(78, 77, 72)    |
-| ⬛      | Dark Charcoal | `#212121` | rgb(33, 33, 33)    |
-| ⬜      | White         | `#FFFFFF` | rgb(255, 255, 255) |
-| ⬜      | Off-White     | `#F4F4F4` | rgb(244, 244, 244) |
-| 🔘     | Light Gray    | `#A6ADB4` | rgb(166, 173, 180) |
-| 🔵     | Light Blue    | `#1863DC` | rgb(24, 99, 220)   |
-| 🟢     | Teal          | `#5C9CA1` | rgb(92, 156, 161)  |
+| <span style="display:inline-block;width:14px;height:14px;background:#A30D11;border-radius:2px"></span> | Brand Red     | `#A30D11` | rgb(163, 13, 17)   |
+| <span style="display:inline-block;width:14px;height:14px;background:#4E4D48;border-radius:2px"></span> | Taupe Gray    | `#4E4D48` | rgb(78, 77, 72)    |
+| <span style="display:inline-block;width:14px;height:14px;background:#212121;border-radius:2px"></span> | Dark Charcoal | `#212121` | rgb(33, 33, 33)    |
+| <span style="display:inline-block;width:14px;height:14px;background:#FFFFFF;border:1px solid #ccc;border-radius:2px"></span> | White         | `#FFFFFF` | rgb(255, 255, 255) |
+| <span style="display:inline-block;width:14px;height:14px;background:#F4F4F4;border:1px solid #ccc;border-radius:2px"></span> | Off-White     | `#F4F4F4` | rgb(244, 244, 244) |
+| <span style="display:inline-block;width:14px;height:14px;background:#A6ADB4;border-radius:2px"></span> | Light Gray    | `#A6ADB4` | rgb(166, 173, 180) |
+| <span style="display:inline-block;width:14px;height:14px;background:#1863DC;border-radius:2px"></span> | Light Blue    | `#1863DC` | rgb(24, 99, 220)   |
+| <span style="display:inline-block;width:14px;height:14px;background:#5C9CA1;border-radius:2px"></span> | Teal          | `#5C9CA1` | rgb(92, 156, 161)  |
 
 ## Typography
 
@@ -73,17 +66,6 @@ Logo files stored in `design/assets/`:
 - `touch.png` — Touch icon
 
 **Deployment note:** Logos will be uploaded to Sanity CMS (Site Settings) and served via Sanity's CDN. Favicons/app icons go in the website `public/` folder.
-
-## Key UI Patterns
-- Hero sections with full-bleed photography
-- Trip cards with key info at a glance (river, duration, difficulty, price)
-- Accordion UI for FAQs
-- Multi-step booking flow with clear progress indication
-- Sticky header with prominent "Book Now" CTA
-- Authority badges (60 years, awards) in strategic locations
-
-## Reference
-- The current bikeraft.com has a solid design foundation — the layout and information hierarchy are decent, the execution and performance need modernizing
 
 ## Related
 - [[overview]] — Brand direction decisions

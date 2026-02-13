@@ -6,7 +6,7 @@ Obsidian vault for project documentation, meeting notes, research, and design de
 ## Structure
 - project/ — active project plans and decisions
 - meetings/ — chronological meeting notes
-- design/ — design direction and assets
+- design/ — brand guidelines, UI patterns, and assets
 - research/ — technical research
 - reference/ — API docs and reference material
 
