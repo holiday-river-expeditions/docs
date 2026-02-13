@@ -9,11 +9,8 @@ Items that need to be resolved before or during the build. Tag with #decision-ne
 - bikeraft.com becomes a redirect to the new domain
 - Once the new site is live, de-index bikeraft.com (301 redirect entire domain or robots.txt disallow) to prevent duplicate content in search
 
-## Arctic API Credentials #decision-needed
-Contact Arctic Reservations support to obtain:
-- Client ID & Client Secret
-- API Username & API Password
-Required before Phase 3 (Arctic API integration) can begin.
+## Arctic API Credentials ✅ Resolved
+Self-service via **Settings > API Access > Manage API Clients > "+ Create API Client"**. No need to contact support. Both Basic and OAuth 2.0 credentials are generated on creation. Passwords shown only once — save immediately. See [[arctic-api#Credential Setup]] for full steps.
 
 ## Payment Processing #decision-needed
 Does Arctic handle payment end-to-end, or do we need Stripe or another payment gateway on our side?
