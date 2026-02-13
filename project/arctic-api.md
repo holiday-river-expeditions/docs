@@ -94,16 +94,13 @@ The Administrator (System-Wide) level provides full read/write across all endpoi
 
 ## Integration Strategy
 
-### API Clients
-
-Two clients, following the principle of least privilege:
+### API Client
 
 | Client | Access Level | Purpose |
 |--------|-------------|---------|
-| `hre-website-sync` | Read-only with Financial Data | Trip sync, availability display, guide info |
-| `hre-website-booking` | Administrator (System-Wide) | Booking flow: creating reservations, managing guests |
+| `hre-website` | Read-only with Financial Data | All website needs: trip sync, availability, booking, guest management |
 
-Rationale: if sync credentials leak, the blast radius is read-only data.
+Rationale: "Read-only with Financial Data" is sufficient because it provides read/write on the booking-critical endpoints (persons, reservations) while restricting write access to operational endpoints (trips, guides, pricing) we have no reason to modify from the website. No admin access required.
 
 ### Resilience (since integration is unsupported)
 
@@ -114,8 +111,8 @@ Rationale: if sync credentials leak, the blast radius is read-only data.
 
 ### Phase 3 Sequence
 
-1. Create API clients in Arctic admin (`hre-website-sync` + `hre-website-booking`)
-2. Store credentials in Vercel env vars
+1. Create API client in Arctic admin (`hre-website`, Read-only with Financial Data)
+2. Store credentials in Vercel env vars (`ARCTIC_*`)
 3. Build typed API client in `src/lib/arctic/`
 4. Read-only endpoints first (trips, availability)
 5. Open seats page
@@ -124,7 +121,7 @@ Rationale: if sync credentials leak, the blast radius is read-only data.
 ## Action Items
 
 - [x] ~~Contact Arctic Reservations support to obtain API credentials~~ — resolved: self-service via Settings > API Access
-- [ ] Create API clients in Arctic admin (`hre-website-sync` + `hre-website-booking`)
+- [ ] Create API client in Arctic admin (`hre-website`, Read-only with Financial Data)
 - [ ] Confirm whether Arctic handles payment processing or if we need Stripe on our side #decision-needed
 - [ ] Test public API endpoints to understand response shapes for TypeScript types
 - [ ] Build typed API client in `src/lib/arctic/`

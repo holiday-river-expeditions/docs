@@ -27,8 +27,8 @@
 
 ## Phase 3: Arctic API Integration
 > Credential blocker resolved — self-service via Settings > API Access (see [[arctic-api#Credential Setup]])
-- [ ] Create API clients in Arctic admin (`hre-website-sync` read-only, `hre-website-booking` admin)
-- [ ] Store credentials in Vercel env vars (`ARCTIC_SYNC_*`, `ARCTIC_BOOKING_*`)
+- [ ] Create API client in Arctic admin (`hre-website`, Read-only with Financial Data)
+- [ ] Store credentials in Vercel env vars (`ARCTIC_*`)
 - [ ] Build typed API client in `src/lib/arctic/` with Zod validation
 - [ ] Set up API proxy routes in Next.js
 - [ ] Read-only endpoints first: trip sync, availability display
