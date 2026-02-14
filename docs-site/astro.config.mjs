@@ -7,6 +7,7 @@ export default defineConfig({
 	integrations: [
 		starlight({
 			title: 'HRE Project Docs',
+			favicon: '/favicon.png',
 			social: [
 				{
 					icon: 'github',
