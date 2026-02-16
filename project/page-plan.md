@@ -119,17 +119,17 @@ These don't exist on the current site and would be new additions. All are propos
 
 Carrying forward from the [[site-audit#UX Problems to Fix]]:
 
-| Problem | Proposed Fix |
-|---------|-------------|
-| Hero has no CTA | Add "Find Your Trip" or "Browse Trips" button |
-| Overlapping nav categories | Consolidate into Trips + Destinations (see proposed nav above) |
-| Trip Type dropdown too long (11 items) | Make categories filters/tags, not nav items |
-| "Resources" label is unclear | Rename to "Blog" or "Stories" |
-| No trip finder/filtering | Filterable trip listing + optional quiz flow |
-| Open Seats manually updated | Real-time via Arctic API |
-| Arctic booking widget is iframe | Native booking UI with cart + handoff |
-| No urgency/scarcity signals | Show "X seats left" on trip cards |
-| Blog disconnected from trips | Cross-link blog posts to relevant trip pages |
+| Problem                                | Proposed Fix                                                   |
+| -------------------------------------- | -------------------------------------------------------------- |
+| Hero has no CTA                        | Add "Find Your Trip" or "Browse Trips" button                  |
+| Overlapping nav categories             | Consolidate into Trips + Destinations (see proposed nav above) |
+| Trip Type dropdown too long (11 items) | Make categories filters/tags, not nav items                    |
+| "Resources" label is unclear           | Rename to "Blog" or "Stories"                                  |
+| No trip finder/filtering               | Filterable trip listing + optional quiz flow                   |
+| Open Seats manually updated            | Real-time via Arctic API                                       |
+| Arctic booking widget is iframe        | Native booking UI with cart + handoff                          |
+| No urgency/scarcity signals            | Show "X seats left" on trip cards                              |
+| Blog disconnected from trips           | Cross-link blog posts to relevant trip pages                   |
 
 ---
 
