@@ -75,6 +75,8 @@ Self-service — no need to contact Arctic support.
 - Sufficient for the cart-building booking flow (write cart items, persons, reservations)
 - Cannot write activities (the `activity` endpoint is read-only even at higher access levels)
 
+> **Note:** "User" here refers to an API client permission tier configured in Arctic's admin panel (Settings > API Access), not a guest-facing account. The `hre-website` API client authenticates server-to-server via OAuth 2.0 — website visitors never interact with Arctic directly. Our Next.js API routes proxy all Arctic communication. No Arctic account creation is required for guests.
+
 **Administrator (System-Wide):**
 - Full read/write across all endpoints
 
