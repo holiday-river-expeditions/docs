@@ -2,19 +2,45 @@
 
 ## Pages & Routes
 
+> Expanded based on [[site-audit]] and [[page-plan]]. Phase assignments are proposals pending Holiday sign-off.
+
+### Phase 1 — Launch
+
 ```
-/                           → Homepage
-/trips                      → Trip listings (filterable by river, type, difficulty, duration)
-/trips/[slug]               → Trip detail page (info, photos, pricing, open seats, book now)
-/open-seats                 → Dynamic open seats across all trips (Arctic API)
-/book/[tripId]              → Native booking UI (Arctic API, replaces iframe)
-/blog                       → Blog listing
+/                           → Homepage (hero + CTA, featured trips, brand story, reviews)
+/trips                      → Trip listings (filterable by river, activity, duration, difficulty, price, date)
+/trips/[slug]               → Trip detail (info, photos, native booking UI via Arctic API, itinerary, reviews)
+/open-seats                 → Real-time availability across all trips (Arctic API)
+/book/[tripId]              → Native booking UI (Arctic API cart + handoff)
+/rivers/[slug]              → River landing pages (Colorado, Green, San Juan, Yampa)
+/activities/[slug]          → Activity landing pages (rafting, mountain-biking, multi-sport)
+/about                      → Our Story, The Holiday Way, team overview
+/faq                        → FAQ page (CMS-driven, searchable, expandable)
+/contact                    → Contact form + company info
+/trip-finder                → Interactive quiz ("Help me choose") — phase TBD, see open-decisions
+```
+
+### Phase 2
+
+```
+/guides                     → Meet the Guides (profiles)
+/trips/category/[slug]      → Trip category pages (family, stargazing, concerts, adult-only, etc.)
+/destinations/[slug]        → Destination landing pages (utah, colorado, idaho, grand-canyon)
+/reviews                    → Aggregated reviews from external platforms
+/blog                       → Blog listing (category-filtered)
 /blog/[slug]                → Blog post
-/faq                        → FAQ page (CMS-driven, expandable)
-/about                      → History, team, 60 years of authority
+/deals                      → Ways to Save / specials
+/getting-here/[slug]        → Per-departure-location logistics guides
+```
+
+### Phase 3
+
+```
+/compare                    → Trip comparison tool
+/employment                 → Job listings
+/outside-for-all            → Mission/cause page
 /gallery                    → Photo/video gallery
-/contact                    → Contact form + info
-/rivers/[slug]              → River-specific landing pages (Colorado, Green, etc.)
+/[slug]                     → Generic CMS pages (policy, legal, misc)
 ```
 
 ## Project Structure
@@ -64,6 +90,8 @@ Arctic API ──→ Live data (availability, open seats, booking)
 ```
 
 ## Related
+- [[site-audit]] — Full inventory of current bikeraft.com
+- [[page-plan]] — Proposed page structure for the new site
 - [[tech-stack]] — Technology choices
 - [[arctic-api]] — Arctic Reservations integration details
 - [[build-phases]] — How we build this incrementally

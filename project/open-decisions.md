@@ -24,6 +24,38 @@ Will migrate content manually — no automated migration from WordPress. Trip de
 ## Reviews Strategy ✅ Resolved
 Push visitors to third-party review platforms (TripAdvisor, Google) rather than hosting reviews on the site. May embed TripAdvisor/Google widgets but no self-hosted review system. No migration of WordPress reviews needed.
 
+## Navigation Structure #decision-needed
+We're proposing a simplified 6-item nav (down from 7 with overlapping categories). See [[page-plan#Proposed Navigation]] for details. Needs Holiday sign-off on:
+- Whether the consolidated structure works for their customers
+- Whether Mountain Biking needs its own top-level nav item
+- Whether any trip categories must stay top-level (vs. becoming filters)
+
+## Trip Finder / Quiz #decision-needed
+Proposing an interactive "Help me choose" flow for new visitors. Is this a launch priority (Phase 1) or can it come later (Phase 2)? Significant build effort.
+
+## Blog Migration Scope #decision-needed
+Current site has **167 blog posts** across 5 categories. Options:
+- Migrate all 167 at launch (more SEO value, more work)
+- Launch with ~20-30 curated high-performers, migrate the rest over time
+- Holiday to advise on which posts matter most
+
+## Spanish-Language Content #decision-needed
+Current site has a "Formas y Información del Viaje" page. Ask Lauren if this is still actively used and needed on the new site.
+
+## Policy Pages Timing #decision-needed
+Cancellation & Insurance, Essential Eligibility Criteria, Code of Conduct — are these legally required at launch (Phase 1) or can they come in Phase 2/3?
+
+## Catalog Requests #decision-needed
+Current site has a "Request a Catalog" form. Still relevant, or replaced by digital marketing?
+
+## Homepage Featured Trips #decision-needed
+Which trips should be the "signature" trips featured on the homepage? Current site shows 8.
+
+## Getting Here / Before You Go Pages #decision-needed
+Current site has standalone pages per departure location (Green River, Vernal, San Juan). Should these remain standalone or fold into trip detail pages as sections?
+
 ## Related
+- [[page-plan]] — Full page/feature proposal
+- [[site-audit]] — Current site inventory
 - [[arctic-api]] — API credential details
 - [[build-phases]] — What's blocked by these decisions
