@@ -12,8 +12,8 @@ Items that need to be resolved before or during the build. Tag with #decision-ne
 ## Arctic API Credentials ✅ Resolved
 Self-service via **Settings > API Access > Manage API Clients > "+ Create API Client"**. No need to contact support. Both Basic and OAuth 2.0 credentials are generated on creation. Passwords shown only once — save immediately. See [[arctic-api#Credential Setup]] for full steps.
 
-## Payment Processing #decision-needed
-Does Arctic handle payment end-to-end, or do we need Stripe or another payment gateway on our side?
+## Payment Processing ✅ Resolved
+Arctic does **not** handle payment via API. The API cannot process payments. Checkout must hand off to Arctic — either via cart API + redirect to Arctic's checkout page, or via iframe. No Stripe or third-party payment gateway needed on our side. We're going with **cart + handoff**: build the cart via API, then redirect the guest to Arctic to complete checkout/payment. See [[arctic-api#Booking Flow Options]].
 
 ## Brand Assets ✅ Resolved
 Darius has current brand assets (logo, colors, fonts). No further action needed.

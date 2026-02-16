@@ -27,7 +27,7 @@
 
 ## Phase 3: Arctic API Integration
 > Credential blocker resolved — self-service via Settings > API Access (see [[arctic-api#Credential Setup]])
-- [ ] Create API client in Arctic admin (`hre-website`, Read-only with Financial Data)
+- [ ] Create API client in Arctic admin (`hre-website`, User level access)
 - [ ] Store credentials in Vercel env vars (`ARCTIC_*`)
 - [ ] Build typed API client in `src/lib/arctic/` with Zod validation
 - [ ] Set up API proxy routes in Next.js
@@ -35,8 +35,9 @@
 - [ ] Build open seats page with real-time availability
 - [ ] Connect trip detail pages to Arctic for live availability
 - [ ] Trip-specific "View Open Seats" functionality
-- [ ] Build native booking flow UI (replacing iframes)
-- [ ] Add-on selection during booking
+- [ ] Build native trip browsing & selection UI (dates, party size, add-ons)
+- [ ] Cart-building flow: add selected items to Arctic cart via API
+- [ ] Arctic checkout handoff (popup/new window styled via Custom HTML Header)
 
 ## Phase 4: Blog & Content
 - [ ] Sanity blog content model + studio customization

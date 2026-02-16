@@ -10,49 +10,54 @@ Public (unauthenticated) API available for trip search, availability, and bookin
 
 ## Access Scopes
 
-Endpoint access depends on the API client's access level. With **Administrator (System-Wide)**, all endpoints are full CRUD. With **Read-only with Financial Data**, most endpoints are read-only except persons, reservations, tasks, and inquiries which retain read/write.
+> **Correction (2026-02-16):** Per Morgan at Arctic support, "Read-only" access levels (including Read-only with Financial Data) are **strictly read-only** across all endpoints. No write access at all — not even on persons, reservations, tasks, or inquiries. At least **User level** access is required for any write operations.
 
-The "Scope" column below reflects the Read-only with Financial Data level. Administrator level has full CRUD on all endpoints.
+Endpoint access depends on the API client's access level:
+- **Read-only / Read-only with Financial Data** — read-only across all endpoints (no writes)
+- **User** — read/write on most endpoints (minimum level for write operations)
+- **Administrator (System-Wide)** — full CRUD on all endpoints
+
+The "Scope (Read-only)" column below reflects true read-only behavior. The "Scope (User)" column shows User level access. Note that the `activity` endpoint is **read-only even at higher access levels** — activities cannot be written via API.
 
 ## Endpoints
 
 ### Trips & Scheduling
-| Endpoint | Methods (Admin) | Scope (Read-only) | Description |
-|----------|----------------|-------------------|-------------|
-| `/api/rest/trip` | CRUD | Read | Trip/tour management |
-| `/api/rest/triptype` | CRUD | Read | Trip type definitions |
-| `/api/rest/trippricing` | CRUD | Read | Trip pricing levels |
-| `/api/rest/tripaddon` | CRUD | Read | Trip add-ons |
-| `/api/rest/schedule` | CRUD | Read | Guide/trip schedules |
+| Endpoint | Methods (Admin) | Scope (User) | Scope (Read-only) | Description |
+|----------|----------------|-------------|-------------------|-------------|
+| `/api/rest/trip` | CRUD | Read/Write | Read | Trip/tour management |
+| `/api/rest/triptype` | CRUD | Read/Write | Read | Trip type definitions |
+| `/api/rest/trippricing` | CRUD | Read/Write | Read | Trip pricing levels |
+| `/api/rest/tripaddon` | CRUD | Read/Write | Read | Trip add-ons |
+| `/api/rest/schedule` | CRUD | Read/Write | Read | Guide/trip schedules |
 
 ### Reservations & Guests
-| Endpoint | Methods (Admin) | Scope (Read-only) | Description |
-|----------|----------------|-------------------|-------------|
-| `/api/rest/reservation` | CRUD | Read/Write | Reservation management |
-| `/api/rest/person` | CRUD | Read/Write | Person/guest management |
-| `/api/rest/person/<id>/emailaddress` | CRUD | Read/Write | Nested: guest email addresses |
-| `/api/rest/person/<id>/phonenumber` | CRUD | Read/Write | Nested: guest phone numbers |
-| `/api/rest/person/<id>/notes` | CRUD | Read/Write | Nested: guest notes |
-| `/api/rest/inquiry` | CRUD | Read/Write | Inquiry management |
+| Endpoint | Methods (Admin) | Scope (User) | Scope (Read-only) | Description |
+|----------|----------------|-------------|-------------------|-------------|
+| `/api/rest/reservation` | CRUD | Read/Write | Read | Reservation management |
+| `/api/rest/person` | CRUD | Read/Write | Read | Person/guest management |
+| `/api/rest/person/<id>/emailaddress` | CRUD | Read/Write | Read | Nested: guest email addresses |
+| `/api/rest/person/<id>/phonenumber` | CRUD | Read/Write | Read | Nested: guest phone numbers |
+| `/api/rest/person/<id>/notes` | CRUD | Read/Write | Read | Nested: guest notes |
+| `/api/rest/inquiry` | CRUD | Read/Write | Read | Inquiry management |
 
 ### Operations
-| Endpoint | Methods (Admin) | Scope (Read-only) | Description |
-|----------|----------------|-------------------|-------------|
-| `/api/rest/guide` | CRUD | Read | Guide management |
-| `/api/rest/rental` | CRUD | Read | Rental equipment |
-| `/api/rest/rentalitem` | CRUD | Read | Rental item details |
-| `/api/rest/rentalprice` | CRUD | Read | Rental pricing |
-| `/api/rest/invoice` | CRUD | Read | Invoice management |
+| Endpoint | Methods (Admin) | Scope (User) | Scope (Read-only) | Description |
+|----------|----------------|-------------|-------------------|-------------|
+| `/api/rest/guide` | CRUD | Read/Write | Read | Guide management |
+| `/api/rest/rental` | CRUD | Read/Write | Read | Rental equipment |
+| `/api/rest/rentalitem` | CRUD | Read/Write | Read | Rental item details |
+| `/api/rest/rentalprice` | CRUD | Read/Write | Read | Rental pricing |
+| `/api/rest/invoice` | CRUD | Read/Write | Read | Invoice management |
 
 ### Other
-| Endpoint | Methods (Admin) | Scope (Read-only) | Description |
-|----------|----------------|-------------------|-------------|
-| `/api/rest/businessgroup` | CRUD | Read | Business group management |
-| `/api/rest/evaluation` | CRUD | Read | Evaluation/survey responses |
-| `/api/rest/tripformresponse` | CRUD | Read | Trip form responses |
-| `/api/rest/task` | CRUD | Read/Write | Task management |
-| `/api/rest/activity` | CRUD | Read | Activity logging |
-| `/api/rest/account` | CRUD | Read | Account information |
+| Endpoint | Methods (Admin) | Scope (User) | Scope (Read-only) | Description |
+|----------|----------------|-------------|-------------------|-------------|
+| `/api/rest/businessgroup` | CRUD | Read/Write | Read | Business group management |
+| `/api/rest/evaluation` | CRUD | Read/Write | Read | Evaluation/survey responses |
+| `/api/rest/tripformresponse` | CRUD | Read/Write | Read | Trip form responses |
+| `/api/rest/task` | CRUD | Read/Write | Read | Task management |
+| `/api/rest/activity` | CRUD | **Read** | Read | Activity logging *(read-only at all access levels)* |
+| `/api/rest/account` | CRUD | Read/Write | Read | Account information |
 
 ## CRUD Operations
 - **Create** (INSERT)

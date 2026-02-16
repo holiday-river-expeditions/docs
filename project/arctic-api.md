@@ -22,8 +22,8 @@ Holiday River currently uses Arctic Reservations for booking, embedded as iframe
 | `/api/rest/tripaddon` | Trip add-ons |
 | `/api/rest/reservation` | Reservation management |
 | `/api/rest/person` | Guest management (nested: emailaddress, phonenumber, notes) |
-| `/api/rest/schedule` | Guide/trip schedules |
-| `/api/rest/guide` | Guide management |
+| `/api/rest/schedule` | Guide/trip schedules *(out of scope for current build)* |
+| `/api/rest/guide` | Guide management *(out of scope for current build)* |
 | `/api/rest/rental` | Rental equipment |
 | `/api/rest/invoice` | Invoice management |
 | `/api/rest/evaluation` | Evaluation/survey responses |
@@ -56,40 +56,38 @@ Self-service — no need to contact Arctic support.
 3. Enter a **name** for the client and set **Enable** to yes
 4. Select the **access level**:
    - **Administrator (System-Wide)** — full read/write (default, recommended by Arctic for most use cases)
-   - **Read-only with Financial Data** — read-only access to most endpoints, with read/write limited to persons, reservations, tasks, and inquiries
+   - **User** — read/write on most endpoints, scoped to standard user permissions
+   - **Read-only** / **Read-only with Financial Data** — strictly read-only across all endpoints (no write access on any endpoint, including persons, reservations, tasks, and inquiries)
 5. Click **Submit**
 6. Arctic will display credentials for both **Basic** and **OAuth 2.0** connections
 7. **Save credentials immediately** — passwords are shown only once and cannot be retrieved later
 
 ### Access Scopes
 
-The "Read-only with Financial Data" access level provides:
+> **Correction (2026-02-16):** Per Morgan at Arctic support, "Read-only" access levels (including Read-only with Financial Data) are **strictly read-only** across all endpoints — no write access at all. At least **User level** access is required for any write operations.
 
-**Read-only:**
-- Business groups, accounts, invoices
-- Reservations (read)
-- Rentals, rental items
-- Trips, trip types
-- Guides, guide scheduling
+**Read-only / Read-only with Financial Data:**
+- Read-only across all endpoints (trips, persons, reservations, invoices, etc.)
+- No write access on any endpoint — viewing only
 
-**Read/write:**
-- Persons
-- Reservations (create/update)
-- Tasks
-- Inquiries
+**User:**
+- Read/write on most endpoints (persons, reservations, tasks, inquiries, etc.)
+- Sufficient for the cart-building booking flow (write cart items, persons, reservations)
+- Cannot write activities (the `activity` endpoint is read-only even at higher access levels)
 
-The Administrator (System-Wide) level provides full read/write across all endpoints.
+**Administrator (System-Wide):**
+- Full read/write across all endpoints
 
 ## Integration Approach
 
 1. **Server-side API proxy** — Next.js API routes proxy Arctic API calls, keeping credentials secure
 2. **Trip sync** — Pull trip data from Arctic on build + ISR (Incremental Static Regeneration) for freshness
 3. **Open seats** — Server component fetches real-time availability, displays dynamically
-4. **Booking flow** — Custom multi-step UI calling Arctic API via our proxy:
-   - Step 1: Select dates & party size
-   - Step 2: Choose add-ons
-   - Step 3: Guest information
-   - Step 4: Payment & confirmation
+4. **Booking flow** — Hybrid approach: native UI for browsing/selection, Arctic handoff for checkout
+   - Step 1: Select dates & party size (our UI)
+   - Step 2: Choose add-ons (our UI)
+   - Step 3: Add items to Arctic cart via API
+   - Step 4: Hand off to Arctic for guest info, pre-purchase questions, payment & confirmation (popup/new window, styled via Arctic's Custom HTML Header)
 5. **Trip detail pages** — Link Arctic trip ID to Sanity content so CMS content + live availability display together
 
 ## Integration Strategy
@@ -98,9 +96,9 @@ The Administrator (System-Wide) level provides full read/write across all endpoi
 
 | Client | Access Level | Purpose |
 |--------|-------------|---------|
-| `hre-website` | Read-only with Financial Data | All website needs: trip sync, availability, booking, guest management |
+| `hre-website` | User | All website needs: trip sync, availability, cart-building, guest management |
 
-Rationale: "Read-only with Financial Data" is sufficient because it provides read/write on the booking-critical endpoints (persons, reservations) while restricting write access to operational endpoints (trips, guides, pricing) we have no reason to modify from the website. No admin access required.
+Rationale: **User level** is the minimum access that enables write operations. We need write access for the cart-building booking flow (add items to cart, create/update persons and reservations). Read-only levels don't allow any writes. Administrator is more access than we need — User level is sufficient and avoids unnecessary privilege.
 
 ### Resilience (since integration is unsupported)
 
@@ -111,20 +109,45 @@ Rationale: "Read-only with Financial Data" is sufficient because it provides rea
 
 ### Phase 3 Sequence
 
-1. Create API client in Arctic admin (`hre-website`, Read-only with Financial Data)
+1. Create API client in Arctic admin (`hre-website`, User level)
 2. Store credentials in Vercel env vars (`ARCTIC_*`)
 3. Build typed API client in `src/lib/arctic/`
 4. Read-only endpoints first (trips, availability)
 5. Open seats page
-6. Booking flow (reservations, persons)
+6. Cart-building flow (add items to cart, create persons/reservations via API)
+7. Arctic checkout handoff (popup/new window styled via Custom HTML Header)
+
+## Booking Flow Options
+
+Per Morgan at Arctic support (2026-02-16), the API **cannot process payments** and **cannot write activities**. Two checkout approaches:
+
+1. **Cart + handoff (preferred)**: Use API to add items to a cart, then send guest to Arctic's checkout page to complete payment. Can open in a popup/new window styled to feel like Holiday via Arctic's Custom HTML Header (Settings > Guest-facing Sites > Settings).
+2. **Direct handoff**: Guest picks a date on our site, then goes to Arctic iframe to add guests, answer pre-purchase questions, and complete checkout.
+
+**Decision: Option 1 (cart + handoff).** This gives us the most control over the browsing/selection experience while letting Arctic handle payment securely.
+
+## Guide Info — Out of Scope
+
+Lauren confirmed Holiday doesn't use Arctic's guide system for operations. Tim Gaylord would need to buy in before guide features become relevant. Guide/schedule endpoints remain available in the API for future use but are **not part of the current build**.
+
+## Sandbox / Testing
+
+No sandbox environment available. A secondary dev installation would cost $489/mo and require building out test data — not worth it. Arctic recommends using a "test" trip that isn't an actual offering.
+
+**Our approach:** Mock Arctic responses in tests, focus test coverage on Holiday-side logic. Optionally use a test trip in Arctic for manual/integration testing.
+
+## Activities
+
+The `activity` endpoint is **read-only** even at higher access levels — cannot write activities via API. Activities are managed by Holiday staff in the Arctic dashboard. No admin features for activities on the website.
 
 ## Action Items
 
 - [x] ~~Contact Arctic Reservations support to obtain API credentials~~ — resolved: self-service via Settings > API Access
-- [ ] Create API client in Arctic admin (`hre-website`, Read-only with Financial Data)
-- [ ] Confirm whether Arctic handles payment processing or if we need Stripe on our side #decision-needed
+- [x] ~~Confirm whether Arctic handles payment processing or if we need Stripe on our side~~ — resolved: Arctic does not handle payment via API. Checkout hands off to Arctic (cart API + redirect). No Stripe needed.
+- [ ] Create API client in Arctic admin (`hre-website`, User level)
 - [ ] Test public API endpoints to understand response shapes for TypeScript types
 - [ ] Build typed API client in `src/lib/arctic/`
+- [ ] Test Arctic Custom HTML Header for checkout popup styling
 
 ## Notes
 - Documentation is early stage ("Stay tuned!" per their repo)
