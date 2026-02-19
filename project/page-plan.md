@@ -68,6 +68,7 @@ These are the pages we recommend having ready at launch.
 | 15 | **Blog Listing + Posts** | Category-filtered. Suggest launching with ~20-30 curated high-performing posts, migrating the rest over time |
 | 16 | **Ways to Save** | Deals/specials page |
 | 17 | **Getting Here / Before You Go** | Per-departure-location guides (Green River, Vernal, San Juan, etc.) |
+| 18 | **Insider Guides / Things to Do** | Evergreen content moved out of blog into a dedicated page for SEO/UX. See [[2026-02-19-phase-1-update]]. |
 
 **Needs Holiday input:**
 - How many blog posts should launch with the new site? All 167? A curated set?
@@ -78,22 +79,22 @@ These are the pages we recommend having ready at launch.
 
 | # | Page | Notes |
 |---|------|-------|
-| 18 | **Trip Comparison** | Side-by-side comparison tool |
-| 19 | **Online Store** | External link to Square site (holiday-river-expeditions.square.site) |
-| 20 | **Request a Catalog** | Form |
-| 21 | **Employment** | Job listings |
-| 22 | **Spanish-Language Info** | Formas y Información del Viaje |
-| 23 | **Policy Pages** | Essential Eligibility Criteria, Cancellation & Insurance, Code of Conduct |
-| 24 | **Outside for All Fund** | Cause/mission page |
-| 25 | **Wilderness First Aid Training** | Info page |
-| 26 | **Newsletter Archive** | Canyon Currents |
-| 27 | **Remaining Blog Posts** | Migrate remaining ~130+ posts from current site |
-| 28 | **Awards** | Awards & recognition page |
-| 29 | **Mediakit / Travel Agents** | Industry-facing pages |
+| 19 | **Trip Comparison** | Side-by-side comparison tool |
+| 20 | **Online Store** | External link to Square site (holiday-river-expeditions.square.site) |
+| 21 | **Request a Catalog** | Form |
+| 22 | **Employment** | Job listings |
+| 23 | **Spanish-Language Info** | Formas y Información del Viaje — ✅ confirmed needed ([[2026-02-19-phase-1-update]]), consider moving to Phase 2 |
+| 24 | **Policy Pages** | Essential Eligibility Criteria, Cancellation & Insurance, Code of Conduct — ✅ confirmed needed ([[2026-02-19-phase-1-update]]), consider moving to Phase 2 |
+| 25 | **Outside for All Fund** | Cause/mission page |
+| 26 | **Wilderness First Aid Training** | Info page |
+| 27 | **Newsletter Archive** | Canyon Currents |
+| 28 | **Remaining Blog Posts** | Migrate remaining ~130+ posts from current site |
+| 29 | **Awards** | Awards & recognition page |
+| 30 | **Mediakit / Travel Agents** | Industry-facing pages |
 
 **Needs Holiday input:**
-- Is the Spanish-language page still actively used/needed?
-- Should policy pages (Cancellation, Eligibility) be Phase 1 for legal reasons?
+- ~~Is the Spanish-language page still actively used/needed?~~ ✅ Confirmed needed.
+- ~~Should policy pages (Cancellation, Eligibility) be Phase 1 for legal reasons?~~ ✅ Confirmed needed. Consider moving to Phase 2.
 - Is the catalog request still relevant, or has it been replaced by digital marketing?
 - Wilderness First Aid Training — is this a revenue source or just informational?
 
@@ -138,9 +139,9 @@ Carrying forward from the [[site-audit#UX Problems to Fix]]:
 1. **Nav structure** — Does the proposed simplified nav work? Any categories that must stay top-level?
 2. **Trip Finder / Quiz** — Launch priority or Phase 2?
 3. **Blog migration** — All 167 posts at launch, or start with a curated set?
-4. **Spanish content** — Is the Formas y Información del Viaje page still used?
+4. ~~**Spanish content** — Is the Formas y Información del Viaje page still used?~~ ✅ Confirmed needed. Phase TBD.
 5. **Catalog requests** — Still relevant?
-6. **Policy pages** — Phase 1 for legal reasons or can they wait?
+6. ~~**Policy pages** — Phase 1 for legal reasons or can they wait?~~ ✅ Confirmed needed. Phase TBD.
 7. **Homepage featured trips** — Which trips are the "signature" ones to feature?
 8. **Getting Here pages** — Standalone pages or fold into trip detail pages?
 9. **Wilderness First Aid** — How prominent should this be?

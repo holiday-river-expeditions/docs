@@ -15,6 +15,8 @@ Self-service via **Settings > API Access > Manage API Clients > "+ Create API Cl
 ## Payment Processing ✅ Resolved
 Arctic does **not** handle payment via API. The API cannot process payments. Checkout must hand off to Arctic — either via cart API + redirect to Arctic's checkout page, or via iframe. No Stripe or third-party payment gateway needed on our side. We're going with **cart + handoff**: build the cart via API, then redirect the guest to Arctic to complete checkout/payment. See [[arctic-api#Booking Flow Options]].
 
+> **Update (2026-02-19):** Justin is researching other outfitter cart flows for UX comparison to help inform our checkout design. See [[2026-02-19-phase-1-update]].
+
 ## Brand Assets ✅ Resolved
 Darius has current brand assets (logo, colors, fonts). No further action needed.
 
@@ -39,11 +41,11 @@ Current site has **167 blog posts** across 5 categories. Options:
 - Launch with ~20-30 curated high-performers, migrate the rest over time
 - Holiday to advise on which posts matter most
 
-## Spanish-Language Content #decision-needed
-Current site has a "Formas y Información del Viaje" page. Ask Lauren if this is still actively used and needed on the new site.
+## Spanish-Language Content ✅ Decided
+Confirmed needed per [[2026-02-19-phase-1-update]]. Phase TBD.
 
-## Policy Pages Timing #decision-needed
-Cancellation & Insurance, Essential Eligibility Criteria, Code of Conduct — are these legally required at launch (Phase 1) or can they come in Phase 2/3?
+## Policy Pages Timing ✅ Decided
+Cancellation & Insurance, Essential Eligibility Criteria, Code of Conduct — confirmed needed per [[2026-02-19-phase-1-update]]. Phase TBD.
 
 ## Catalog Requests #decision-needed
 Current site has a "Request a Catalog" form. Still relevant, or replaced by digital marketing?
@@ -53,6 +55,9 @@ Which trips should be the "signature" trips featured on the homepage? Current si
 
 ## Getting Here / Before You Go Pages #decision-needed
 Current site has standalone pages per departure location (Green River, Vernal, San Juan). Should these remain standalone or fold into trip detail pages as sections?
+
+## Email Domain Management with Vercel #decision-needed
+Need to investigate how email domain management (MX records, SPF, DKIM) works when DNS is pointed at Vercel for hosting. Darius investigating. See [[2026-02-19-phase-1-update]].
 
 ## Related
 - [[page-plan]] — Full page/feature proposal
