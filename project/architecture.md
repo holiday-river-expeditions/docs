@@ -49,6 +49,7 @@
 src/
 ├── app/                    ← Next.js App Router pages
 │   ├── api/                ← API routes (Arctic proxy, contact form, etc.)
+│   ├── studio/[[...tool]]/ ← Embedded Sanity Studio at /studio
 │   ├── trips/
 │   ├── blog/
 │   ├── book/
@@ -61,21 +62,35 @@ src/
 │   └── ui/                 ← Shared UI primitives (buttons, cards, accordion)
 ├── lib/
 │   ├── arctic/             ← Arctic Reservations API client
-│   └── sanity/             ← Sanity client, queries, types
+│   └── sanity/             ← Sanity client, queries, image helper, fetch utils
 ├── sanity/
+│   ├── env.ts              ← Centralized Sanity env var access
+│   ├── types.ts            ← Generated types (from `pnpm typegen`)
 │   └── schemas/            ← Sanity content model definitions
+│       └── blocks/         ← Reusable content block object types
 └── styles/                 ← Global styles, Tailwind config
 ```
 
 ## Sanity CMS Content Models
 
-- **Trip** — name, slug, river, difficulty, duration, description, photos, highlights, pricing notes, Arctic trip ID (links to API)
-- **Blog Post** — title, slug, author, date, body (rich text), featured image, categories
-- **FAQ** — question, answer, category (easy for staff to add new ones)
-- **Story/History** — title, body, media, timeline position
-- **Page** — generic page builder with reusable content blocks
-- **Site Settings** — global info (phone, email, address, social links)
-- **Gallery Item** — image/video, caption, trip reference, tags
+### Implemented (Phase 1)
+
+- **River** — name, slug, description, image (Colorado, Green, San Juan, Yampa)
+- **Activity** — name, slug, description, image (Rafting, Mountain Biking, Multi-Sport)
+- **Trip Category** — name, slug, description (Family, Stargazing, Canyon Concerts, etc.)
+- **Trip** — name, slug, river (reference), activities (references), categories (references), difficulty, duration, description (Portable Text), photos, highlights, pricing notes, Arctic trip ID (links to API)
+- **FAQ** — question, answer (Portable Text), category, sort order
+- **Site Settings** — phone, email, address, social links (singleton)
+- **Page** — title, slug, content blocks (hero block, content block)
+- **Hero Block** — heading, subheading, background image, CTA text/link (object type)
+- **Content Block** — heading, body with rich text and images (object type)
+
+### Planned (later phases)
+
+- **Blog Post** — title, slug, author, date, body (rich text), featured image, categories _(Phase 4)_
+- **Author** — name, bio, image _(Phase 4)_
+- **Story/History** — title, body, media, timeline position _(Phase 4)_
+- **Gallery Item** — image/video, caption, trip reference, tags _(Phase 4)_
 
 ## Data Flow
 
@@ -90,6 +105,7 @@ Arctic API ──→ Live data (availability, open seats, booking)
 ```
 
 ## Related
+
 - [[site-audit]] — Full inventory of current bikeraft.com
 - [[page-plan]] — Proposed page structure for the new site
 - [[tech-stack]] — Technology choices

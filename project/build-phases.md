@@ -3,12 +3,13 @@
 > **Tracking has moved to GitHub Issues.** Each item below is now tracked as an issue on the [website repo](https://github.com/holiday-river-expeditions/website/issues), organized into milestones by phase. See the [project board](https://github.com/orgs/holiday-river-expeditions/projects/1) for a visual overview.
 
 ## Phase 1: Project Foundation
+
 > **Note (2026-02-19):** Remaining Phase 1 work proceeding in parallel with Phase 3 (Arctic API integration). See [[2026-02-19-phase-1-update]].
 
 - [x] Initialize Next.js 15 project with App Router and TypeScript (strict mode)
 - [x] Configure ESLint + Prettier for consistent code style
-- [ ] Set up Tailwind CSS with brand design tokens (colors, typography, spacing) — *Tailwind v4 configured; brand tokens still needed*
-- [ ] Configure Sanity Studio project with initial content models (typed schemas) — *✅ Sanity CMS approved by Justin (2026-02-19)*
+- [ ] Set up Tailwind CSS with brand design tokens (colors, typography, spacing) — _Tailwind v4 configured; brand tokens still needed_
+- [x] Configure Sanity Studio project with initial content models (typed schemas) — _Done (2026-02-28). Sanity v3 Studio embedded at `/studio`, 9 schemas defined, typegen configured._
 - [x] Configure GitHub Actions CI pipeline (lint → type-check → test → build)
 - [x] Set up Vercel project with Git-based deploys + PR preview deployments
 - [x] Configure beta subdomain on Vercel for stakeholder testing
@@ -16,9 +17,10 @@
 - [x] Create `CLAUDE.md` with project conventions
 - [ ] Build core layout: header, footer, navigation (responsive)
 - [ ] Establish component library basics (buttons, cards, section containers)
-- [ ] Generate TypeScript types for Sanity schemas (sanity-typegen) and Arctic API responses
+- [ ] Generate TypeScript types for Sanity schemas (sanity-typegen) and Arctic API responses — _Sanity types generated (2026-02-28); Arctic types pending Phase 3_
 
 ## Phase 2: Core Content Pages
+
 > **Note (2026-02-19):** Phase 2 content coordination will be ad-hoc between Justin and Darius. See [[2026-02-19-phase-1-update]].
 
 - [ ] Homepage: hero section, featured trips, authority signals (60 years), testimonial highlights, CTAs
@@ -30,7 +32,9 @@
 - [ ] Contact page: form + company info
 
 ## Phase 3: Arctic API Integration
+
 > Credential blocker resolved — self-service via Settings > API Access (see [[arctic-api#Credential Setup]])
+
 - [ ] Create API client in Arctic admin (`hre-website`, User level access)
 - [ ] Store credentials in Vercel env vars (`ARCTIC_*`)
 - [ ] Build typed API client in `src/lib/arctic/` with Zod validation
@@ -44,6 +48,7 @@
 - [ ] Arctic checkout handoff (popup/new window styled via Custom HTML Header)
 
 ## Phase 4: Blog & Content
+
 - [ ] Sanity blog content model + studio customization
 - [ ] Blog listing page with pagination/filtering
 - [ ] Blog post pages with rich content rendering
@@ -51,12 +56,14 @@
 - [ ] Gallery page with lightbox and filtering
 
 ## Phase 5: Reviews, Authority & Social Proof
+
 - [ ] TripAdvisor review integration (embed or API)
 - [ ] Google Reviews display
 - [ ] Authority badges/callouts (60 years, awards, certifications)
 - [ ] Push visitors to leave reviews on 3rd party platforms
 
 ## Phase 6: Analytics, SEO & Polish
+
 - [ ] Google Analytics 4 setup
 - [ ] PostHog integration
 - [ ] Meta Pixel for retargeting
@@ -67,6 +74,7 @@
 - [ ] Accessibility audit (WCAG 2.1 AA)
 
 ## Related
+
 - [[tech-stack]] — Technology choices
 - [[architecture]] — Site structure
 - [[open-decisions]] — Blockers and unresolved questions
