@@ -2,24 +2,24 @@
 
 ## Project Details
 
-| Field | Value |
-|-------|-------|
-| Project ID | `jau3o5v4` |
-| Dataset | `production` |
-| API version | `2024-01-01` |
-| Sanity version | v5 (`sanity` package) |
-| Studio URL (local) | http://localhost:3000/studio |
+| Field                | Value                        |
+| -------------------- | ---------------------------- |
+| Project ID           | `jau3o5v4`                   |
+| Dataset              | `production`                 |
+| API version          | `2024-01-01`                 |
+| Sanity version       | v5 (`sanity` package)        |
+| Studio URL (local)   | http://localhost:3000/studio |
 | Management dashboard | https://www.sanity.io/manage |
 
 ## Environment Variables
 
 Defined in `.env.local` (gitignored), templated in `.env.example`:
 
-| Variable | Public? | Purpose |
-|----------|---------|---------|
-| `NEXT_PUBLIC_SANITY_PROJECT_ID` | Yes (client bundle) | Identifies the Sanity project |
-| `NEXT_PUBLIC_SANITY_DATASET` | Yes (client bundle) | Dataset name (`production`) |
-| `SANITY_API_TOKEN` | No (server only) | Write access token — generate at sanity.io/manage → API → Tokens |
+| Variable                        | Public?             | Purpose                                                          |
+| ------------------------------- | ------------------- | ---------------------------------------------------------------- |
+| `NEXT_PUBLIC_SANITY_PROJECT_ID` | Yes (client bundle) | Identifies the Sanity project                                    |
+| `NEXT_PUBLIC_SANITY_DATASET`    | Yes (client bundle) | Dataset name (`production`)                                      |
+| `SANITY_API_TOKEN`              | No (server only)    | Write access token — generate at sanity.io/manage → API → Tokens |
 
 Centralized in `src/sanity/env.ts` — all code imports from there, never reads `process.env` directly.
 
@@ -28,9 +28,11 @@ Centralized in `src/sanity/env.ts` — all code imports from there, never reads 
 Managed at sanity.io/manage → API → CORS Origins. Sanity does **not** support wildcards — each origin must be added explicitly.
 
 Current origins:
+
 - `http://localhost:3000` (with credentials)
 
 Still needed:
+
 - Production domain when live
 - Vercel production URL (`https://website-phi-six-25.vercel.app`)
 
@@ -71,24 +73,24 @@ website/
 
 ### Document types
 
-| Schema | Sanity type name | Key fields | Notes |
-|--------|-----------------|------------|-------|
-| River | `river` | name, slug, description, image | Colorado, Green, San Juan, Yampa |
-| Activity | `activity` | name, slug, description, image | Rafting, Mountain Biking, Multi-Sport |
-| Trip Category | `tripCategory` | name, slug, description | Family, Stargazing, Canyon Concerts, etc. |
-| Trip | `trip` | name, slug, river (ref), activities (refs), categories (refs), difficulty, duration, description (Portable Text), photos, highlights, pricingNotes, arcticTripId | Central content type. `arcticTripId` links to Arctic API. |
-| FAQ | `faq` | question, answer (Portable Text), category, order | Categories: general, booking, trip-preparation, safety, cancellation |
-| Site Settings | `siteSettings` | phone, email, address, socialLinks | Singleton — only one document of this type should exist |
-| Page | `page` | title, slug, content (array of blocks) | Generic page builder |
+| Schema        | Sanity type name | Key fields                                                                                                                                                       | Notes                                                                |
+| ------------- | ---------------- | ---------------------------------------------------------------------------------------------------------------------------------------------------------------- | -------------------------------------------------------------------- |
+| River         | `river`          | name, slug, description, image                                                                                                                                   | Colorado, Green, San Juan, Yampa                                     |
+| Activity      | `activity`       | name, slug, description, image                                                                                                                                   | Rafting, Mountain Biking, Multi-Sport                                |
+| Trip Category | `tripCategory`   | name, slug, description                                                                                                                                          | Family, Stargazing, Canyon Concerts, etc.                            |
+| Trip          | `trip`           | name, slug, river (ref), activities (refs), categories (refs), difficulty, duration, description (Portable Text), photos, highlights, pricingNotes, arcticTripId | Central content type. `arcticTripId` links to Arctic API.            |
+| FAQ           | `faq`            | question, answer (Portable Text), category, order                                                                                                                | Categories: general, booking, trip-preparation, safety, cancellation |
+| Site Settings | `siteSettings`   | phone, email, address, socialLinks                                                                                                                               | Singleton — only one document of this type should exist              |
+| Page          | `page`           | title, slug, content (array of blocks)                                                                                                                           | Generic page builder                                                 |
 
 ### Object types (content blocks)
 
 Used inside the Page builder's `content` array:
 
-| Schema | Sanity type name | Fields |
-|--------|-----------------|--------|
-| Hero Block | `heroBlock` | heading, subheading, backgroundImage, ctaText, ctaLink |
-| Content Block | `contentBlock` | heading, body (Portable Text + images) |
+| Schema        | Sanity type name | Fields                                                 |
+| ------------- | ---------------- | ------------------------------------------------------ |
+| Hero Block    | `heroBlock`      | heading, subheading, backgroundImage, ctaText, ctaLink |
+| Content Block | `contentBlock`   | heading, body (Portable Text + images)                 |
 
 ### Planned (not yet implemented)
 
@@ -104,27 +106,27 @@ All queries live in `src/lib/sanity/queries.ts` using `defineQuery()` from `next
 
 Available queries:
 
-| Query | Params | Returns |
-|-------|--------|---------|
-| `allTripsQuery` | — | All trips with dereferenced river, activities, categories |
-| `tripBySlugQuery` | `slug: string` | Single trip with full details |
-| `allRiversQuery` | — | All rivers |
-| `riverBySlugQuery` | `slug: string` | Single river |
-| `allActivitiesQuery` | — | All activities |
-| `allFaqsQuery` | — | All FAQs ordered by category then sort order |
-| `siteSettingsQuery` | — | Site settings singleton |
-| `pageBySlugQuery` | `slug: string` | Single page with content blocks |
+| Query                | Params         | Returns                                                   |
+| -------------------- | -------------- | --------------------------------------------------------- |
+| `allTripsQuery`      | —              | All trips with dereferenced river, activities, categories |
+| `tripBySlugQuery`    | `slug: string` | Single trip with full details                             |
+| `allRiversQuery`     | —              | All rivers                                                |
+| `riverBySlugQuery`   | `slug: string` | Single river                                              |
+| `allActivitiesQuery` | —              | All activities                                            |
+| `allFaqsQuery`       | —              | All FAQs ordered by category then sort order              |
+| `siteSettingsQuery`  | —              | Site settings singleton                                   |
+| `pageBySlugQuery`    | `slug: string` | Single page with content blocks                           |
 
 ### Fetch helpers
 
 Thin wrappers in `src/lib/sanity/fetch.ts`. Use these in server components:
 
 ```typescript
-import { getAllTrips, getTripBySlug } from '@/lib/sanity';
+import { getAllTrips, getTripBySlug } from "@/lib/sanity";
 
 // In a server component or page:
 const trips = await getAllTrips();
-const trip = await getTripBySlug('desolation-canyon');
+const trip = await getTripBySlug("desolation-canyon");
 ```
 
 ### Writing custom queries
@@ -165,7 +167,7 @@ const trip = await getTripBySlug('desolation-canyon');
 Use the `urlFor()` helper from `src/lib/sanity/image.ts`:
 
 ```typescript
-import { urlFor } from '@/lib/sanity';
+import { urlFor } from "@/lib/sanity";
 
 // Basic usage
 const url = urlFor(trip.photos[0]).url();
@@ -174,10 +176,10 @@ const url = urlFor(trip.photos[0]).url();
 const url = urlFor(trip.photos[0]).width(800).height(600).url();
 
 // With format and quality
-const url = urlFor(trip.photos[0]).width(1200).format('webp').quality(80).url();
+const url = urlFor(trip.photos[0]).width(1200).format("webp").quality(80).url();
 
 // Auto crop with hotspot
-const url = urlFor(trip.photos[0]).width(400).height(400).fit('crop').url();
+const url = urlFor(trip.photos[0]).width(400).height(400).fit("crop").url();
 ```
 
 Images are served from `cdn.sanity.io` (already whitelisted in `next.config.ts`).
@@ -191,10 +193,12 @@ pnpm typegen
 ```
 
 This runs two steps:
+
 1. `sanity schema extract` → produces `schema.json` (gitignored)
 2. `sanity typegen generate` → reads schema + queries → writes `src/sanity/types.ts`
 
 **When to re-run:**
+
 - After adding or changing schemas in `src/sanity/schemas/`
 - After adding or changing queries in `src/lib/sanity/queries.ts`
 
@@ -205,6 +209,7 @@ This runs two steps:
 Sanity Studio is embedded in the Next.js app at `/studio` via a catch-all route (`src/app/studio/[[...tool]]/`).
 
 **Plugins enabled:**
+
 - `structureTool` — document list and editor
 - `visionTool` — GROQ query playground (useful for testing queries)
 
