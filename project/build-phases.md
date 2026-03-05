@@ -8,15 +8,15 @@
 
 - [x] Initialize Next.js 15 project with App Router and TypeScript (strict mode)
 - [x] Configure ESLint + Prettier for consistent code style
-- [ ] Set up Tailwind CSS with brand design tokens (colors, typography, spacing) — _Tailwind v4 configured; brand tokens still needed_
+- [x] Set up Tailwind CSS with brand design tokens (colors, typography, spacing) — _Done (2026-03-02). Tailwind v4 `@theme inline` with 7 brand colors, 2 fonts, 5-step typography scale._
 - [x] Configure Sanity Studio project with initial content models (typed schemas) — _Done (2026-02-28). Sanity v3 Studio embedded at `/studio`, 9 schemas defined, typegen configured._
 - [x] Configure GitHub Actions CI pipeline (lint → type-check → test → build)
 - [x] Set up Vercel project with Git-based deploys + PR preview deployments
 - [x] Configure beta subdomain on Vercel for stakeholder testing
 - [x] Set up Vitest for unit/integration tests + Playwright for E2E tests
 - [x] Create `CLAUDE.md` with project conventions
-- [ ] Build core layout: header, footer, navigation (responsive)
-- [ ] Establish component library basics (buttons, cards, section containers)
+- [x] Build core layout: header, footer, navigation (responsive) — _Done (2026-03-04). Header with logo + desktop/mobile nav, footer with 4-column grid._
+- [x] Establish component library basics (buttons, cards, section containers) — _Done (2026-03-04). Button (3 variants), Section (3 backgrounds), Card (image + meta + description)._
 - [ ] Generate TypeScript types for Sanity schemas (sanity-typegen) and Arctic API responses — _Sanity types generated (2026-02-28); Arctic types pending Phase 3_
 
 ## Phase 2: Core Content Pages
