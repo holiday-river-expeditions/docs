@@ -1,33 +1,20 @@
 # Design Upgrade Plan
 
 > Translates the [[design-review]] findings into concrete implementation steps for the new site.
+>
+> **Superseded color/typography:** The interim "atmospheric extensions" (canyon/river/old-sand) and the Stardos Stencil headline guidance in this document have been replaced by the official 2026 brand refresh. See [[brand-guidelines]] for the current system. The homepage section plan and component list below remain valid; interpret their color references against the new tokens in [[tailwind-tokens]].
 
 ## Design Philosophy
 
 **"The landscape is the brand."** Every design decision should serve immersion — the feeling of standing at the edge of a canyon, hearing water, breathing desert air. The site should feel like the first morning of a river trip: warm light, open space, quiet confidence.
 
-## Design System Expansions
+## Design System
 
-### Color Additions
-
-Extend the existing palette with contextual variants that enable the atmospheric design:
-
-| Token | Value | Purpose |
-|-------|-------|---------|
-| `canyon` | `#1a1612` | Dark warm brown for immersive sections (canyon walls at dusk) |
-| `sand` | `#e8e0d4` | Warm neutral (warmer alternative to off-white for variety) |
-| `river` | `#2d7a7f` | Deeper teal for section accents, borders, decorative lines |
-| `teal` (existing) | `#5C9CA1` | Buttons, hover states, links where water metaphor fits |
-
-### Typography Refinements
-
-- **H2 size**: Add `--text-h2: 36px` / `--text-h2--line-height: 38px` for section headings (currently jumping from 50px H1 to 26px H3 is too large a gap)
-- **Subheading**: Add `--text-subheading: 22px` / `--text-subheading--line-height: 30px` for intro text and pull quotes
-- **Stardos Stencil**: Use only for H1 hero moments and the "Holiday River Expeditions" brand name. All other headings use Open Sans bold/extrabold. This preserves the stencil's impact without overexposure.
+See [[brand-guidelines]] for the official color palette and typography specs, and [[tailwind-tokens]] for the token names and Tailwind utility classes.
 
 ### New Utility Patterns
 
-- **Section rhythm**: Alternate `white → canyon (dark) → off-white → full-bleed photo` to create the changing-light-on-the-river feeling
+- **Section rhythm**: Alternate `holiday-white → evergreen (dark) → sand → full-bleed photo` to create the changing-light-on-the-river feeling
 - **Teal accent thread**: Thin teal top-borders on cards, teal underlines on active nav items, teal icon fills — creates a subliminal water thread throughout
 - **Wavy/organic dividers**: SVG section dividers inspired by river topography and canyon silhouettes (carries forward the footer's existing wavy edge treatment)
 

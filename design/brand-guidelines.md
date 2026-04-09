@@ -1,72 +1,92 @@
 # Brand Guidelines
 
-## Approach
-Partial brand refresh — keep the existing logo and brand identity, modernize the visual style for the web.
+> Official Holiday River Expeditions brand guidelines, delivered 2026-03-11. Source PDF: [[assets/HRE-brand-guidelines-2026-03-11.pdf]]. Master asset library: [[assets/holiday-logo-files]].
+
+## Philosophy
+
+The brand is built on a rich history and heritage reflected in the logo's boat, waves, and oar — representing oar-powered river expeditions. Consistent use of these elements keeps the brand clear, recognizable, and true to its heritage.
 
 ## Color Palette
 
-| Swatch | Name          | Hex       | RGB                |
-| ------ | ------------- | --------- | ------------------ |
-| <span style="display:inline-block;width:14px;height:14px;background:#A30D11;border-radius:2px"></span> | Brand Red     | `#A30D11` | rgb(163, 13, 17)   |
-| <span style="display:inline-block;width:14px;height:14px;background:#4E4D48;border-radius:2px"></span> | Taupe Gray    | `#4E4D48` | rgb(78, 77, 72)    |
-| <span style="display:inline-block;width:14px;height:14px;background:#212121;border-radius:2px"></span> | Dark Charcoal | `#212121` | rgb(33, 33, 33)    |
-| <span style="display:inline-block;width:14px;height:14px;background:#FFFFFF;border:1px solid #ccc;border-radius:2px"></span> | White         | `#FFFFFF` | rgb(255, 255, 255) |
-| <span style="display:inline-block;width:14px;height:14px;background:#F4F4F4;border:1px solid #ccc;border-radius:2px"></span> | Off-White     | `#F4F4F4` | rgb(244, 244, 244) |
-| <span style="display:inline-block;width:14px;height:14px;background:#A6ADB4;border-radius:2px"></span> | Light Gray    | `#A6ADB4` | rgb(166, 173, 180) |
-| <span style="display:inline-block;width:14px;height:14px;background:#1863DC;border-radius:2px"></span> | Light Blue    | `#1863DC` | rgb(24, 99, 220)   |
-| <span style="display:inline-block;width:14px;height:14px;background:#5C9CA1;border-radius:2px"></span> | Teal          | `#5C9CA1` | rgb(92, 156, 161)  |
+### Primary
+
+| Swatch | Name | Hex | RGB | CMYK | Pantone |
+|---|---|---|---|---|---|
+| <span style="display:inline-block;width:14px;height:14px;background:#D00A0B;border-radius:2px"></span> | Holiday Red | `#D00A0B` | 208 10 11 | 0/95/95/18 | 186C / 186U |
+| <span style="display:inline-block;width:14px;height:14px;background:#FCFCFC;border:1px solid #ccc;border-radius:2px"></span> | Holiday White | `#FCFCFC` | 252 252 252 | 0/0/0/1 | — |
+| <span style="display:inline-block;width:14px;height:14px;background:#B6B6B6;border-radius:2px"></span> | Holiday Grey | `#B6B6B6` | 182 182 182 | 0/0/0/29 | — |
+
+Holiday Red and White form the foundation of the brand and are among its most important and recognizable elements. Holiday Red closely aligns with the traditional Holiday red paint.
+
+### Secondary
+
+Accent-only palette. Never used at a scale that competes with Holiday Red and White. Intended for small accents, highlights, or supporting design elements.
+
+| Swatch | Name | Hex | RGB | CMYK |
+|---|---|---|---|---|
+| <span style="display:inline-block;width:14px;height:14px;background:#3F786B;border-radius:2px"></span> | Teal | `#3F786B` | 63 120 107 | 48/0/11/53 |
+| <span style="display:inline-block;width:14px;height:14px;background:#0A332D;border-radius:2px"></span> | Evergreen | `#0A332D` | 10 51 45 | 80/0/12/80 |
+| <span style="display:inline-block;width:14px;height:14px;background:#9DBDB8;border-radius:2px"></span> | Opal | `#9DBDB8` | 157 189 184 | 17/0/3/26 |
+| <span style="display:inline-block;width:14px;height:14px;background:#D6B588;border-radius:2px"></span> | Sand | `#D6B588` | 214 181 136 | 0/15/36/16 |
+| <span style="display:inline-block;width:14px;height:14px;background:#2C2B29;border-radius:2px"></span> | Onyx | `#2C2B29` | 44 43 41 | 0/2/7/83 |
 
 ## Typography
 
-### Font Families
-- **Stardos Stencil** — Main headings (H1, H2)
-- **Open Sans** — Body text, subheadings, UI elements
-- **Arial** — Fallback
+### Logotype / Headlines / CTAs
 
-### Heading Styles
+**ATF Alternate Gothic — Medium** (Adobe Fonts; American Type Founders Collection)
 
-**H1, H2:**
-- Font: `'Stardos Stencil', 'Open Sans', Arial, sans-serif`
-- Size: 50px | Weight: 700
-- Color: `#A30D11` (Brand Red)
-- Line Height: 46px | Letter Spacing: -1.5px
+- Use in headlines, buttons, CTAs, and other short applications
+- Always **all caps**, medium weight
+- A geometric sans serif that complements the logo mark and stays close to the brand's heritage logotype
 
-**H3:**
-- Font: `'Open Sans', Arial, sans-serif`
-- Size: 26px | Weight: 800
-- Color: `#FFFFFF` (White)
-- Line Height: 28px
+```
+THE QUICK BROWN FOX JUMPS OVER THE LAZY DOG.
+HOLIDAY RIVER EXPEDITIONS
+MOTOR-FREE RAFTING SINCE 1966
+```
 
 ### Body Text
 
-**Paragraph:**
-- Font: `'Open Sans', Arial, sans-serif`
-- Size: 18px | Weight: 700
-- Color: `#4E4D48` (Taupe Gray)
-- Line Height: 24px
+The guidelines do not specify a body face. The website pairs Alternate Gothic with **Open Sans** for body and UI text.
 
-**Default Body:**
-- Font: `'Open Sans', Arial, sans-serif`
-- Size: 16px | Weight: 400
-- Color: `#4E4D48` (Taupe Gray)
-- Line Height: 22.4px
+## Logo System
 
-**Links:**
-- Font: `'Open Sans', Arial, sans-serif`
-- Size: 12px | Weight: 600
-- Color: `#4E4D48` (Taupe Gray)
+The logo is composed of a boat, waves, and an oar, representing oar-powered river expeditions. Two orientations exist:
 
-## Logo & Brand Assets
+- **Primary Horizontal** — the default. Use whenever possible.
+- **Primary Vertical** — for vertical/narrow layouts.
+- **Secondary** (horizontal and vertical) — alternate lockups for special cases.
+- **Primary Icon** — may be used standalone or paired with the logotype as part of the primary/secondary marks.
+- **Secondary Stencil Icon** — for stencil-based applications only. Never the primary mark, never paired with the logotype.
 
-Logo files stored in `design/assets/`:
-- `HRE_LOGO_WHITE.svg` — Full logo (icon + wordmark), white on transparent
-- `cropped-android-chrome-512x512-1-192x192.png` — App icon (river mark, red bg)
-- `favicon-32x32.png` — Favicon
-- `safari-pinned-tab.svg` — Safari pinned tab icon
-- `touch.png` — Touch icon
+### Colorways
 
-**Deployment note:** Logos will be uploaded to Sanity CMS (Site Settings) and served via Sanity's CDN. Favicons/app icons go in the website `public/` folder.
+- **Red + White (preferred)** — the primary brand expression.
+- **White on imagery** — always use white when placed over photography or imagery, for contrast.
+- **Black** — only when required (B&W reproduction, partner/vendor requirements).
+
+### Don'ts
+
+Our logo is a sacred asset. Do not:
+
+- Squish, stretch, or skew it
+- Rotate it
+- Change typefaces inside the logotype
+- Recolor it outside the approved palette
+- Add strokes, gradients, or 3D effects
+- Rearrange components
+- Adjust type sizes within the logotype
+- Add a tagline
+- Mix with old/legacy logos
+
+## Assets
+
+- **Master library:** [[assets/holiday-logo-files]] — SVG, PNG, EPS in Red/Black/White; Primary + Secondary Horizontal + Vertical; Icon + Stencil Icon; Social and Web icons (Circle + Square, 32/48/180/192px)
+- **Website assets:** `website/public/` has the horizontal/vertical/icon lockups in red and white, plus the social/web favicons
+- **Source PDF:** [[assets/HRE-brand-guidelines-2026-03-11.pdf]]
 
 ## Related
-- [[overview]] — Brand direction decisions
-- [[open-decisions]] — Brand assets still needed
+
+- [[tailwind-tokens]] — Token names and Tailwind class mappings
+- [[design-upgrade-plan]] — Visual design system
