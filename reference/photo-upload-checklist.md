@@ -1,50 +1,46 @@
-# Photo Upload Checklist (Studio)
+# Photo Checklist (Studio)
 
-The site renders every image slot from Sanity. Some slots currently hold
-**interim photos** rescued from the old bikeraft.com site; the rest are empty
-(grey placeholder on the page). The team fills/replaces them in `/studio` —
-upload, then **Publish**; changes go live in seconds.
+**Every image slot on the site is now filled** — no grey placeholders remain.
+Photos came from two sources; the team refines them in `/studio` (upload →
+set hotspot → **Publish**; live in seconds).
 
-## Empty slots — need a photo (14)
+## Where the current photos came from
 
-**Homepage** (Studio → Homepage):
-- [ ] Rafting Since 1966 → *Story Photo — Left (vintage)* — old-days rafting shot
-- [ ] Rafting Since 1966 → *Story Photo — Dee Holladay Portrait* — B&W; the
-      signature/arrow overlay points at this
-- [ ] Learn & Get Inspired → card image ×4 (River Cooking 101, Triple Rig
-      History, Packing For Your Trip, Stargazing On The River)
+**Figma-mapped from Google Drive (design-intended — these are "final" unless
+the designer says otherwise):**
+- Homepage hero — `SRO_1126.jpg`
+- Story vintage photo — `Folder006_00012A.jpg`
+- Dee Holladay portrait — `Folder003_00002A.jpg`
 
-**Trips** (Studio → Trip → *Photos* — first photo is the card/banner):
-- [ ] Westwater Canyon
-- [ ] The Maze
-- [ ] Gates of Lodore
+**Picked from the Drive photo library by subject (good candidates, but nobody
+art-directed them — re-curate freely):**
+- Learn cards: `canyon kitchen`, `Dee Triple Rig 2`, `Impeccable-Gear`,
+  `Stargazing Trips in Canyonlands`
+- Trips: Westwater (`2010-08-01-Westwater-968`), The Maze
+  (`Holiday Maze 2023_full-66`), Gates of Lodore (`Lodore_7`)
+- Rivers: Westwater, Maze, Lodore, White Rim, San Rafael
 
-**Rivers** (Studio → River → *Image*):
-- [ ] Gates of Lodore
-- [ ] Westwater
-- [ ] White Rim
-- [ ] Maze
-- [ ] San Rafael
-
-## Interim photos — replace with final photography whenever (8)
-
-Filenames start with `interim-` in the Studio media library.
-
-- Homepage hero
+**Interim from the old bikeraft.com site (replace with Drive photography):**
 - Trips: Cataract Canyon, Desolation Canyon (bluegrass), Yampa River
-  (also add more photos per trip — the trip page shows a gallery of up to 6)
 - Rivers: Desolation, Yampa, Cataract, San Juan
+- (Filenames start with `interim-` in the Studio media library.)
+
+## Remaining team tasks
+
+- [ ] Replace the 7 `interim-` photos with real Drive photography
+- [ ] Review the subject-picked photos above; swap any that don't fit
+- [ ] Add 2–6 gallery photos per **Trip** (trip pages show a gallery; most
+      trips currently have just the one card photo)
+- [ ] Desolation specialty card: use an actual **Pickpockets Bluegrass** band
+      photo when one exists
+- [ ] Set **Alt Text** on trip photos (accessibility + SEO)
 
 ## Guidelines
 
-- Landscape orientation for hero/river/trip photos (hero crops ~2.4:1 wide,
-  cards ~square); portrait 3:4 for the two story photos and learn cards.
-- Upload high-res originals — Sanity generates optimized sizes; the crop
-  follows the **hotspot** you set in Studio.
-- Add **Alt Text** on trip photos (accessibility + SEO).
+- Landscape for hero/river/trip photos (hero crops ~2.4:1, cards ~square);
+  portrait 3:4 for story photos and learn cards.
+- Upload high-res originals — Sanity optimizes; crops follow the **hotspot**.
 
 ## Related
 
 - [[sanity-revalidation-webhook]] — how publishes go live instantly
-- `website/scripts/seed-interim-photos.mjs` — script that seeded the interim
-  set (safe to re-run; never overwrites team uploads)
