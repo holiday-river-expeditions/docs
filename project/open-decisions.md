@@ -50,8 +50,8 @@ Cancellation & Insurance, Essential Eligibility Criteria, Code of Conduct — co
 ## Catalog Requests #decision-needed
 Current site has a "Request a Catalog" form. Still relevant, or replaced by digital marketing?
 
-## Homepage Featured Trips #decision-needed
-Which trips should be the "signature" trips featured on the homepage? Current site shows 8.
+## Homepage Featured Trips — resolved (mechanism)
+Featured trips are now curated in Sanity via the **Homepage** document's "Featured Trips" reference list (drag to reorder) — no code change needed to swap them. Seeded with 6: Cataract Canyon, Westwater Canyon, The Maze, Gates of Lodore, Desolation Canyon (specialty music trip), Yampa River. Final selection is the Holiday team's call in `/studio`.
 
 ## Getting Here / Before You Go Pages #decision-needed
 Current site has standalone pages per departure location (Green River, Vernal, San Juan). Should these remain standalone or fold into trip detail pages as sections?

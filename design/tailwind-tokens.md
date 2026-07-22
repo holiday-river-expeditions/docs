@@ -27,9 +27,13 @@ All brand tokens are defined in `website/src/app/globals.css` via `@theme inline
 | Token | Class | Stack |
 |---|---|---|
 | `--font-alt-gothic` | `font-alt-gothic` | ATF Alternate Gothic (Adobe Fonts), Oswald fallback, Arial, sans-serif |
-| `--font-sans` | `font-sans` | Open Sans, Arial, sans-serif (body default) |
+| `--font-sans` | `font-sans` | PT Sans, Arial, sans-serif (body default) |
 
-> **Note:** ATF Alternate Gothic Medium is the official brand face for all headlines/CTAs and must be wrapped in `uppercase`. Until the Adobe Fonts kit is wired in `layout.tsx`, Oswald serves as a close Google Fonts fallback.
+> **Note:** ATF Alternate Gothic Medium is the official brand face for all headlines/CTAs and must be wrapped in `uppercase`. Oswald (weights 500/600/700) serves as the Google Fonts fallback until the Adobe Fonts kit fully covers the heavier cuts. **Body face is PT Sans** (weights 400/700) — chosen to match the Figma homepage mockup. The brand PDF does not specify a body face; PT Sans supersedes the earlier Open Sans choice.
+>
+> **Heading weights:** display headings (hero, section, card titles, river names, specialty subtitle) use Alternate Gothic **900 (`font-black`)**, prices/footer links **600 (`font-semibold`)**, and nav/tags/buttons/newsletter headline **500 (`font-medium`)**. Match per element rather than defaulting everything to medium. (The Figma API *reports* 800 for the headings, but desktop→web-kit weight numbering doesn't line up 1:1 — the kit's **900** is what visually matches the mock. The kit publishes all weights 100–900.)
+>
+> **Body font application:** the `@theme inline` block inlines tokens into utilities and does **not** emit them as `:root` custom properties — so a raw `body { font-family: var(--font-sans) }` rule resolves to *empty* and body text silently falls back to `ui-sans-serif`. `globals.css` therefore sets the body font via `var(--font-pt-sans)` directly (that next/font variable is defined on `<body>`). Inside components, use the `font-sans` / `font-alt-gothic` utility classes — those carry the inlined value and work correctly.
 
 ## Typography Scale
 

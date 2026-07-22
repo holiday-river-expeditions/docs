@@ -48,7 +48,7 @@ MOTOR-FREE RAFTING SINCE 1966
 
 ### Body Text
 
-The guidelines do not specify a body face. The website pairs Alternate Gothic with **Open Sans** for body and UI text.
+The guidelines do not specify a body face. The website pairs Alternate Gothic with **PT Sans** (weights 400/700) for body and UI text, chosen to match the Figma homepage mockup. (This supersedes the earlier interim Open Sans choice.)
 
 ## Logo System
 

@@ -2,7 +2,7 @@
 
 > Translates the [[design-review]] findings into concrete implementation steps for the new site.
 >
-> **Superseded color/typography:** The interim "atmospheric extensions" (canyon/river/old-sand) and the Stardos Stencil headline guidance in this document have been replaced by the official 2026 brand refresh. See [[brand-guidelines]] for the current system. The homepage section plan and component list below remain valid; interpret their color references against the new tokens in [[tailwind-tokens]].
+> **Superseded:** Parts of this doc have been overtaken by later decisions. (1) **Color/typography** — the interim "atmospheric extensions" (canyon/river/old-sand) and the Stardos Stencil headline guidance were replaced by the official 2026 brand refresh; see [[brand-guidelines]] and [[tailwind-tokens]]. (2) **Homepage structure** — the original section/component plans (Trust Bar, "The Holiday Way", Testimonials, Final CTA, teal accents, 4 river cards) were superseded by the Figma homepage mockup that was actually built. The "Homepage Redesign — Section Plan" and "Component Plan" sections below have been updated to reflect the implemented homepage.
 
 ## Design Philosophy
 
@@ -20,68 +20,56 @@ See [[brand-guidelines]] for the official color palette and typography specs, an
 
 ## Homepage Redesign — Section Plan
 
-The homepage is the first place to demonstrate the new design language. Structure:
+Reflects the homepage as built from the Figma mockup. Top to bottom:
 
-### 1. Full-Bleed Hero
-- Full viewport height background image (canyon/river photography)
-- Gradient overlay (dark at bottom for text legibility)
-- Stardos H1 in brand-red: "Holiday River Expeditions"
-- Subheading in white: "Motor-Free Rafting Since 1966"
-- Single CTA button: "Plan Your Trip" (teal)
-- Scroll indicator at bottom
+### 1. Hero
+- Full-bleed canyon/river photo with a subtle dark overlay (`bg-onyx/20`)
+- Alternate Gothic H1 in white, all caps, centered: "Multi-Day Raft and Bike Expeditions in the Heart of Canyon Country"
+- Red **"60 Years of Going With the Flow"** anniversary seal straddling the bottom-left edge
+- Fixed height (~550px on desktop)
 
-### 2. Trust Bar
-- Horizontal strip just below hero
-- `60 Years on the River · 5.0 on Google · Travelers' Choice 2025 · Motor-Free Since 1966`
-- Off-white background, small text, high credibility density
-- Teal separator dots between items
+### 2. Featured Trips
+- White background; 6 trip cards in a 3-column grid
+- `TripCard` shows photo, category tag, "Starts at $X / N Days", red name, short description
+- **Specialty variant**: red ribbon (e.g. "Specialty Music Trip"), red border frame, and a red subtitle line beneath the name (e.g. "Desolation Canyon" → "With The Pickpockets Bluegrass")
+- "View All Trips" outline button below
 
-### 3. "The Holiday Way" Brand Story
-- Canyon-dark background section
-- Short manifesto text (2-3 sentences about the philosophy)
-- Subtle decorative element (river topo line or canyon silhouette)
-- This is NOT just a heading — it's a brand moment
+### 3. Rafting Since 1966
+- White background; two-column layout
+- Left: two-image collage (vintage trip photo + grayscale founder portrait) with a handwritten **"Dee Holladay"** signature + arrow pointing at the portrait
+- Right: red Alternate Gothic heading "Rafting Since 1966", short thank-you copy, "Learn More" outline button
 
-### 4. Explore by River
-- Off-white or sand background
-- 4 cards in a row: Colorado, Green, San Juan, Yampa
-- Each card: full-bleed photo, river name overlaid, brief tagline
-- Teal top-border accent on each card
+### 4. River Selector
+- Full-bleed photo background with a dark overlay
+- Interactive vertical list of the 9 rivers; hovering/focusing a name crossfades the background image; the active name is red, the rest white
 
-### 5. Featured Trips
-- White background
-- 3 trip cards with enhanced design (photo, name, duration, difficulty badge, price, "X seats left" urgency)
-- "View All Trips" link below
-- Cards have teal top-border accent
+### 5. Learn & Get Inspired
+- White background; red section heading; 4 `ContentCard`s in a row
+- Tall photo cards with the title overlaid (white, drop shadow); a video variant shows a play badge
+- "Learn More" outline button below
 
-### 6. Testimonials
-- Canyon-dark background
-- 1-2 guest quotes, large italic text
-- Star rating, guest name, trip name
-- Creates emotional pause before CTA
-
-### 7. Final CTA
-- Full-bleed photo background (campfire, sunset, group on river)
-- "Ready for Your Adventure?" in white
-- "Browse All Trips" button (teal)
-- Simple, confident, inviting
+### 6. Footer
+- Sand background; newsletter signup ("The River Is Calling…") with email capture
+- Follow Us / Resources / Find Us link columns
+- Horizontal red logo lockup + NPS **"Authorized Concessioner"** badge on the bottom row
 
 ## Component Plan
 
-New components needed:
+Components backing the current homepage:
 
 | Component | Location | Notes |
 |-----------|----------|-------|
-| `Hero` | `ui/Hero.tsx` | Full-bleed image, gradient overlay, headline + CTA |
-| `TrustBar` | `ui/TrustBar.tsx` | Horizontal credibility strip |
-| `RiverCard` | `ui/RiverCard.tsx` | Photo card with overlaid river name |
-| `TestimonialBlock` | `ui/TestimonialBlock.tsx` | Quote display for dark backgrounds |
-| `SectionDivider` | `ui/SectionDivider.tsx` | SVG wavy/organic section transition |
+| `Hero` | `ui/Hero.tsx` | Full-bleed image, overlay, headline, 60-years seal |
+| `TripCard` | `ui/TripCard.tsx` | Trip card; optional `ribbon` / `subtitle` / `featured` specialty variant |
+| `RiverSelector` | `ui/RiverSelector.tsx` | Interactive river list with crossfading background |
+| `ContentCard` | `ui/ContentCard.tsx` | Overlaid-title photo card; optional video play badge |
+| `Section` | `ui/Section.tsx` | Section wrapper with background-color options |
+| `Button` | `ui/Button.tsx` | Pill button: `primary` / `outline` / `onyx` |
+| `NewsletterSignup` | `ui/NewsletterSignup.tsx` | Footer email capture (submit wiring still TODO) |
+| `Header` / `Nav` / `MobileNav` | `layout/` | Center logo lockup, desktop nav, Book Now, mobile menu |
+| `Footer` | `layout/Footer.tsx` | Newsletter + link columns + logo + NPS badge |
 
-Existing components to use as-is:
-- `Section` — add `canyon` and `sand` background options
-- `Button` — add `teal` variant
-- `Card` — enhance with difficulty badge, duration, urgency flag (Phase 2, when trip data flows from Sanity)
+**Not built** (dropped or deferred from the earlier vision): `TrustBar`, `RiverCard`, `TestimonialBlock`, `SectionDivider`, the teal `Button` variant, and the teal "water thread" accents.
 
 ## Implementation Priority
 
