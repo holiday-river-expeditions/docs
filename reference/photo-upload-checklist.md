@@ -25,6 +25,34 @@ art-directed them — re-curate freely):**
 - Rivers: Desolation, Yampa, Cataract, San Juan
 - (Filenames start with `interim-` in the Studio media library.)
 
+## Mock-photo hunt results (2026-07-22)
+
+Extracted the mock's actual card photos via the Figma API (image fills) and
+matched them against Drive visually + by exact byte size:
+
+**Found & applied:**
+- Specialty card → **`Pickpockets Lodore 2023-23.jpg`** (the mock's band shot
+  is an Instagram screenshot of this same session; the Drive original is
+  higher quality and rights-clean)
+- Cataract card → **`NoahWetzel_CataractCanyon2021_809.jpg`** (mock uses a
+  frame from this exact shoot; its precise frame wasn't in the selects
+  folder — 809 is the same-day equivalent)
+- Triple Rig learn card → **`Dee Triple Rig 4.jpg`** (byte-exact mock match)
+- NPS footer badge → high-res artwork (426×480) pulled from the mock itself
+
+**Not in Drive (searched thoroughly — likely video stills / IG / other
+sources). Mock shows:**
+- *Westwater card:* sunset camp scene, beached `holiday` rafts + rainbow
+  (one raft labeled "Mark Crumbo O'Neill")
+- *Yampa card:* red packrafts on calm water beneath huge sandstone walls
+- *Maze card:* bikers around the BikeRaft van at dusk camp
+- *River Cooking card:* guide in HRE tee seasoning steaks on a grill, red
+  cliffs behind
+- *Packing card:* frame from the warehouse orientation video (map mural
+  behind) — grab from the video file
+- *Stargazing card:* man at telescope in beanie (small web-res image; only
+  ~600px exists in the mock itself)
+
 ## Remaining team tasks
 
 - [ ] Replace the 7 `interim-` photos with real Drive photography
