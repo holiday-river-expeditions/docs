@@ -53,6 +53,22 @@ Current site has a "Request a Catalog" form. Still relevant, or replaced by digi
 ## Homepage Featured Trips — resolved (mechanism)
 Featured trips are now curated in Sanity via the **Homepage** document's "Featured Trips" reference list (drag to reorder) — no code change needed to swap them. Seeded with 6: Cataract Canyon, Westwater Canyon, The Maze, Gates of Lodore, Desolation Canyon (specialty music trip), Yampa River. Final selection is the Holiday team's call in `/studio`.
 
+## Trip Dates / Open Seats Interim ✅ Decided (interim)
+The footer "Trip Dates" link points at `/trips` until the Arctic-powered Open Seats
+page exists (the current site's manually-updated "Trips by Date" page is superseded
+by that plan — see [[page-plan]] Phase 1 #4). Revisit when Arctic integration lands.
+
+## Online Store ✅ Decided
+The footer "Online Store" link goes directly to the external Square site
+(holiday-river-expeditions.square.site), matching the current site. No local page.
+
+## Newsletter & Contact Form Provider #decision-needed
+The footer newsletter signup and /contact form now capture to Sanity
+(`newsletterSubscriber` / `contactSubmission` documents, visible in /studio) as an
+interim store — no emails are sent. Need to pick an email/CRM provider (Mailchimp,
+ConvertKit, plain SMTP relay, etc.) and wire the API routes to it; existing Sanity
+captures can be exported and imported at that point.
+
 ## Getting Here / Before You Go Pages #decision-needed
 Current site has standalone pages per departure location (Green River, Vernal, San Juan). Should these remain standalone or fold into trip detail pages as sections?
 

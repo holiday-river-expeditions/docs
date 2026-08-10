@@ -23,13 +23,15 @@
 
 > **Note (2026-02-19):** Phase 2 content coordination will be ad-hoc between Justin and Darius. See [[2026-02-19-phase-1-update]].
 
-- [ ] Homepage: hero section, featured trips, authority signals (60 years), testimonial highlights, CTAs
-- [ ] About page: history timeline, team, brand story
-- [ ] Trip listing page: filterable grid, trip cards with key info
-- [ ] Trip detail page: full content from Sanity, photo gallery, pricing, CTA to book
-- [ ] River landing pages: per-river content and trip filtering
-- [ ] FAQ page: CMS-driven, categorized, accordion UI
-- [ ] Contact page: form + company info
+- [x] Homepage: hero section, featured trips, authority signals (60 years), testimonial highlights, CTAs — _Done (2026-05-29). Sanity-driven, Figma-matched._
+- [x] About page: history timeline, team, brand story — _Done (2026-08-10). Rendered via the `page` builder (`app/[slug]` catch-all); seeded from bikeraft.com copy._
+- [x] Trip listing page: filterable grid, trip cards with key info — _Grid done (2026-07-21); filtering still pending._
+- [x] Trip detail page: full content from Sanity, photo gallery, pricing, CTA to book — _Done (2026-07-21)._
+- [x] River landing pages: per-river content and trip filtering — _Done (2026-07-21)._
+- [x] FAQ page: CMS-driven, categorized, accordion UI — _Done (2026-08-10). 16 seeded FAQs across 5 categories._
+- [x] Contact page: form + company info — _Done (2026-08-10). Form captures to Sanity (`contactSubmission`) pending an email/CRM provider decision._
+- [x] Activity landing pages (/rafting, /biking): hero + trip grid — _Done (2026-08-10)._
+- [x] Policy page: Cancellation & Trip Insurance — _Done (2026-08-10) via the `page` builder._
 
 ## Phase 3: Arctic API Integration
 
@@ -49,9 +51,9 @@
 
 ## Phase 4: Blog & Content
 
-- [ ] Sanity blog content model + studio customization
-- [ ] Blog listing page with pagination/filtering
-- [ ] Blog post pages with rich content rendering
+- [x] Sanity blog content model + studio customization — _`post` schema done (2026-08-10)._
+- [x] Blog listing page with pagination/filtering — _Index done (2026-08-10), 4 starter posts seeded; pagination/filtering deferred until Holiday decides migration scope._
+- [x] Blog post pages with rich content rendering — _Done (2026-08-10)._
 - [ ] Stories/history content section
 - [ ] Gallery page with lightbox and filtering
 
