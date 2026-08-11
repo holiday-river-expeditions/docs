@@ -1,0 +1,60 @@
+<!--
+  Holiday River Expeditions — Arctic guest-site brand header
+  Paste into: Arctic admin → Settings → Guest-facing Sites → Settings →
+  Custom HTML Header. Styles Arctic's checkout/reserve pages to match the
+  new site (holiday red, ATF Alternate Gothic headings, PT Sans body).
+
+  Prerequisite: add holidayriver-guest-site-1.arcticres.com to the Adobe
+  Fonts kit's allowed domains (kit guz5fen), or Alternate Gothic won't load
+  and Oswald/Arial fallbacks apply.
+-->
+<link rel="stylesheet" href="https://use.typekit.net/guz5fen.css">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=PT+Sans:wght@400;700&display=swap">
+<style>
+  :root {
+    --hre-red: #d00a0b;
+    --hre-white: #fcfcfc;
+    --hre-onyx: #2c2b29;
+    --hre-evergreen: #0a332d;
+  }
+  body {
+    background: var(--hre-white) !important;
+    color: var(--hre-onyx) !important;
+    font-family: 'PT Sans', Arial, sans-serif !important;
+  }
+  h1, h2, h3, h4, legend, .gfs h1, .gfs h2, .gfs h3 {
+    font-family: alternate-gothic-atf, Oswald, Arial, sans-serif !important;
+    text-transform: uppercase !important;
+    letter-spacing: 0.02em;
+    color: var(--hre-onyx) !important;
+  }
+  h1, .gfs h1 { color: var(--hre-red) !important; }
+  a { color: var(--hre-red); }
+  .btn-primary, .btn.btn-primary, input[type="submit"], button[type="submit"],
+  .gfs .btn-primary {
+    background: var(--hre-red) !important;
+    border-color: var(--hre-red) !important;
+    color: var(--hre-white) !important;
+    font-family: alternate-gothic-atf, Oswald, Arial, sans-serif !important;
+    text-transform: uppercase !important;
+    letter-spacing: 0.05em;
+    border-radius: 0 !important;
+    text-shadow: none !important;
+    background-image: none !important;
+  }
+  .btn-primary:hover, input[type="submit"]:hover, button[type="submit"]:hover {
+    background: #b90909 !important;
+  }
+  input[type="text"], input[type="email"], input[type="tel"],
+  input[type="number"], select, textarea {
+    border: 1px solid rgba(44, 43, 41, 0.3) !important;
+    border-radius: 0 !important;
+    background: var(--hre-white) !important;
+  }
+  input:focus-visible, select:focus-visible, textarea:focus-visible,
+  a:focus-visible, button:focus-visible {
+    outline: 2px solid var(--hre-red) !important;
+    outline-offset: 2px;
+  }
+</style>

@@ -165,6 +165,18 @@ Everything below was confirmed against `holidayriver.arcticres.com`, not just th
 - **`onlinebookingurl`** currently points at bikeraft.com's `/my-trip?%2Freserve%2Ft<id>-<slug>` reserve flow — used as the interim per-departure Book link until our cart + handoff replaces it.
 - **`.env.local` gotcha**: Next's dotenv parser treats `#` as a comment and expands `$VAR` (even in single quotes, via dotenv-expand). Secrets containing either must be double-quoted with `\$` escapes. Documented in `.env.example`. Vercel env vars take raw values — do NOT escape there.
 
+## Verified Cart API Behavior (live probe, 2026-08-10, approved by Darius)
+
+Full cart lifecycle exercised against production (test cart created + emptied; carts are abandonable and hold no seats):
+
+- **Guest site base**: `https://holidayriver-guest-site-1.arcticres.com` (discovered from the iframe embed on bikeraft.com/my-trip; the plain `holidayriver.arcticres.com` origin 302s guests to an admin login). Direct non-iframe paths work: `/reserve/t{id}-{slug}` → redirects to `/reserve/t{id}-{slug}/{id}/book`.
+- **Pricing levels**: `GET /api/rest/triptype/{id}/pricinglevel` (sub-resource — the flat `/api/rest/trippricing` endpoint 404s). Entries: `{id, name ("Adult"), description ("Adults 19-64"), uniquename ("DS5day Regular Rate"), amount ("1680.00"), showonline, deleted, default, invoicesubitems[]}` — subitems carry fees (e.g. $2 State Fee).
+- **Cart form field names**: `pl_` + slugified `uniquename` (lowercase, runs of non-alphanumerics → `_`): `pl_ds5day_regular_rate=2`. NOT the numeric level id — `pl_{id}` fails with `add_failed` "Please provide the guest and/or add-on counts".
+- **Book**: `POST {guest}/reserve/api/book/{departureId}` form-encoded → `{success, cart: {id, sessid, createdon, lastactivity}, item: {id, name, description, summary(html), image, is_available, is_ready, quantity, cost}, checkout, interstitial}`. `cost` includes fees/taxes (1325.00 base → 1449.31). `checkout` and `interstitial` are ready-made URLs carrying the sessid.
+- **List**: `GET {guest}/cart/api/item?cartid&sessid` → `{success, cart: {..., items: []}}`. **Delete**: `DELETE {guest}/cart/api/item/{itemId}?cartid&sessid`.
+- **Carted seats do NOT decrement `remainingopenings`** — availability only moves at checkout. Sold-out races are caught by Arctic at checkout; our pre-book re-check is friendly messaging, not enforcement.
+- **`orminimumguests` = 0 on all 11 mapped types** — no minimum-party UI needed. **`orcutoff` = 48:00:00 everywhere** — online booking closes 48h before departure; UI must show "Call to Book" inside that window. **`orname`** holds the clean public name ("Cataract Canyon") — use for display fallbacks.
+
 ## Built (read-only slice, 2026-08-10)
 
 - `src/lib/arctic/` — `config.ts` (env + graceful unconfigured detection), `client.ts` (token cache, retry/backoff, 403 re-auth, Zod on every payload), `types.ts` (lenient schemas), `trips.ts` (fetchers returning null on any failure so pages fall back to a phone CTA).
