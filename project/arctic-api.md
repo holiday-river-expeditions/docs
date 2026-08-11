@@ -146,10 +146,33 @@ The `activity` endpoint is **read-only** even at higher access levels — cannot
 
 - [x] ~~Contact Arctic Reservations support to obtain API credentials~~ — resolved: self-service via Settings > API Access
 - [x] ~~Confirm whether Arctic handles payment processing or if we need Stripe on our side~~ — resolved: Arctic does not handle payment via API. Checkout hands off to Arctic (cart API + redirect). No Stripe needed.
-- [ ] Create API client in Arctic admin (`hre-website`, User level)
-- [ ] Test public API endpoints to understand response shapes for TypeScript types
-- [ ] Build typed API client in `src/lib/arctic/`
-- [ ] Test Arctic Custom HTML Header for checkout popup styling
+- [x] Create API client in Arctic admin (`hre-website`, User level) — done 2026-08-10 (Darius); OAuth credentials in `.env.local`, Basic set saved as fallback
+- [x] Test API endpoints to understand response shapes — done 2026-08-10 against the live API (see Verified API Behavior below)
+- [x] Build typed API client in `src/lib/arctic/` — done 2026-08-10 (read-only slice)
+- [ ] Add `ARCTIC_*` env vars to Vercel (paste raw values — no escaping needed there, unlike `.env.local`)
+- [ ] Test Arctic Custom HTML Header for checkout popup styling (cart phase)
+
+## Verified API Behavior (live, 2026-08-10)
+
+Everything below was confirmed against `holidayriver.arcticres.com`, not just the docs:
+
+- **Token endpoint**: `POST /api/rest/oauth/application/token`, form-encoded body `client_id, client_secret, grant_type=password, username, password`. **The response is form-encoded too** (`access_token=...&token_type=bearer&expires_in=3600&refresh_token=...`), not JSON. `expires_in` is 3600s.
+- **Requests**: `Authorization: Bearer <token>`, `Accept: application/json`. A 403 means the token expired — re-auth and retry once (mirrors Arctic's own PHP wrapper).
+- **List envelope**: `{start, page, number, total, entries: [...]}`. Errors come as `{error, details}`, sometimes with HTTP 200.
+- **Query language works as documented**: `GET /api/rest/trip?query=triptypeid IN (37, 38) AND orenable = TRUE AND canceled = FALSE AND start >= "2026-08-10" ORDER BY start`.
+- **`trip` = a departure** (start date, `openings`, `remainingopenings`, `onlinebookingurl`); **`triptype` = the product** ("Cataract Canyon 5 day"). Sanity's `arcticTripId` holds trip-**type** id(s), comma-separated when one page covers several variants (e.g. `"37,38"` for Cataract 5-day + 6-day). Mapping for all 6 seeded trips set 2026-08-10.
+- **`orenable` on a departure marks it publicly bookable.** Private charters carry `orenable = false` — filtering on `orenable = TRUE` hides them. A charter Holiday enables for online booking (e.g. the Chamberlain charter) shows up, which is correct: the site mirrors Arctic config.
+- **`onlinebookingurl`** currently points at bikeraft.com's `/my-trip?%2Freserve%2Ft<id>-<slug>` reserve flow — used as the interim per-departure Book link until our cart + handoff replaces it.
+- **`.env.local` gotcha**: Next's dotenv parser treats `#` as a comment and expands `$VAR` (even in single quotes, via dotenv-expand). Secrets containing either must be double-quoted with `\$` escapes. Documented in `.env.example`. Vercel env vars take raw values — do NOT escape there.
+
+## Built (read-only slice, 2026-08-10)
+
+- `src/lib/arctic/` — `config.ts` (env + graceful unconfigured detection), `client.ts` (token cache, retry/backoff, 403 re-auth, Zod on every payload), `types.ts` (lenient schemas), `trips.ts` (fetchers returning null on any failure so pages fall back to a phone CTA).
+- Trip detail pages: "Dates & Availability" section (`AvailabilitySection` + `DepartureList`) with seat-count urgency badges and per-departure Book links.
+- `/open-seats`: all public upcoming departures grouped by trip, linked to Sanity trip pages via the `arcticTripId` mapping. Footer "Trip Dates" and `/book` point here.
+- Unit tests mock fetch per the no-sandbox decision (`src/lib/arctic/client.test.ts`).
+
+**Not built yet (cart phase)**: cart-building flow, Arctic checkout handoff, availability badges on trip cards sitewide.
 
 ## Notes
 - Documentation is early stage ("Stay tuned!" per their repo)

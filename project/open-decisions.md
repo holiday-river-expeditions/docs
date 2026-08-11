@@ -53,10 +53,10 @@ Current site has a "Request a Catalog" form. Still relevant, or replaced by digi
 ## Homepage Featured Trips — resolved (mechanism)
 Featured trips are now curated in Sanity via the **Homepage** document's "Featured Trips" reference list (drag to reorder) — no code change needed to swap them. Seeded with 6: Cataract Canyon, Westwater Canyon, The Maze, Gates of Lodore, Desolation Canyon (specialty music trip), Yampa River. Final selection is the Holiday team's call in `/studio`.
 
-## Trip Dates / Open Seats Interim ✅ Decided (interim)
-The footer "Trip Dates" link points at `/trips` until the Arctic-powered Open Seats
-page exists (the current site's manually-updated "Trips by Date" page is superseded
-by that plan — see [[page-plan]] Phase 1 #4). Revisit when Arctic integration lands.
+## Trip Dates / Open Seats ✅ Resolved
+The Arctic-powered `/open-seats` page is live (2026-08-10) — real-time availability
+grouped by trip, replacing the current site's manually-updated "Trips by Date" page.
+The footer "Trip Dates" link and `/book` now point there.
 
 ## Online Store ✅ Decided
 The footer "Online Store" link goes directly to the external Square site

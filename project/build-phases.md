@@ -37,14 +37,14 @@
 
 > Credential blocker resolved — self-service via Settings > API Access (see [[arctic-api#Credential Setup]])
 
-- [ ] Create API client in Arctic admin (`hre-website`, User level access)
-- [ ] Store credentials in Vercel env vars (`ARCTIC_*`)
-- [ ] Build typed API client in `src/lib/arctic/` with Zod validation
-- [ ] Set up API proxy routes in Next.js
-- [ ] Read-only endpoints first: trip sync, availability display
-- [ ] Build open seats page with real-time availability
-- [ ] Connect trip detail pages to Arctic for live availability
-- [ ] Trip-specific "View Open Seats" functionality
+- [x] Create API client in Arctic admin (`hre-website`, User level access) — _Done (2026-08-10, Darius)._
+- [ ] Store credentials in Vercel env vars (`ARCTIC_*`) — _local `.env.local` done; Vercel pending (paste raw values, no escaping)._
+- [x] Build typed API client in `src/lib/arctic/` with Zod validation — _Done (2026-08-10). Token cache, retry/backoff, 403 re-auth, graceful unconfigured fallback._
+- [x] ~~Set up API proxy routes in Next.js~~ — _Not needed for reads: server components call the client directly; credentials never reach the browser. Proxy routes come with the cart phase._
+- [x] Read-only endpoints first: trip sync, availability display — _Done (2026-08-10), verified against live data._
+- [x] Build open seats page with real-time availability — _Done (2026-08-10): `/open-seats`, grouped by trip, charter-filtered via `orenable`._
+- [x] Connect trip detail pages to Arctic for live availability — _Done (2026-08-10): Dates & Availability section with seat badges + interim Book links (Arctic `onlinebookingurl`)._
+- [x] Trip-specific "View Open Seats" functionality — _Covered by the trip-detail availability section._
 - [ ] Build native trip browsing & selection UI (dates, party size, add-ons)
 - [ ] Cart-building flow: add selected items to Arctic cart via API
 - [ ] Arctic checkout handoff (popup/new window styled via Custom HTML Header)
