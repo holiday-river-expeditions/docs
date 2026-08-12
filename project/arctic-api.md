@@ -196,3 +196,36 @@ Full cart lifecycle exercised against production (test cart created + emptied; c
 ## Related
 - [[architecture]] — How Arctic fits into the site data flow
 - [[tech-stack]] — Overall technology decisions
+
+## Verified triptype metadata (live, 2026-08-11)
+
+Probed `/api/rest/triptype` across all 70 records (37 current + non-deleted).
+
+- **`limit` is capped at 50 regardless of what you ask for.** `?limit=500` still
+  returns 50, with `total: 70` in the envelope. **You must paginate with
+  `start`** or you silently lose a third of the catalogue — trip types 54–74
+  (Westwater, Yampa, Lodore 3/5 Day, Cataract 8 day) all live on page 2.
+  Every existing `arcticTripId` mapping in Sanity is valid; a single-page
+  fetch just makes five of them *look* dangling.
+- **Arctic carries no marketing copy at all.** `ordescription`, `ordetails`,
+  `orimageid`, and `notes` are empty on **all** current types. There is no
+  description, image, or itinerary to import — Sanity is the only source for
+  narrative content, and that is not going to change without data entry in
+  Arctic.
+- **Arctic does carry operational facts**, populated on 16/18 rafting types:
+  `meet_location` ("Green River Headquarters"), `town_of_departure`
+  ("Green River, UT"), `pre_trip_meet_time` ("7:00 PM night before").
+  These are currently hand-copied into Sanity itineraries and could be
+  derived instead.
+- **No music/bluegrass trip type exists in Arctic.** Confirmed across all 70
+  records. The Sanity doc `desolation-canyon-bluegrass` ("With The
+  Pickpockets Bluegrass", 4/5 Days) maps to id 41 = "Desolation Canyon 5
+  day"; bikeraft.com runs The Pickpockets through **Lodore**, 4 days. The
+  subtitle and duration belong to a different trip.
+- **Yampa (59, 60) is `orenable = false`** — not publicly bookable, so the
+  Yampa trip page will show no availability. Intentional or stale Arctic
+  config; worth a check.
+- **~12 bookable products have no Sanity page**: Labyrinth Canyon (45),
+  San Juan Full/Lower/Upper (50–52), San Rafael Swell (53), White Rim Trail
+  3/4 Day (57, 58), the two bike combos (39, 54), Cataract 8 day (63),
+  Cataract & Labyrinth 12 day (62), Lodore 5 Day (65).
