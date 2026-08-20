@@ -26,7 +26,8 @@ The "Scope (Read-only)" column below reflects true read-only behavior. The "Scop
 |----------|----------------|-------------|-------------------|-------------|
 | `/api/rest/trip` | CRUD | Read/Write | Read | Trip/tour management |
 | `/api/rest/triptype` | CRUD | Read/Write | Read | Trip type definitions |
-| `/api/rest/trippricing` | CRUD | Read/Write | Read | Trip pricing levels |
+| ~~`/api/rest/trippricing`~~ | — | — | — | **404s — does not exist.** Documented in the wiki but not implemented. Use `/api/rest/triptype/{id}/pricinglevel` instead. |
+| `/api/rest/triptype/{id}/pricinglevel` | — | Read | Read | Trip pricing levels — `GET` only, nested under a trip type. This is the working path for pricing. |
 | `/api/rest/tripaddon` | CRUD | Read/Write | Read | Trip add-ons |
 | `/api/rest/schedule` | CRUD | Read/Write | Read | Guide/trip schedules |
 
@@ -70,9 +71,15 @@ The "Scope (Read-only)" column below reflects true read-only behavior. The "Scop
 - Nested resources supported (e.g., person → emailaddress)
 
 ## Response Format
-JSON (inferred — not explicitly documented)
+
+Resource endpoints return JSON (send `Accept: application/json`).
+
+> **Correction (verified live 2026-08-10):** the **OAuth token endpoint is the exception — its response is form-encoded, not JSON.** `POST /api/rest/oauth/application/token` returns `access_token=...&token_type=bearer&expires_in=3600&refresh_token=...` as a URL-encoded string. Parsing it as JSON will throw. The request body is form-encoded too. See [[arctic-api]] for the full auth flow, token caching, and the 403-means-expired retry behavior.
 
 ## Resources
+
+> **Note:** all four links below resolve to the same wiki root — the original deep links were lost, and the anchors were never recorded. They're of limited use as-is; you'll have to navigate the wiki's own sidebar to find the right page. [[arctic-api]] captures what we actually verified against the live API, and is the more reliable reference.
+
 - Wiki — Querying Objects: https://github.com/arcticres/arctic-api/wiki
 - Wiki — Caching: https://github.com/arcticres/arctic-api/wiki
 - Wiki — Error Handling: https://github.com/arcticres/arctic-api/wiki

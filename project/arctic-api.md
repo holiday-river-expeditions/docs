@@ -149,8 +149,14 @@ The `activity` endpoint is **read-only** even at higher access levels — cannot
 - [x] Create API client in Arctic admin (`hre-website`, User level) — done 2026-08-10 (Darius); OAuth credentials in `.env.local`, Basic set saved as fallback
 - [x] Test API endpoints to understand response shapes — done 2026-08-10 against the live API (see Verified API Behavior below)
 - [x] Build typed API client in `src/lib/arctic/` — done 2026-08-10 (read-only slice)
+- [x] Build the cart + checkout-handoff slice — done 2026-08-11 (see Built below); gated behind `BOOKING_NATIVE`
 - [ ] Add `ARCTIC_*` env vars to Vercel (paste raw values — no escaping needed there, unlike `.env.local`)
-- [ ] Test Arctic Custom HTML Header for checkout popup styling (cart phase)
+- [ ] Flip `BOOKING_NATIVE=true` in Vercel once the flow is signed off
+- [ ] Paste [[arctic-custom-header]] into Arctic admin (Settings → Guest-facing Sites → Custom HTML Header) — **deployment state currently unrecorded**
+- [ ] Add `holidayriver-guest-site-1.arcticres.com` to the Adobe Fonts kit `guz5fen` allowed domains, or Alternate Gothic won't load in the Arctic checkout skin
+- [ ] Check whether Yampa (types 59, 60) being `orenable = false` is intentional or stale Arctic config — _open since 2026-08-11, no owner_
+- [ ] Create Sanity trip pages for the ~12 bookable Arctic products that have none
+- [ ] Resolve the Desolation bluegrass mapping — no music/bluegrass trip type exists in Arctic, so the specialty page's subtitle and duration currently come from a different trip
 
 ## Verified API Behavior (live, 2026-08-10)
 
@@ -184,7 +190,18 @@ Full cart lifecycle exercised against production (test cart created + emptied; c
 - `/open-seats`: all public upcoming departures grouped by trip, linked to Sanity trip pages via the `arcticTripId` mapping. Footer "Trip Dates" and `/book` point here.
 - Unit tests mock fetch per the no-sandbox decision (`src/lib/arctic/client.test.ts`).
 
-**Not built yet (cart phase)**: cart-building flow, Arctic checkout handoff, availability badges on trip cards sitewide.
+## Built (cart + booking slice, 2026-08-11)
+
+- `src/lib/arctic/booking.ts` — `getTripPricingLevels()` (10-min in-process cache), `createCartItem()`, `getCartItems()`, `removeCartItem()`, `checkoutUrl()`, `pricingLevelField()`.
+- Route handlers: `POST /api/book` (Zod-validated, availability precheck), `GET`/`DELETE /api/cart`, `GET /api/book/pricing/[triptypeid]`.
+- Cart persistence: httpOnly `hre_cart` cookie (2h TTL) + client-readable `hre_cart_count` for the header chip (`src/lib/cart-cookie.ts`).
+- UI: `BookingRow`, `PartySizeSelector`, `MiniCart`, `DepartureVariantChips`.
+- **Checkout is a handoff** — redirect to `{guest}/cart/checkout?sessid=…`. We never collect payment.
+- Gated by the **`BOOKING_NATIVE`** env flag (strict `=== 'true'`), checked in `DepartureList.tsx`. **On locally, off in production** — production still shows the external Arctic reserve link, which is also the no-JS fallback. The `/api/book` and `/api/cart` endpoints are live regardless of the flag; it only controls UI affordance. `/api/arctic-health` reports the flag's value for debugging.
+
+**Still not built**: add-on selection during booking, availability badges on trip cards sitewide. Also unbuilt: any test coverage for the `/api/*` route handlers or `cart-cookie.ts`.
+
+⚠️ **`/book` is still a static placeholder page** (phone CTA + link to `/open-seats`) — the real booking UI lives inline on departure rows, not there.
 
 ## Notes
 - Documentation is early stage ("Stay tuned!" per their repo)

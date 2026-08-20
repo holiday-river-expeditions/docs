@@ -37,4 +37,4 @@ that hits `/api/revalidate`. Without it, pages still refresh on their own within
 
 ## Related
 
-- [[2026-05-29]] — session where this was added
+- Added in the 2026-05-29 session (session logs live in `progress/`, which is not published to the docs site)

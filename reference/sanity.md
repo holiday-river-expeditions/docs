@@ -31,10 +31,11 @@ Current origins:
 
 - `http://localhost:3000` (with credentials)
 
-Still needed:
+Still needed (⚠️ launch blocker — only localhost is registered today):
 
-- Production domain when live
+- Production domain when live — **`https://holidayriver.com`** (see [[open-decisions#Domain]])
 - Vercel production URL (`https://website-phi-six-25.vercel.app`)
+- Beta subdomain when configured (`https://beta.holidayriver.com`)
 
 ## File Structure
 
@@ -55,6 +56,10 @@ website/
 │   │       ├── faq.ts
 │   │       ├── site-settings.ts
 │   │       ├── page.ts
+│   │       ├── post.ts                    ← Blog post
+│   │       ├── homepage.ts                ← Singleton
+│   │       ├── contact-submission.ts      ← Written by /api/contact
+│   │       ├── newsletter-subscriber.ts   ← Written by /api/newsletter
 │   │       └── blocks/
 │   │           ├── hero-block.ts
 │   │           └── content-block.ts
@@ -78,10 +83,14 @@ website/
 | River         | `river`          | name, slug, description, image                                                                                                                                   | Colorado, Green, San Juan, Yampa                                     |
 | Activity      | `activity`       | name, slug, description, image                                                                                                                                   | Rafting, Mountain Biking, Multi-Sport                                |
 | Trip Category | `tripCategory`   | name, slug, description                                                                                                                                          | Family, Stargazing, Canyon Concerts, etc.                            |
-| Trip          | `trip`           | name, slug, river (ref), activities (refs), categories (refs), difficulty, duration, description (Portable Text), photos, highlights, pricingNotes, arcticTripId | Central content type. `arcticTripId` links to Arctic API.            |
+| Trip          | `trip`           | name, slug, river (ref), activities (refs), categories (refs), difficulty, duration, description (Portable Text), highlights, minAge, season, featuredReview, itinerary, itineraryMedia, arcticTripId | Central content type. `arcticTripId` is the comma-separated Arctic trip-type id(s). |
 | FAQ           | `faq`            | question, answer (Portable Text), category, order                                                                                                                | Categories: general, booking, trip-preparation, safety, cancellation |
-| Site Settings | `siteSettings`   | phone, email, address, socialLinks                                                                                                                               | Singleton — only one document of this type should exist              |
-| Page          | `page`           | title, slug, content (array of blocks)                                                                                                                           | Generic page builder                                                 |
+| Site Settings | `siteSettings`   | phone, email, address, reviews, socialLinks                                                                                                                      | Singleton — pinned in Studio structure                               |
+| Page          | `page`           | title, slug, content (array of blocks)                                                                                                                           | Generic page builder, rendered by `/[slug]`                          |
+| Post          | `post`           | title, slug, excerpt, mainImage, publishedAt, category, body (Portable Text + images)                                                                             | Blog post (added 2026-08-10). Categories: trip-prep, conservation, culture & history. No author reference. |
+| Homepage      | `homepage`       | hero, featuredTrips (refs), story block, rivers (refs), learnContent (cards)                                                                                     | Singleton — pinned in Studio structure                               |
+| Contact Submission | `contactSubmission` | name, email, message, submittedAt                                                                                                                          | Written by `POST /api/contact`; triaged in Studio                    |
+| Newsletter Subscriber | `newsletterSubscriber` | email, subscribedAt                                                                                                                                 | Written by `POST /api/newsletter`; idempotent `_id` derived from email |
 
 ### Object types (content blocks)
 
@@ -90,13 +99,13 @@ Used inside the Page builder's `content` array:
 | Schema        | Sanity type name | Fields                                                 |
 | ------------- | ---------------- | ------------------------------------------------------ |
 | Hero Block    | `heroBlock`      | heading, subheading, backgroundImage, ctaText, ctaLink |
-| Content Block | `contentBlock`   | heading, body (Portable Text + images)                 |
+| Content Block | `contentBlock`   | heading, background (white/sand/opal/evergreen), body (Portable Text + images) |
 
 ### Planned (not yet implemented)
 
-- Blog Post, Author — Phase 4
-- Story/History — Phase 4
-- Gallery Item — Phase 4
+- **Author** — no author model exists; blog posts carry no byline reference
+- **Story/History** — Phase 4
+- **Gallery Item** — Phase 4
 
 ## Querying Data
 
@@ -113,9 +122,15 @@ Available queries:
 | `allRiversQuery`     | —              | All rivers                                                |
 | `riverBySlugQuery`   | `slug: string` | Single river                                              |
 | `allActivitiesQuery` | —              | All activities                                            |
+| `activityBySlugQuery`| `slug: string` | Single activity                                           |
 | `allFaqsQuery`       | —              | All FAQs ordered by category then sort order              |
 | `siteSettingsQuery`  | —              | Site settings singleton                                   |
 | `pageBySlugQuery`    | `slug: string` | Single page with content blocks                           |
+| `allPostsQuery`      | —              | All blog posts                                            |
+| `postBySlugQuery`    | `slug: string` | Single blog post                                          |
+| `homepageQuery`      | —              | Homepage singleton with dereferenced trips and rivers     |
+
+Contact submissions and newsletter subscribers have no read queries — they are write-only from the API routes and reviewed directly in Studio.
 
 ### Fetch helpers
 

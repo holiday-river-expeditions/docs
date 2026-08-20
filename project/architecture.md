@@ -1,113 +1,156 @@
 # Site Architecture
 
-## Pages & Routes
+> **Reconciled against the codebase 2026-08-20.** The "As Built" section below is verified against `website/src/app/`. The sections after it are still proposals from [[page-plan]] and have not been built.
 
-> Expanded based on [[site-audit]] and [[page-plan]]. Phase assignments are proposals pending Holiday sign-off.
+## Routes — As Built
 
-### Phase 1 — Launch
+Every dynamic route is **ISR with `revalidate = 60`**. There is no `generateStaticParams` anywhere, so nothing is prebuilt — pages render on demand and are then cached.
+
+### Pages
 
 ```
-/                           → Homepage (hero + CTA, featured trips, brand story, reviews)
-/trips                      → Trip listings (filterable by river, activity, duration, difficulty, price, date)
-/trips/[slug]               → Trip detail (info, photos, native booking UI via Arctic API, itinerary, reviews)
+/                           → Homepage (hero, featured trips, brand story, river selector)
+/trips                      → Trip listing grid (filtering NOT built yet)
+/trips/[slug]               → Trip detail + Dates & Availability (live Arctic data)
+/rivers/[slug]              → River landing pages
+/rafting                    → Rafting activity landing page
+/biking                     → Biking activity landing page
 /open-seats                 → Real-time availability across all trips (Arctic API)
-/book/[tripId]              → Native booking UI (Arctic API cart + handoff)
-/rivers/[slug]              → River landing pages (Colorado, Green, San Juan, Yampa)
-/activities/[slug]          → Activity landing pages (rafting, mountain-biking, multi-sport)
-/about                      → Our Story, The Holiday Way, team overview
-/faq                        → FAQ page (CMS-driven, searchable, expandable)
-/contact                    → Contact form + company info
-/trip-finder                → Interactive quiz ("Help me choose") — phase TBD, see open-decisions
-```
-
-### Phase 2
-
-```
-/guides                     → Meet the Guides (profiles)
-/trips/category/[slug]      → Trip category pages (family, stargazing, concerts, adult-only, etc.)
-/destinations/[slug]        → Destination landing pages (utah, colorado, idaho, grand-canyon)
-/reviews                    → Aggregated reviews from external platforms
-/blog                       → Blog listing (category-filtered)
+/blog                       → Blog listing
 /blog/[slug]                → Blog post
+/faq                        → FAQ page (CMS-driven, accordion)
+/contact                    → Contact form + company info
+/book                       → Static placeholder: phone CTA + link to /open-seats
+/[slug]                     → Generic CMS pages from the `page` builder
+/studio/[[...tool]]         → Embedded Sanity Studio
+```
+
+**Notes on the catch-all.** `/about` and `/trip-insurance` are linked from the nav and footer but have **no route files** — they resolve only through `/[slug]` against seeded Sanity `page` documents. `/[slug]` also maintains a `RESERVED_SLUGS` set that 404s shadowed slugs; `store` and `trip-dates` are reserved but have no route, so they currently 404. There is **no `/rivers` index** — only `/rivers/[slug]`.
+
+### Route handlers
+
+```
+POST   /api/book                        → Add a departure to the Arctic cart (Zod-validated)
+GET    /api/book/pricing/[triptypeid]   → Public pricing levels for the booking widget
+GET    /api/cart                        → List cart items
+DELETE /api/cart                        → Remove a cart item
+POST   /api/contact                     → Writes contactSubmission to Sanity
+POST   /api/newsletter                  → Writes newsletterSubscriber to Sanity
+POST   /api/revalidate                  → Sanity webhook, signature-verified, full-layout purge
+GET    /api/arctic-health               → Ops diagnostic, bearer-gated, 404s otherwise
+GET    /arctic-template                 → Hand-written HTML for Arctic's "Import Design" scrape
+```
+
+⚠️ `/arctic-template` duplicates the site nav as hardcoded absolute URLs, so **nav changes must be made in two places**. It is also the only consumer of `NEXT_PUBLIC_SITE_URL`.
+
+### Navigation as shipped
+
+Header: centered logo lockup, desktop nav (**Rafting · Biking · About Us · Blog**), mobile hamburger drawer, `MiniCart`, and a "Book Now" button to `/book`.
+
+Footer, four columns: Newsletter signup · Follow Us (Instagram/Facebook/YouTube, TikTok if set) · Resources (Trip Dates → `/open-seats`, F.A.Q., Trip Insurance, Online Store → external Square site) · Find Us (Contact, address, phone).
+
+## Routes — Proposed, Not Built
+
+From [[page-plan]], pending sign-off. Nothing below exists:
+
+```
+/trip-finder                → Interactive "Help me choose" quiz — still #decision-needed
+/guides                     → Meet the Guides
+/trips/category/[slug]      → Trip category pages
+/destinations/[slug]        → Destination landing pages
+/reviews                    → Aggregated external reviews
 /deals                      → Ways to Save / specials
-/getting-here/[slug]        → Per-departure-location logistics guides
-```
-
-### Phase 3
-
-```
+/getting-here/[slug]        → Per-departure-location logistics — still #decision-needed
 /compare                    → Trip comparison tool
 /employment                 → Job listings
 /outside-for-all            → Mission/cause page
 /gallery                    → Photo/video gallery
-/[slug]                     → Generic CMS pages (policy, legal, misc)
 ```
+
+Note the earlier plan proposed `/activities/[slug]` and `/book/[tripId]`; both were dropped in favor of flat `/rafting` + `/biking` routes and inline per-departure booking.
 
 ## Project Structure
 
 ```
 src/
 ├── app/                    ← Next.js App Router pages
-│   ├── api/                ← API routes (Arctic proxy, contact form, etc.)
+│   ├── api/                ← Route handlers (Arctic proxy, forms, revalidate, health)
 │   ├── studio/[[...tool]]/ ← Embedded Sanity Studio at /studio
-│   ├── trips/
-│   ├── blog/
-│   ├── book/
-│   └── ...
-├── components/             ← React components organized by feature
-│   ├── layout/             ← Header, footer, navigation
-│   ├── trips/              ← Trip cards, filters, listing
-│   ├── booking/            ← Booking flow steps
-│   ├── blog/               ← Blog cards, post content
-│   └── ui/                 ← Shared UI primitives (buttons, cards, accordion)
+│   ├── trips/ rivers/ blog/ rafting/ biking/ open-seats/ faq/ contact/ book/
+│   ├── arctic-template/    ← Design-import target for Arctic
+│   └── [slug]/             ← CMS page-builder catch-all
+├── components/
+│   ├── layout/             ← Header, Nav, MobileNav, Footer
+│   └── ui/                 ← Shared primitives + booking UI (DepartureList,
+│                              BookingRow, PartySizeSelector, MiniCart,
+│                              AvailabilitySection, ItinerarySection)
 ├── lib/
-│   ├── arctic/             ← Arctic Reservations API client
-│   └── sanity/             ← Sanity client, queries, image helper, fetch utils
+│   ├── arctic/             ← config, client, types, trips, booking
+│   ├── sanity/             ← client, queries, image helper
+│   └── cart-cookie.ts      ← hre_cart / hre_cart_count cookie handling
 ├── sanity/
 │   ├── env.ts              ← Centralized Sanity env var access
 │   ├── types.ts            ← Generated types (from `pnpm typegen`)
-│   └── schemas/            ← Sanity content model definitions
+│   └── schemas/            ← Content models
 │       └── blocks/         ← Reusable content block object types
-└── styles/                 ← Global styles, Tailwind config
+└── styles/                 ← Global styles, Tailwind v4 @theme tokens
 ```
+
+Note: the earlier plan assumed `components/trips/`, `components/booking/`, and `components/blog/` directories. In practice everything lives in `components/ui/` and `components/layout/`.
 
 ## Sanity CMS Content Models
 
-### Implemented (Phase 1)
+**13 types as of 2026-08-20** — 11 documents + 2 object types.
 
+### Taxonomy
 - **River** — name, slug, description, image (Colorado, Green, San Juan, Yampa)
-- **Activity** — name, slug, description, image (Rafting, Mountain Biking, Multi-Sport)
-- **Trip Category** — name, slug, description (Family, Stargazing, Canyon Concerts, etc.)
-- **Trip** — name, slug, river (reference), activities (references), categories (references), difficulty, duration, description (Portable Text), photos, highlights, pricing notes, Arctic trip ID (links to API)
+- **Activity** — name, slug, description, image
+- **Trip Category** — name, slug, description
+
+### Core content
+- **Trip** — name, slug, river (ref), activities/categories (refs), difficulty (easy/moderate/challenging/expert), duration, description (Portable Text), highlights, minAge, season, `featuredReview`, `itinerary` (array of itineraryDay objects), `itineraryMedia` (video loop + poster), and **`arcticTripId`** — the comma-separated Arctic trip-type id(s) linking a Sanity trip to live departures
 - **FAQ** — question, answer (Portable Text), category, sort order
-- **Site Settings** — phone, email, address, social links (singleton)
-- **Page** — title, slug, content blocks (hero block, content block)
-- **Hero Block** — heading, subheading, background image, CTA text/link (object type)
-- **Content Block** — heading, body with rich text and images (object type)
+- **Page** — title, slug, content blocks; rendered by `/[slug]`
+- **Post** — blog post: title, slug, excerpt, mainImage, publishedAt, category, Portable Text body
 
-### Planned (later phases)
+### Singletons
+- **Homepage** — hero, featuredTrips (refs), story block, rivers (refs), `learnContent` cards
+- **Site Settings** — phone, email, address, third-party review links, social links
 
-- **Blog Post** — title, slug, author, date, body (rich text), featured image, categories _(Phase 4)_
-- **Author** — name, bio, image _(Phase 4)_
-- **Story/History** — title, body, media, timeline position _(Phase 4)_
-- **Gallery Item** — image/video, caption, trip reference, tags _(Phase 4)_
+### Form captures (written by API routes, triaged in Studio)
+- **Contact Submission** — name, email, message, submittedAt
+- **Newsletter Subscriber** — email, subscribedAt (idempotent `_id` from email)
+
+### Object types (page-builder blocks)
+- **Hero Block** — heading, subheading, background image, CTA text/link
+- **Content Block** — heading, background (white/sand/opal/evergreen), Portable Text body with images
+
+### Not built
+- **Author** — no author model; posts carry no byline reference
+- **Story/History**, **Gallery Item** — still Phase 4 proposals
 
 ## Data Flow
 
 ```
-Sanity CMS ──→ Content (trips, blog, FAQs, pages)
+Sanity CMS ──→ Content (trips, blog, FAQs, pages, homepage)
                   ↓
-              Next.js ──→ Server Components render pages
+              Next.js ──→ Server Components render pages (ISR 60s)
                   ↑
-Arctic API ──→ Live data (availability, open seats, booking)
+Arctic API ──→ Reads: trip types, departures, availability
                   ↑
-              API Routes ──→ Proxy Arctic calls (credentials stay server-side)
+              src/lib/arctic ──→ Server-side only; credentials never reach the browser
+                  ↓
+              Writes: /api/book, /api/cart → Arctic guest site → hosted checkout
 ```
+
+Sanity publishes trigger `POST /api/revalidate` (HMAC-verified), which purges the full layout cache.
+
+**Graceful degradation:** if any of the five `ARCTIC_*` env vars is missing, `getArcticConfig()` returns null and every fetcher short-circuits — pages render a "call us" fallback rather than erroring.
 
 ## Related
 
-- [[site-audit]] — Full inventory of current bikeraft.com
-- [[page-plan]] — Proposed page structure for the new site
+- [[site-audit]] — Full inventory of the current bikeraft.com site
+- [[page-plan]] — Proposed page structure (historical)
 - [[tech-stack]] — Technology choices
 - [[arctic-api]] — Arctic Reservations integration details
-- [[build-phases]] — How we build this incrementally
+- [[build-phases]] — Current build status

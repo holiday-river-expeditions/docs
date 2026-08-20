@@ -8,16 +8,16 @@
 
 - [x] Initialize Next.js project with App Router and TypeScript (strict mode) — _started on 15, now on 16.3_
 - [x] Configure ESLint + Prettier for consistent code style
-- [x] Set up Tailwind CSS with brand design tokens (colors, typography, spacing) — _Done (2026-03-02). Tailwind v4 `@theme inline` with 7 brand colors, 2 fonts, 5-step typography scale._
-- [x] Configure Sanity Studio project with initial content models (typed schemas) — _Done (2026-02-28). Sanity v3 Studio embedded at `/studio`, 9 schemas defined, typegen configured._
+- [x] Set up Tailwind CSS with brand design tokens (colors, typography, spacing) — _Done (2026-03-02). Tailwind v4 `@theme inline` with 7 brand colors, 2 fonts; type scale has since grown to 8 steps (see [[tailwind-tokens]])._
+- [x] Configure Sanity Studio project with initial content models (typed schemas) — _Done (2026-02-28). Sanity Studio embedded at `/studio`, typegen configured. Now on Sanity v5 with **13 schema types** (11 documents + 2 page-builder blocks)._
 - [x] Configure GitHub Actions CI pipeline (lint → type-check → test → build)
 - [x] Set up Vercel project with Git-based deploys + PR preview deployments
-- [x] Configure beta subdomain on Vercel for stakeholder testing
+- [ ] Configure beta subdomain on Vercel for stakeholder testing — _`vercel.json` has the noindex host rule, but no DNS is pointed at it yet; target is now `beta.holidayriver.com` (see [[environments]])._
 - [x] Set up Vitest for unit/integration tests + Playwright for E2E tests
 - [x] Create `CLAUDE.md` with project conventions
 - [x] Build core layout: header, footer, navigation (responsive) — _Done (2026-03-04). Header with logo + desktop/mobile nav, footer with 4-column grid._
 - [x] Establish component library basics (buttons, cards, section containers) — _Done (2026-03-04). Button (3 variants), Section (3 backgrounds), Card (image + meta + description)._
-- [ ] Generate TypeScript types for Sanity schemas (sanity-typegen) and Arctic API responses — _Sanity types generated (2026-02-28); Arctic types pending Phase 3_
+- [x] Generate TypeScript types for Sanity schemas (sanity-typegen) and Arctic API responses — _Sanity types generated (2026-02-28); Arctic responses typed via Zod schemas in `src/lib/arctic/types.ts` (2026-08-10)._
 
 ## Phase 2: Core Content Pages
 
@@ -25,7 +25,7 @@
 
 - [x] Homepage: hero section, featured trips, authority signals (60 years), testimonial highlights, CTAs — _Done (2026-05-29). Sanity-driven, Figma-matched._
 - [x] About page: history timeline, team, brand story — _Done (2026-08-10). Rendered via the `page` builder (`app/[slug]` catch-all); seeded from bikeraft.com copy._
-- [x] Trip listing page: filterable grid, trip cards with key info — _Grid done (2026-07-21); filtering still pending._
+- [ ] Trip listing page: filterable grid, trip cards with key info — _Grid done (2026-07-21); **filtering still not built**._
 - [x] Trip detail page: full content from Sanity, photo gallery, pricing, CTA to book — _Done (2026-07-21)._
 - [x] River landing pages: per-river content and trip filtering — _Done (2026-07-21)._
 - [x] FAQ page: CMS-driven, categorized, accordion UI — _Done (2026-08-10). 16 seeded FAQs across 5 categories._
@@ -40,14 +40,19 @@
 - [x] Create API client in Arctic admin (`hre-website`, User level access) — _Done (2026-08-10, Darius)._
 - [ ] Store credentials in Vercel env vars (`ARCTIC_*`) — _local `.env.local` done; Vercel pending (paste raw values, no escaping)._
 - [x] Build typed API client in `src/lib/arctic/` with Zod validation — _Done (2026-08-10). Token cache, retry/backoff, 403 re-auth, graceful unconfigured fallback._
-- [x] ~~Set up API proxy routes in Next.js~~ — _Not needed for reads: server components call the client directly; credentials never reach the browser. Proxy routes come with the cart phase._
+- [x] Set up API proxy routes in Next.js — _Not needed for reads (server components call the client directly). Built for writes (2026-08-11): `/api/book`, `/api/cart`, `/api/book/pricing/[triptypeid]`. Credentials never reach the browser._
 - [x] Read-only endpoints first: trip sync, availability display — _Done (2026-08-10), verified against live data._
 - [x] Build open seats page with real-time availability — _Done (2026-08-10): `/open-seats`, grouped by trip, charter-filtered via `orenable`._
 - [x] Connect trip detail pages to Arctic for live availability — _Done (2026-08-10): Dates & Availability section with seat badges + interim Book links (Arctic `onlinebookingurl`)._
 - [x] Trip-specific "View Open Seats" functionality — _Covered by the trip-detail availability section._
-- [ ] Build native trip browsing & selection UI (dates, party size, add-ons)
-- [ ] Cart-building flow: add selected items to Arctic cart via API
-- [ ] Arctic checkout handoff (popup/new window styled via Custom HTML Header)
+- [x] Build native trip browsing & selection UI (dates, party size) — _Done (2026-08-11). `DepartureList` + `BookingRow` + `PartySizeSelector`, gated behind the `BOOKING_NATIVE` flag (on locally, **off in production**). Add-ons not built — see below._
+- [x] Cart-building flow: add selected items to Arctic cart via API — _Done (2026-08-11). `POST /api/book` adds a departure; `GET`/`DELETE /api/cart` list and remove. Cart handle persisted in an httpOnly `hre_cart` cookie (2h), count mirrored in `hre_cart_count` for the header `MiniCart`._
+- [x] Arctic checkout handoff — _Done (2026-08-11). Redirects to Arctic's hosted `{guest-site}/cart/checkout?sessid=…`; we never collect payment. Styling template ready at [[arctic-custom-header]] but **not yet confirmed pasted into Arctic admin**._
+- [ ] Add-on selection during booking
+- [ ] Flip `BOOKING_NATIVE=true` in Vercel to enable native booking in production
+- [ ] Paste [[arctic-custom-header]] into Arctic admin (Settings → Guest-facing Sites → Custom HTML Header) and add `holidayriver-guest-site-1.arcticres.com` to the Adobe Fonts kit `guz5fen` allowed domains
+
+> **Known caveat:** carted seats do **not** hold inventory. Arctic only enforces availability at checkout, so the pre-add availability check in `/api/book` is friendly early messaging, not a reservation.
 
 ## Phase 4: Blog & Content
 
@@ -66,14 +71,25 @@
 
 ## Phase 6: Analytics, SEO & Polish
 
+> **Verified 2026-08-20: none of the analytics or SEO infrastructure exists yet.** No analytics SDK is installed, `next/script` is never used, and there is no `sitemap.ts`, `robots.ts`, `metadataBase`, Open Graph metadata, or JSON-LD anywhere in the codebase. What does exist is basic per-route `Metadata` (title/description) and a favicon set in `src/app/layout.tsx`. This is the largest remaining gap before launch.
+
 - [ ] Google Analytics 4 setup
 - [ ] PostHog integration
 - [ ] Meta Pixel for retargeting
-- [ ] SEO: meta tags, Open Graph, structured data (JSON-LD for tours/activities)
-- [ ] Sitemap generation
+- [ ] SEO: meta tags, Open Graph, structured data (JSON-LD for tours/activities) — _titles/descriptions done per route; OG, `metadataBase`, canonicals, and JSON-LD all missing_
+- [ ] Sitemap generation — _no `sitemap.ts`; note `NEXT_PUBLIC_SITE_URL` is currently empty and its only consumer is `/arctic-template`_
+- [ ] `robots.txt` for production
 - [ ] Performance optimization (image optimization, lazy loading, Core Web Vitals)
 - [ ] Responsive design QA across devices
-- [ ] Accessibility audit (WCAG 2.1 AA)
+- [x] Accessibility audit (WCAG 2.1 AA) — _First pass done (2026-08-11): axe-core Playwright suite (`e2e/a11y.spec.ts`) scans 5 routes; real contrast failures found and fixed. Not yet a full-site audit; alt text on trip photos is still outstanding ([[photo-upload-checklist]])._
+
+## Known Gaps Not Yet Phased
+
+- No `generateStaticParams` anywhere — every dynamic route is ISR-on-demand (60s), nothing is prebuilt
+- No tests on any `/api/*` route handler or `cart-cookie.ts` — the booking path is the least-covered code
+- `/rivers` index does not exist (only `/rivers/[slug]`); `/store` and `/trip-dates` are reserved slugs that 404
+- ~12 bookable Arctic products still have no Sanity trip page ([[arctic-api]])
+- 167 legacy blog posts remain unmigrated pending the migration-scope decision ([[open-decisions]])
 
 ## Related
 
