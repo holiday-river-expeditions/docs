@@ -13,6 +13,8 @@ Every dynamic route is **ISR with `revalidate = 60`**. There is no `generateStat
 /trips                      → Trip listing grid (filtering NOT built yet)
 /trips/[slug]               → Trip detail + Dates & Availability (live Arctic data)
 /rivers/[slug]              → River landing pages
+/specialty                  → Specialty trip hub (nav item), families + their trips
+/specialty/[slug]           → Specialty family parent page (Canyon Concerts, Stargazing, ...)
 /rafting                    → Rafting activity landing page
 /biking                     → Biking activity landing page
 /open-seats                 → Real-time availability across all trips (Arctic API)
@@ -25,7 +27,7 @@ Every dynamic route is **ISR with `revalidate = 60`**. There is no `generateStat
 /studio/[[...tool]]         → Embedded Sanity Studio
 ```
 
-**Notes on the catch-all.** `/about` and `/trip-insurance` are linked from the nav and footer but have **no route files** — they resolve only through `/[slug]` against seeded Sanity `page` documents. `/[slug]` also maintains a `RESERVED_SLUGS` set that 404s shadowed slugs; `store` and `trip-dates` are reserved but have no route, so they currently 404. There is **no `/rivers` index** — only `/rivers/[slug]`.
+**Notes on the catch-all.** `/about` and `/trip-insurance` are linked from the nav and footer but have **no route files** — they resolve only through `/[slug]` against seeded Sanity `page` documents. `/[slug]` also maintains a `RESERVED_SLUGS` set that 404s shadowed slugs; `store` and `trip-dates` are reserved but have no route, so they currently 404. There is **no `/rivers` index** — only `/rivers/[slug]`. `/specialty` **is** a real index page, unlike rivers and blog categories.
 
 ### Route handlers
 
@@ -45,7 +47,7 @@ GET    /arctic-template                 → Hand-written HTML for Arctic's "Impo
 
 ### Navigation as shipped
 
-Header: centered logo lockup, desktop nav (**Rafting · Biking · About Us · Blog**), mobile hamburger drawer, `MiniCart`, and a "Book Now" button to `/book`.
+Header: centered logo lockup, desktop nav (**Rafting · Biking · Specialty · About Us · Blog**), mobile hamburger drawer, `MiniCart`, and a "Book Now" button to `/book`.
 
 Footer, four columns: Newsletter signup · Follow Us (Instagram/Facebook/YouTube, TikTok if set) · Resources (Trip Dates → `/open-seats`, F.A.Q., Trip Insurance, Online Store → external Square site) · Find Us (Contact, address, phone).
 
@@ -100,15 +102,18 @@ Note: the earlier plan assumed `components/trips/`, `components/booking/`, and `
 
 ## Sanity CMS Content Models
 
-**13 types as of 2026-08-20** — 11 documents + 2 object types.
+**14 types as of 2026-08-20** — 12 documents + 2 object types.
 
 ### Taxonomy
 - **River** — name, slug, description, image (Colorado, Green, San Juan, Yampa)
 - **Activity** — name, slug, description, image
 - **Trip Category** — name, slug, description
+- **Specialty Type** — name, slug, tagline, description (Portable Text), image, `ribbonLabel`, `order`. A specialty *family* (Canyon Concerts, Dark Sky Stargazing, Women's, Youth & Family, Affinity) — the replacement for the legacy site's specialty URL parents. Backs `/specialty` and `/specialty/[slug]`, flags trips, and supplies the card ribbon.
 
 ### Core content
-- **Trip** — name, slug, river (ref), activities/categories (refs), difficulty (easy/moderate/challenging/expert), duration, description (Portable Text), highlights, minAge, season, `featuredReview`, `itinerary` (array of itineraryDay objects), `itineraryMedia` (video loop + poster), and **`arcticTripId`** — the comma-separated Arctic trip-type id(s) linking a Sanity trip to live departures
+- **Trip** — name, slug, river (ref), activities/categories (refs), difficulty (easy/moderate/challenging/expert), duration, description (Portable Text), highlights, minAge, season, `featuredReview`, `itinerary` (array of itineraryDay objects), `itineraryMedia` (video loop + poster), and **`arcticTripId`** — the comma-separated Arctic trip-type id(s) linking a Sanity trip to live departures.
+  - `specialtyTypes` (refs) flags the trip as specialty; the card ribbon falls back to the family's `ribbonLabel` via `coalesce()` in GROQ, so the per-trip `ribbon`/`subtitle` fields stay as overrides.
+  - `specialtyDepartures` (array of `{startDate, specialtyType, label, note}`) calls out individual dates in Dates & Availability. **Joined to Arctic on the start date, not the departure id** — editors know "Sept 12 is the bluegrass trip" and Arctic reissues ids each season. Two consequences: a date typo silently renders no callout, and two departures sharing a start date cannot be told apart (first entry wins). `buildCalloutMap()` in `src/lib/departures.ts` owns this and is unit-tested
 - **FAQ** — question, answer (Portable Text), category, sort order
 - **Page** — title, slug, content blocks; rendered by `/[slug]`
 - **Post** — blog post: title, slug, excerpt, mainImage, publishedAt, category, Portable Text body
