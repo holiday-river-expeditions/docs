@@ -116,7 +116,42 @@ design/layout (code).
 
 ## Notes (during the call)
 
--
+- Work on the Arctic rates and dates list
+
+- Justin
+	- Parent pages for specialty trips
+	- Fill out all the information in one trip page and have a button that jumps down to dates and rates
+- Lauren
+	- Specialty trips in the nav versus the wizard versus data
+	- Callout a specialty trip via a field on the Dates and Availability
+		- Call out for specialty trips
+	- For open seats check on if it shows trips with 0 people on it, or just ones that are already in progress
+- Blog?
+	- Resources or standard style blog?
+	- Justin will look into it.
+- Next steps
+	- Feedback on the site
+	- Working on the content plan
+	- Work on trip page details?
+- SEO, do we worry about duplicate content?
+- Karen
+	- Clean up existing website and redirect chains?
+		- One to one page redirects where applicable
+		- Generalized redirect to a purpose-built page for standard redirects
+		- Backlinks and stored content out there may be an important consideration
+- Timeline
+	- Work backwards from Launch and decide where we're getting to
+	- On pace to launch it during our prime booking season?
+		- Booking season falls off in June/July and picks up in October/November
+		- Bookings fall off a bit mid-January
+		- Launching December 1st versus October/November
+- Holiday trip page design will be owned by Justin
+- Trip wizard and quiz
+	- Lauren can come up with questions for the wizard
+- Set up weekly sync
+- HRE projects docs
+	- URL 
+	- Running notes docs
 
 ## Decisions made
 
