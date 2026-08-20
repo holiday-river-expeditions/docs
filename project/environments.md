@@ -21,8 +21,7 @@ Both repos (`website` and `docs`) are **public** on GitHub and deployed to Dariu
 ## Beta Site
 
 - Hosted on Vercel (Hobby plan, personal account)
-- Custom subdomain `beta.holidayriverexpeditions.com` not yet configured — will be added when ready
-- Should not be indexed by search engines (`noindex, nofollow` via `x-robots-tag` header in `vercel.json`)
+- Custom subdomain **not yet live**. `website/vercel.json` carries a host-match rule for `beta.holidayriverexpeditions.com` that injects `X-Robots-Tag: noindex, nofollow`, but no DNS is pointed at it. With the domain decision now settled, the beta subdomain should be **`beta.holidayriver.com`** — the `vercel.json` host match needs updating to match, or the noindex rule silently won't apply.
 - Optional: password protection via Vercel's built-in feature or basic auth middleware
 
 ## Production Cutover
@@ -32,9 +31,21 @@ When the site is ready to launch:
 1. Create a new Vercel Team (Pro plan)
 2. Make both repos private again (one click each in GitHub settings)
 3. Create new Vercel Pro projects connected to the private org repos
-4. Copy env vars, add domains (`holidayriverexpeditions.com`, `beta.holidayriverexpeditions.com`, docs domain)
-5. Update DNS, tear down Hobby projects
-6. Remove `noindex` restrictions from production
+4. Copy env vars, add domains (`holidayriver.com`, `beta.holidayriver.com`, docs domain)
+5. Point `holidayriverexpeditions.com` and `bikeraft.com` at 301 redirects to `holidayriver.com`
+6. Set `NEXT_PUBLIC_SITE_URL=https://holidayriver.com` (currently empty, so it falls back to the Vercel URL) and update the `vercel.json` beta host match
+7. Add the production domain to Sanity CORS origins (only `localhost:3000` is registered today — see [[sanity]])
+8. Update DNS, tear down Hobby projects
+9. Remove `noindex` restrictions from production
+
+### Blockers on retiring bikeraft.com
+
+The old site is still a live production dependency, not just a redirect target:
+
+- `website/next.config.ts` allows `www.bikeraft.com` and its NitroPack CDN as `next/image` remote hosts — 7 interim trip/river photos are served from there ([[photo-upload-checklist]])
+- Arctic's per-departure `onlinebookingurl` points at bikeraft.com's reserve flow, used as the interim Book link ([[arctic-api]])
+
+Both must be resolved before bikeraft.com is redirected or torn down.
 
 ## Related
 - [[tech-stack]] — Hosting and CI/CD details

@@ -1,25 +1,36 @@
 # Domain Name Research
 
-## Recommendation: holidayriverexpeditions.com
+> **Superseded — the domain is now `holidayriver.com`.** This file records the February 2026 research, whose central finding about `holidayriver.com` ("connection refused, would require acquisition") was overtaken on **2026-04-09 when Lauren purchased holidayriver.com** (see [[2026-04-09-homepage-mockups-review]]). The recommendation below for `holidayriverexpeditions.com` rested entirely on `holidayriver.com` being unavailable, so it no longer holds. Kept for the alternatives evaluation and the SEO reasoning, both of which are still useful. Current decision: [[open-decisions#Domain]].
 
-Based on research conducted 2026-02-11, `holidayriverexpeditions.com` is the best available option.
+## Decision (2026-04-09): holidayriver.com
 
-## Findings
+Short, memorable, and now owned outright. `holidayriverexpeditions.com` is also owned and becomes a redirect to it, alongside `bikeraft.com`.
 
-### holidayriverexpeditions.com
-- **Already owned by Holiday** — currently redirects (301) to bikeraft.com
+---
+
+## Original Research (2026-02-11)
+
+### Recommendation at the time: holidayriverexpeditions.com
+
+Based on research conducted 2026-02-11, `holidayriverexpeditions.com` was the best *available* option — because `holidayriver.com` appeared unobtainable.
+
+### Findings
+
+#### holidayriverexpeditions.com
+- **Already owned by Holiday** — at the time, redirected (301) to bikeraft.com
 - Exact brand-name match for SEO and recognition
 - Matches third-party listings on TripAdvisor, Yelp, Google, and adventure.travel
 - Zero acquisition cost or risk
 
-### holidayriver.com
-- Connection refused — likely registered by a third party but inactive
-- Would require acquisition (cost and outcome uncertain)
-- Shorter, but sacrifices brand clarity
+#### holidayriver.com
+- ~~Connection refused — likely registered by a third party but inactive~~
+- ~~Would require acquisition (cost and outcome uncertain)~~
+- ~~Shorter, but sacrifices brand clarity~~
+- **Acquired 2026-04-09 by Lauren.** The registration was indeed inactive and the acquisition succeeded. This is now the primary domain.
 
 ### Other Alternatives Considered
 
-None of these are currently owned and would require acquisition, reinforcing why `holidayriverexpeditions.com` remains the recommendation.
+None of these were owned and all would have required acquisition.
 
 **Short & clean**
 - `holidayexpeditions.com` — drops "river" so less brand-specific; could work but loses geographic identity
@@ -40,19 +51,21 @@ None of these are currently owned and would require acquisition, reinforcing why
 - `goholidayriver.com` — action-oriented; "go" prefix is a proven pattern (e.g., godaddy); adds length
 - `holidayriverco.com` — clean, modern feel; risk of confusion with `holidayriver.co`
 
-## Why holidayriverexpeditions.com Wins
+## SEO Reasoning (still applies)
 
-1. **Already owned** — no acquisition cost or risk
-2. **Exact brand match** — customers searching "Holiday River Expeditions" find it immediately
-3. **SEO advantage** — exact-match domain for branded searches
-4. **Professional and trustworthy** — fits a company with 60+ years of history
-5. **Length is acceptable** — most visitors arrive via search, social, or review sites rather than typing URLs directly
+The branded-search argument that favored an exact-match domain now works in `holidayriver.com`'s favor too, since `holidayriverexpeditions.com` redirects to it and preserves the exact-match signal:
+
+1. **Exact brand match** — customers searching "Holiday River Expeditions" land on the brand's own property either way
+2. **SEO advantage** — branded searches resolve to one canonical destination
+3. **Professional and trustworthy** — fits a company with 60+ years of history
 
 ## Additional Notes
 
-- `bikeraft.com` can continue as a short redirect for print/merch if needed
+- `bikeraft.com` and `holidayriverexpeditions.com` both become 301 redirects to `holidayriver.com`
 - Moving the primary domain off `bikeraft.com` aligns with the brand pivot away from biking toward rafting-first positioning
-- All existing third-party profiles (TripAdvisor, Yelp, Google Business) already reference "Holiday River Expeditions" by name, reinforcing the SEO value
+- All existing third-party profiles (TripAdvisor, Yelp, Google Business) already reference "Holiday River Expeditions" by name — worth updating their linked URLs at cutover
+- ⚠️ The old site is still a live dependency: `bikeraft.com` serves interim trip/river photos (see [[photo-upload-checklist]]) and Arctic's `onlinebookingurl` still points at bikeraft.com's reserve flow (see [[arctic-api]]). Both must be resolved **before** bikeraft.com is redirected or torn down.
 
 ## Related
 - [[open-decisions]] — Domain decision status
+- [[environments]] — Production cutover checklist

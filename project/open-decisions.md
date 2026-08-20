@@ -5,9 +5,12 @@
 Items that need to be resolved before or during the build. Tag with #decision-needed.
 
 ## Domain ✅ Decided
-**holidayriverexpeditions.com** — already owned, exact brand match, strong SEO, zero acquisition cost.
-- bikeraft.com becomes a redirect to the new domain
+**holidayriver.com** — purchased by Lauren 2026-04-09 (see [[2026-04-09-homepage-mockups-review]]). Short, memorable, exact brand fit.
+- **holidayriverexpeditions.com** (already owned) becomes a 301 redirect to holidayriver.com — it keeps the exact-match branded-search signal
+- **bikeraft.com** becomes a 301 redirect to holidayriver.com
 - Once the new site is live, de-index bikeraft.com (301 redirect entire domain or robots.txt disallow) to prevent duplicate content in search
+- ⚠️ Blockers before bikeraft.com can be redirected: 7 interim trip/river photos are still served from it ([[photo-upload-checklist]]), and Arctic's per-departure `onlinebookingurl` still points at its reserve flow ([[arctic-api]])
+- Superseded the February research recommendation; see [[domain-name]] for the full evaluation
 
 ## Arctic API Credentials ✅ Resolved
 Self-service via **Settings > API Access > Manage API Clients > "+ Create API Client"**. No need to contact support. Both Basic and OAuth 2.0 credentials are generated on creation. Passwords shown only once — save immediately. See [[arctic-api#Credential Setup]] for full steps.
