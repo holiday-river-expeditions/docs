@@ -1,124 +1,72 @@
 # GitHub Guide for the Website Project
 
-A quick reference for navigating the project board, viewing issues, and filing new ones. No technical background needed.
+A quick reference for how code moves through GitHub on this project — repos, branches, pull requests, and the checks that run automatically.
 
-## Quick Links
+## The Two Repos
 
-- **Issues list:** [github.com/holiday-river-expeditions/website/issues](https://github.com/holiday-river-expeditions/website/issues)
-- **Project board (kanban):** [github.com/orgs/holiday-river-expeditions/projects/1](https://github.com/orgs/holiday-river-expeditions/projects/1)
-- **New issue:** [github.com/holiday-river-expeditions/website/issues/new/choose](https://github.com/holiday-river-expeditions/website/issues/new/choose)
+The project lives in two independent repositories:
 
-## Viewing the Project Board
+| Repo | Contents |
+|------|----------|
+| `website` | The Next.js app — the public site and the Sanity Studio |
+| `docs` | This Obsidian vault, plus the Astro/Starlight app that publishes it |
 
-The project board gives a visual overview of all work. It's organized as a kanban board — cards move left to right as work progresses.
+They are separate repos with separate histories. A change to the site and a change to the docs are always two commits in two places.
 
-1. Open the [project board link](https://github.com/orgs/holiday-river-expeditions/projects/1).
-2. Each column represents a status (e.g., Backlog, In Progress, Done). Cards move between columns as work advances.
-3. Click any card to see the full issue details.
+## Branch Strategy
 
-### Filtering the board
+- **`main`** — the trunk. Deploys to production on every merge.
+- **`feature/*`** — one short-lived branch per piece of work, branched from `main` and merged back via pull request.
 
-- **By milestone:** Click the "Filter" bar at the top, choose **Milestone**, then pick a phase (e.g., "Phase 1: Foundation").
-- **By label:** Same filter bar — choose **Label**, then pick the label you want (e.g., `content`, `decision-needed`).
-- You can combine filters to narrow things down further.
+Work does not get committed directly to `main`. Branch, open a PR, let CI run, merge.
 
-## Understanding Labels
+`beta` also exists as a deploy target for stakeholder review before a production cutover — see [[environments]] for how the branches map to deploys.
 
-Every issue is tagged with labels so you can quickly see what it's about.
+## Pull Requests
 
-### Phase labels
+1. Branch from `main`: `git checkout -b feature/short-description`
+2. Commit your work and push the branch.
+3. Open a pull request against `main`.
+4. Wait for CI to pass, then merge.
 
-These tell you which build phase an issue belongs to:
+Vercel builds a preview deploy for every PR, so you can click through the change on a real URL before it merges.
 
-| Label | Phase |
-|-------|-------|
-| `phase-1-foundation` | Project Foundation — layout, config, tooling |
-| `phase-2-content` | Core Content Pages — homepage, trips, about, etc. |
-| `phase-3-arctic-api` | Arctic API Integration — booking, availability |
-| `phase-4-blog` | Blog & Content — blog, stories, gallery |
-| `phase-5-reviews` | Reviews & Social Proof — TripAdvisor, Google Reviews |
-| `phase-6-seo-analytics` | SEO, Analytics & Polish — GA4, performance, accessibility |
+## What CI Runs on a PR
 
-### Type labels
+One workflow — `.github/workflows/ci.yml` — with two jobs. Full detail lives in [[tech-stack]] and [[testing]]; the short version:
 
-These describe the kind of work:
+**Job `ci`** — install, then lint (ESLint) → format check (Prettier) → type-check (`tsc --noEmit`) → unit and integration tests (Vitest) → build (`next build`).
 
-| Label | Meaning |
-|-------|---------|
-| `decision-needed` | Requires a decision before work can proceed |
-| `setup` | Infrastructure, config, tooling |
-| `feature` | New user-facing functionality |
-| `content` | CMS content models, pages |
-| `integration` | Third-party API integrations |
+**Job `e2e`** — Playwright against chromium, with the HTML report uploaded as an artifact.
 
-## Understanding Milestones
+Any failing step blocks the merge. If the format check is what failed, `pnpm format` locally will usually fix it outright.
 
-Milestones group issues into the six build phases. They're used to track overall progress toward each phase.
+## Pre-commit Hooks
 
-| Milestone | What it covers |
-|-----------|---------------|
-| Phase 1: Foundation | Core layout, Sanity setup, Vercel deploys, component library |
-| Phase 2: Core Content Pages | Homepage, About, Trips, Rivers, FAQ, Contact |
-| Phase 3: Arctic API Integration | Booking flow, availability, open seats |
-| Phase 4: Blog & Content | Blog, stories, gallery |
-| Phase 5: Reviews & Social Proof | TripAdvisor, Google Reviews, authority signals |
-| Phase 6: SEO, Analytics & Polish | GA4, PostHog, Meta Pixel, performance, accessibility |
+The `website` repo runs **husky** + **lint-staged** on every commit, so most CI failures get caught before they leave your machine:
 
-For full details on what's in each phase, see [[build-phases]].
+| Files | What runs |
+|-------|-----------|
+| `*.{ts,tsx,js,jsx}` | `eslint --fix`, then `prettier --write` |
+| `*.{json,md,mdx,css,html,yml,yaml,graphql}` | `prettier --write` |
 
-## Creating a New Issue
+Both hooks rewrite files in place, so a commit may include formatting fixes you did not type. That is expected. The hooks install themselves via the `prepare` script when you run `pnpm install`.
 
-All issues use one of two templates — **Bug Report** or **Feature Request**. Blank issues are disabled, so you'll always start from a template.
+## Issue Tracking
 
-To create an issue:
+**Issues and decisions are tracked in this vault, not in GitHub Issues.** The GitHub Issues workflow — phase labels, milestones, issue templates, and the project board — was retired on 2026-08-20 and all open issues were closed.
 
-1. Go to the [new issue page](https://github.com/holiday-river-expeditions/website/issues/new/choose).
-2. Pick the template that fits your request.
-3. Fill in the form fields (details below).
-4. Click **Submit new issue**.
+The vault is now the source of truth:
 
-### Bug Report
+- [[build-phases]] — what is planned, in progress, and done, phase by phase
+- [[open-decisions]] — open questions and decisions awaiting input
 
-Use this when something on the site isn't working correctly.
-
-**Required fields:**
-
-1. **Description** — A clear summary of the bug. What's wrong?
-2. **Steps to reproduce** — The exact steps someone would follow to see the bug. For example:
-   - Go to the homepage
-   - Click the "View Trips" button
-   - See error message
-3. **Expected behavior** — What should have happened.
-4. **Actual behavior** — What actually happened instead.
-
-**Optional fields:**
-
-5. **URL / page affected** — The page URL where you found the bug.
-6. **Screenshots** — Attach images showing the problem (drag and drop into the field).
-
-Give the issue a short, descriptive title — e.g., "Book Now button leads to blank page on trip detail."
-
-### Feature Request
-
-Use this to suggest a new feature or improvement.
-
-**Required fields:**
-
-1. **Problem statement** — Describe the root problem. Who is affected? What's frustrating, missing, or broken?
-2. **Area of the site** — Pick from the dropdown: Homepage, Trip listings, Trip detail pages, Booking/reservations, Navigation/header/footer, Blog/news, About/company pages, Contact, or Other.
-
-**Optional fields:**
-
-3. **Proposed solution** — If you have an idea for how to fix it, describe it here.
-4. **Additional context** — Screenshots, examples, links, or anything else that helps explain the request.
-
-Give the issue a short, descriptive title — e.g., "Add guest packing list to trip detail pages."
-
-### Doesn't fit a template?
-
-Email Darius at dariuscarrick@gmail.com if your request doesn't fit either template.
+Tag anything that needs a decision with `#decision-needed` so it surfaces in search.
 
 ## Related
 
 - [[build-phases]] — Full breakdown of what's planned in each phase
 - [[open-decisions]] — Open questions and decisions that need input
+- [[environments]] — Branches, deploy targets, and environment URLs
+- [[testing]] — Running the test suites locally
+- [[tech-stack]] — Stack versions and the full CI pipeline

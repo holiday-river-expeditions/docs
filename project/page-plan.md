@@ -1,6 +1,13 @@
 # Page & Feature Plan — Proposal
 
-> **Status: Draft for Holiday review.**
+> **Historical document — kept for context, not current status.**
+> This is the **February 2026 proposal**, preserved as a record of what we originally pitched. It has been substantially overtaken by what actually shipped. Read it as history, not as a plan of record.
+>
+> - **Most Phase 1 items here are now built.** For real, current status, see [[build-phases]] — that file is the source of truth for what exists.
+> - **The proposed navigation was never adopted as written.** The shipped nav is **Rafting / Biking / About Us / Blog**, with a centered logo and a **Book Now** button. There is no `/destinations` route.
+> - Individual questions below are annotated where they've since been answered. Unannotated questions are still genuinely open — see [[open-decisions]].
+
+> **Original status (2026-02): Draft for Holiday review.**
 > Based on the [[site-audit]] of bikeraft.com. All recommendations below are proposals — nothing is final until Holiday signs off.
 
 ## Related
@@ -27,9 +34,11 @@ Simplifies the current 7-item nav (with overlapping categories) down to 6 clear 
 **Key change:** Current site has "Rivers", "Destinations", and "Trip Type" as separate nav items that all lead to overlapping content. This proposal collapses them into "Trips" (filterable) + "Destinations" (by region). The Trip Type categories (Family, Stargazing, Canyon Concerts, etc.) become filters/tags within the trip listing rather than top-level nav.
 
 **Needs Holiday input:**
-- Is this nav structure intuitive for their customers?
-- Are there categories that *must* stay top-level? (e.g., Mountain Biking might warrant its own nav item)
-- What should "Open Seats" be labeled? Currently it's a CTA button in the nav.
+- ~~Is this nav structure intuitive for their customers?~~ ✅ Resolved by what shipped — this structure was **not adopted**. The live nav is Rafting / Biking / About Us / Blog with a centered logo.
+- ~~Are there categories that *must* stay top-level? (e.g., Mountain Biking might warrant its own nav item)~~ ✅ Answered — biking did warrant its own item. The shipped nav leads with the two activities, **Rafting** and **Biking**, rather than a single "Trips" item.
+- ~~What should "Open Seats" be labeled? Currently it's a CTA button in the nav.~~ ✅ Resolved — the nav CTA shipped as **Book Now**.
+
+> **Overtaken by events.** The "Destinations" nav item was never built; there is no `/destinations` route. See [[architecture]] for the routes that actually exist.
 
 ---
 
@@ -54,7 +63,7 @@ These are the pages we recommend having ready at launch.
 
 **Needs Holiday input:**
 - Is Trip Finder / Quiz a launch priority or can it wait? It's a significant build item.
-- Which trips are "signature" / featured on the homepage?
+- ~~Which trips are "signature" / featured on the homepage?~~ ✅ Resolved — **6 trips**, curated by Holiday and selected through the **Homepage document in Sanity**, so the set can be changed without a deploy.
 - Is the Open Seats page still important if we show availability on trip detail pages?
 
 ### Phase 2 — Important, Not Blocking Launch
@@ -80,7 +89,7 @@ These are the pages we recommend having ready at launch.
 | # | Page | Notes |
 |---|------|-------|
 | 19 | **Trip Comparison** | Side-by-side comparison tool |
-| 20 | **Online Store** | External link to Square site (holiday-river-expeditions.square.site) |
+| 20 | **Online Store** | ✅ **Decided** — stays an external link to the Square site (holiday-river-expeditions.square.site). No native store; nothing to build beyond the link. |
 | 21 | **Request a Catalog** | Form |
 | 22 | **Employment** | Job listings |
 | 23 | **Spanish-Language Info** | Formas y Información del Viaje — ✅ confirmed needed ([[2026-02-19-phase-1-update]]), consider moving to Phase 2 |
@@ -136,13 +145,13 @@ Carrying forward from the [[site-audit#UX Problems to Fix]]:
 
 ## Open Questions for Holiday #needs-holiday-input
 
-1. **Nav structure** — Does the proposed simplified nav work? Any categories that must stay top-level?
+1. ~~**Nav structure** — Does the proposed simplified nav work? Any categories that must stay top-level?~~ ✅ Resolved by what shipped — the proposal was not adopted. Live nav: Rafting / Biking / About Us / Blog, centered logo, Book Now CTA.
 2. **Trip Finder / Quiz** — Launch priority or Phase 2?
 3. **Blog migration** — All 167 posts at launch, or start with a curated set?
 4. ~~**Spanish content** — Is the Formas y Información del Viaje page still used?~~ ✅ Confirmed needed. Phase TBD.
 5. **Catalog requests** — Still relevant?
 6. ~~**Policy pages** — Phase 1 for legal reasons or can they wait?~~ ✅ Confirmed needed. Phase TBD.
-7. **Homepage featured trips** — Which trips are the "signature" ones to feature?
+7. ~~**Homepage featured trips** — Which trips are the "signature" ones to feature?~~ ✅ Resolved — 6 curated trips, managed via the Sanity Homepage document.
 8. **Getting Here pages** — Standalone pages or fold into trip detail pages?
 9. **Wilderness First Aid** — How prominent should this be?
 10. **Trip categories** — Which are highest priority? (Family, Stargazing, Canyon Concerts, etc.)

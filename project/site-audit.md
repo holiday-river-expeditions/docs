@@ -1,8 +1,6 @@
 # Site Audit — bikeraft.com
 
-> Full inventory of every page, feature, and content type on the current site.
-> Conducted 2026-02-16 via live browser walkthrough.
-> **108 pages + 167 blog posts** across 5 categories.
+> **Historical snapshot — do not read as current.** Full inventory of every page, feature, and content type on the *old* site, conducted 2026-02-16 via live browser walkthrough. **108 pages + 167 blog posts** across 5 categories. Counts, URLs, and review totals were accurate that day and have not been re-verified since; bikeraft.com is a live third-party site that may have changed. Useful for redirect mapping and content migration scope — see [[build-phases]] for what has actually been built.
 
 ## Related
 
