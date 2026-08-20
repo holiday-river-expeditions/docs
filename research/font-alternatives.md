@@ -1,5 +1,7 @@
 # Font Alternatives: Stencil Display Font
 
+> ⚠️ **Superseded — do not use this to pick a font.** The display-face question was settled by the official 2026 brand refresh, not by this evaluation: the brand face is **ATF Alternate Gothic** (Adobe Fonts kit `guz5fen`), paired with **PT Sans** (400/700) for body. Stardos Stencil and Open Sans are retired, and the stencil direction explored here — including the Saira Stencil One recommendation below — was never adopted. See [[brand-guidelines]] and [[tailwind-tokens]]; this file is kept as a record of the options that were considered.
+
 ## Problem
 
 The current website uses **Stardos Stencil** (Google Fonts, by Vernon Adams) for H1/H2 headings to evoke the stenciled lettering painted on Holiday's rafts. It doesn't quite match — Stardos Stencil has thinner, more refined lines with a classical, elegant appearance. The actual raft stencils are bolder, heavier, and more utilitarian.
@@ -8,7 +10,7 @@ The current website uses **Stardos Stencil** (Google Fonts, by Vernon Adams) for
 - **Display:** Stardos Stencil, 700 weight, 50–60px
 - **Body:** Open Sans, 400/700/800
 - **Fallback:** Arial, sans-serif
-- **Heading color:** `#A30D11` (Brand Red)
+- **Heading color:** ~~`#A30D11` (Brand Red)~~ — retired; the brand red is now `#D00A0B` (`--color-holiday-red`)
 
 ### Key Observations
 - The official logo wordmark (see `design/assets/HRE_LOGO_WHITE.svg`) is a **clean geometric sans-serif** — not a stencil font
@@ -89,6 +91,8 @@ For the best balance of raft-authenticity, brand fit, and implementation ease:
 For premium: **Rufina Stencil** is the natural upgrade path from Stardos Stencil if the brand prefers a serif stencil.
 
 ## Next Steps
+
+> **Moot.** None of these steps were taken and none should be — the brand refresh resolved the font choice before this evaluation was carried out. Left in place as a record of the intended process.
 
 - [ ] Compare top candidates side-by-side with raft photos at heading sizes (50–60px)
 - [ ] Test readability on mobile at smaller sizes
