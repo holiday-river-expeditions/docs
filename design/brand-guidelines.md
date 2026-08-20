@@ -34,10 +34,11 @@ Accent-only palette. Never used at a scale that competes with Holiday Red and Wh
 
 ### Logotype / Headlines / CTAs
 
-**ATF Alternate Gothic — Medium** (Adobe Fonts; American Type Founders Collection)
+**ATF Alternate Gothic** (Adobe Fonts; American Type Founders Collection)
 
 - Use in headlines, buttons, CTAs, and other short applications
-- Always **all caps**, medium weight
+- Always **all caps**
+- **Weight in practice:** the brand book specifies Medium, but the built site uses **900 (`font-black`) for display headings** and reserves Medium for nav, tags, buttons, and the newsletter headline. See [[tailwind-tokens]] for the authoritative per-use weights.
 - A geometric sans serif that complements the logo mark and stays close to the brand's heritage logotype
 
 ```

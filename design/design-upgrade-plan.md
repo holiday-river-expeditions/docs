@@ -2,7 +2,7 @@
 
 > Translates the [[design-review]] findings into concrete implementation steps for the new site.
 >
-> **Superseded:** Parts of this doc have been overtaken by later decisions. (1) **Color/typography** — the interim "atmospheric extensions" (canyon/river/old-sand) and the Stardos Stencil headline guidance were replaced by the official 2026 brand refresh; see [[brand-guidelines]] and [[tailwind-tokens]]. (2) **Homepage structure** — the original section/component plans (Trust Bar, "The Holiday Way", Testimonials, Final CTA, teal accents, 4 river cards) were superseded by the Figma homepage mockup that was actually built. The "Homepage Redesign — Section Plan" and "Component Plan" sections below have been updated to reflect the implemented homepage.
+> **Superseded:** Parts of this doc have been overtaken by later decisions. (1) **Color/typography** — the interim "atmospheric extensions" (canyon/river/old-sand) and the Stardos Stencil headline guidance were replaced by the official 2026 brand refresh; see [[brand-guidelines]] and [[tailwind-tokens]]. (2) **Homepage structure** — the original section/component plans (Trust Bar, "The Holiday Way", Testimonials, Final CTA, teal accents, 4 river cards) were superseded by the Figma homepage mockup that was actually built. The "Homepage Redesign — Section Plan" and "Component Plan" sections below have been updated to reflect the implemented homepage. (3) **New Utility Patterns** — the teal accent thread and the wavy/organic dividers described there were never built; only the section-rhythm idea survived. (4) **Implementation Priority** — that list is historical, not a live to-do: the homepage shipped 2026-05-29 and the teal `Button` variant was dropped.
 
 ## Design Philosophy
 
@@ -15,8 +15,8 @@ See [[brand-guidelines]] for the official color palette and typography specs, an
 ### New Utility Patterns
 
 - **Section rhythm**: Alternate `holiday-white → evergreen (dark) → sand → full-bleed photo` to create the changing-light-on-the-river feeling
-- **Teal accent thread**: Thin teal top-borders on cards, teal underlines on active nav items, teal icon fills — creates a subliminal water thread throughout
-- **Wavy/organic dividers**: SVG section dividers inspired by river topography and canyon silhouettes (carries forward the footer's existing wavy edge treatment)
+- ~~**Teal accent thread**: Thin teal top-borders on cards, teal underlines on active nav items, teal icon fills — creates a subliminal water thread throughout~~ — _not built._
+- ~~**Wavy/organic dividers**: SVG section dividers inspired by river topography and canyon silhouettes (carries forward the footer's existing wavy edge treatment)~~ — _not built; no `SectionDivider` component exists._
 
 ## Homepage Redesign — Section Plan
 
@@ -41,7 +41,8 @@ Reflects the homepage as built from the Figma mockup. Top to bottom:
 
 ### 4. River Selector
 - Full-bleed photo background with a dark overlay
-- Interactive vertical list of the 9 rivers; hovering/focusing a name crossfades the background image; the active name is red, the rest white
+- Interactive vertical list of the rivers; hovering/focusing a name crossfades the background image; the active name is red, the rest white
+- **River count unverified.** This section previously claimed 9 rivers, but only 4 River documents are consistently named across the vault (Colorado, Green, San Juan, Yampa). Check the live Sanity dataset before quoting a number.
 
 ### 5. Learn & Get Inspired
 - White background; red section heading; 4 `ContentCard`s in a row
@@ -65,7 +66,7 @@ Components backing the current homepage:
 | `ContentCard` | `ui/ContentCard.tsx` | Overlaid-title photo card; optional video play badge |
 | `Section` | `ui/Section.tsx` | Section wrapper with background-color options |
 | `Button` | `ui/Button.tsx` | Pill button: `primary` / `outline` / `onyx` |
-| `NewsletterSignup` | `ui/NewsletterSignup.tsx` | Footer email capture (submit wiring still TODO) |
+| `NewsletterSignup` | `ui/NewsletterSignup.tsx` | Footer email capture; wired — posts to `/api/newsletter`, which writes `newsletterSubscriber` docs to Sanity. Only the email/CRM provider is still undecided (see [[open-decisions]]) |
 | `Header` / `Nav` / `MobileNav` | `layout/` | Center logo lockup, desktop nav, Book Now, mobile menu |
 | `Footer` | `layout/Footer.tsx` | Newsletter + link columns + logo + NPS badge |
 
@@ -73,12 +74,14 @@ Components backing the current homepage:
 
 ## Implementation Priority
 
-1. **Design tokens** — Expand globals.css with new colors, H2 size, subheading size
-2. **Section component** — Add canyon + sand backgrounds
-3. **Button component** — Add teal variant
-4. **Hero component** — Full-bleed with gradient overlay
-5. **Homepage rebuild** — Wire up all sections with placeholder content
-6. **Iterate** — Refine spacing, typography, and feel based on Holiday feedback
+> **Historical — not a live to-do list.** This was the original sequencing; the homepage shipped 2026-05-29 from the Figma mockup with real Sanity content. Every step below is either done or dropped, as annotated.
+
+1. **Design tokens** — Expand globals.css with new colors, H2 size, subheading size — _done, though the tokens that landed are the 2026 brand refresh set, not the interim ones this step had in mind; see [[tailwind-tokens]]._
+2. **Section component** — Add canyon + sand backgrounds — _done (`ui/Section.tsx`); `canyon` was retired in favor of `evergreen`/`onyx`._
+3. ~~**Button component** — Add teal variant~~ — _dropped. `Button` ships `primary` / `outline` / `onyx` only._
+4. **Hero component** — Full-bleed with gradient overlay — _done (`ui/Hero.tsx`)._
+5. **Homepage rebuild** — Wire up all sections with placeholder content — _done 2026-05-29, built from the Figma mockup with real Sanity content rather than placeholders._
+6. **Iterate** — Refine spacing, typography, and feel based on Holiday feedback — _ongoing._
 
 ## What This Does NOT Include (Yet)
 
@@ -86,7 +89,7 @@ Components backing the current homepage:
 - Trip card enhancements (difficulty, duration, urgency) — needs Sanity/Arctic data
 - Video/motion in hero — needs video assets
 - Guide profiles — needs content
-- Blog integration — Phase 2
+- ~~Blog integration — Phase 2~~ — _shipped 2026-08-10 under Phase 4: `/blog` and `/blog/[slug]` are live. See [[build-phases]]._
 
 ## Related
 - [[design-review]] — Analysis of current bikeraft.com
