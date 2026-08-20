@@ -88,6 +88,28 @@ a[aria-current='page']:focus {
 	color: #fcfcfc;
 }
 
+/* starlight-obsidian titles every generated page with the file slug
+   ("build-phases"), which doubles up with the note's own H1. Every vault
+   note starts with an H1, so hide the generated slug title visually — kept
+   in the flow (not display:none) so the #_top anchor and the ToC "Overview"
+   link still work. Scoped away from .hero so the splash homepage keeps its
+   hero title. */
+h1[id='_top']:not(.hero *) {
+	position: absolute;
+	width: 1px;
+	height: 1px;
+	overflow: hidden;
+	clip-path: inset(50%);
+	white-space: nowrap;
+}
+
+/* Obsidian #tags render as red pills; keep each pill on one line so it
+   wraps as a unit instead of splitting its background across lines. */
+.sl-obs-tag {
+	display: inline-block;
+	white-space: nowrap;
+}
+
 /* Branded keyboard focus, same as the website: red ring with a halo that
    reads on white, evergreen, and red surfaces alike. */
 :focus-visible {

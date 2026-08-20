@@ -7,7 +7,7 @@ export default defineConfig({
 	integrations: [
 		starlight({
 			title: 'HRE Project Docs',
-			favicon: '/favicon.png',
+			favicon: '/favicon-32x32.png',
 			social: [
 				{
 					icon: 'github',
@@ -21,6 +21,32 @@ export default defineConfig({
 				{
 					tag: 'meta',
 					attrs: { name: 'robots', content: 'noindex, nofollow' },
+				},
+				// Same favicon set as the website (copied from website/public/).
+				{
+					tag: 'link',
+					attrs: {
+						rel: 'icon',
+						href: '/favicon-48x48.png',
+						sizes: '48x48',
+						type: 'image/png',
+					},
+				},
+				{
+					tag: 'link',
+					attrs: {
+						rel: 'apple-touch-icon',
+						href: '/apple-touch-icon.png',
+						sizes: '180x180',
+					},
+				},
+				{
+					tag: 'link',
+					attrs: {
+						rel: 'mask-icon',
+						href: '/safari-pinned-tab.svg',
+						color: '#D00A0B',
+					},
 				},
 				{
 					tag: 'link',
