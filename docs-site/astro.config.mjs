@@ -48,7 +48,7 @@ export default defineConfig({
 			plugins: [
 				starlightObsidian({
 					vault: '../',
-					ignore: ['CLAUDE.md', 'README.md', 'docs-site/**'],
+					ignore: ['CLAUDE.md', 'README.md', 'docs-site/**', 'progress/**', 'templates/**'],
 					sidebar: {
 						label: 'Documentation',
 						collapsed: false,
