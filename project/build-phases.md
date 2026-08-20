@@ -1,12 +1,12 @@
 # Build Phases
 
-> **Tracking has moved to GitHub Issues.** Each item below is now tracked as an issue on the [website repo](https://github.com/holiday-river-expeditions/website/issues), organized into milestones by phase. See the [project board](https://github.com/orgs/holiday-river-expeditions/projects/1) for a visual overview.
+> **This document is the source of truth for build status.** (Tracking briefly moved to GitHub Issues in February 2026; those issues went stale and were closed in August 2026 — the vault is authoritative again.)
 
 ## Phase 1: Project Foundation
 
 > **Note (2026-02-19):** Remaining Phase 1 work proceeding in parallel with Phase 3 (Arctic API integration). See [[2026-02-19-phase-1-update]].
 
-- [x] Initialize Next.js 15 project with App Router and TypeScript (strict mode)
+- [x] Initialize Next.js project with App Router and TypeScript (strict mode) — _started on 15, now on 16.3_
 - [x] Configure ESLint + Prettier for consistent code style
 - [x] Set up Tailwind CSS with brand design tokens (colors, typography, spacing) — _Done (2026-03-02). Tailwind v4 `@theme inline` with 7 brand colors, 2 fonts, 5-step typography scale._
 - [x] Configure Sanity Studio project with initial content models (typed schemas) — _Done (2026-02-28). Sanity v3 Studio embedded at `/studio`, 9 schemas defined, typegen configured._
