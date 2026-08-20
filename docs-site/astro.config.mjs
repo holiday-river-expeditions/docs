@@ -41,7 +41,18 @@ export default defineConfig({
 					tag: 'link',
 					attrs: {
 						rel: 'stylesheet',
-						href: 'https://fonts.googleapis.com/css2?family=Open+Sans:wght@400;600;700;800&family=Stardos+Stencil:wght@400;700&display=swap',
+						href: 'https://fonts.googleapis.com/css2?family=PT+Sans:wght@400;700&family=Oswald:wght@500;600;700&display=swap',
+					},
+				},
+				{
+					// Brand display face (ATF Alternate Gothic). If this host
+					// isn't in the Typekit kit's allowed domains the fonts
+					// simply don't load and Oswald takes over — same fallback
+					// chain the website uses.
+					tag: 'link',
+					attrs: {
+						rel: 'stylesheet',
+						href: 'https://use.typekit.net/guz5fen.css',
 					},
 				},
 			],

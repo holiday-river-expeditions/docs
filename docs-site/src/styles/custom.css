@@ -1,28 +1,98 @@
-/* HRE Brand Colors */
+/* HRE brand theme — mirrors website/src/app/globals.css (2026 brand refresh).
+   Palette: holiday-red #d00a0b, holiday-white #fcfcfc, onyx #2c2b29,
+   evergreen #0a332d, opal #9dbdb8, sand #d6b588, teal #3f786b.
+   Display: ATF Alternate Gothic (Typekit guz5fen) → Oswald → Arial, all caps.
+   Body: PT Sans → Arial. */
+
+/* Dark theme (Starlight default): deep evergreen surfaces, like the
+   website's evergreen bands. */
 :root {
-	--sl-color-accent-low: #3d0506;
-	--sl-color-accent: #a30d11;
-	--sl-color-accent-high: #f4c4c5;
-	--sl-color-white: #f4f4f4;
-	--sl-color-gray-1: #e0deda;
-	--sl-color-gray-2: #bab7b0;
+	--sl-color-accent-low: #45100f;
+	--sl-color-accent: #d00a0b;
+	--sl-color-accent-high: #f0b4b0;
+
+	--sl-color-white: #fcfcfc;
+	--sl-color-gray-1: #dce6e3;
+	--sl-color-gray-2: #bccbc7;
+	--sl-color-gray-3: #8ba39e;
+	--sl-color-gray-4: #536964;
+	--sl-color-gray-5: #2b4640;
+	--sl-color-gray-6: #113630;
+	--sl-color-black: #082521;
+
+	--sl-font: 'PT Sans', Arial, sans-serif;
+}
+
+/* Light theme: holiday-white page, onyx text, warm sand-tinted panels. */
+:root[data-theme='light'] {
+	--sl-color-accent-low: #f8d9d4;
+	--sl-color-accent: #d00a0b;
+	--sl-color-accent-high: #8c0808;
+
+	--sl-color-white: #2c2b29;
+	--sl-color-gray-1: #3b3a37;
+	--sl-color-gray-2: #4e4d48;
 	--sl-color-gray-3: #7e7d78;
-	--sl-color-gray-4: #4e4d48;
-	--sl-color-gray-5: #33322e;
-	--sl-color-gray-6: #212121;
-	--sl-color-black: #181818;
-
-	--sl-font: 'Open Sans', sans-serif;
+	--sl-color-gray-4: #a5a29b;
+	--sl-color-gray-5: #d9d5cd;
+	--sl-color-gray-6: #f1eee8;
+	--sl-color-gray-7: #f7f5f1;
+	--sl-color-black: #fcfcfc;
 }
 
-/* Stardos Stencil for headings */
-:is(h1, h2) {
-	font-family: 'Stardos Stencil', cursive !important;
-	letter-spacing: -0.03em;
-}
-
-/* Site title in header */
+/* Brand display face for headings — condensed gothic, always all caps,
+   heavy weight like the website's display headings. */
+:is(h1, h2, h3),
 .site-title {
-	font-family: 'Stardos Stencil', cursive !important;
+	font-family: alternate-gothic-atf, 'Oswald', Arial, sans-serif;
+	text-transform: uppercase;
 	font-weight: 700;
+	letter-spacing: 0.015em;
+}
+
+/* Condensed caps run small at a given px size — give the page title the
+   website's tight-leading display treatment. */
+h1 {
+	line-height: 0.95;
+}
+
+.site-title {
+	font-size: 1.5rem;
+	color: #d00a0b;
+}
+
+[data-theme='dark'] .site-title {
+	color: #fcfcfc;
+}
+
+/* Current page in the sidebar: solid brand red in both themes (Starlight's
+   dark default is a pale accent tint that reads off-brand). */
+a[aria-current='page'],
+a[aria-current='page']:hover,
+a[aria-current='page']:focus {
+	background-color: #d00a0b;
+	color: #fcfcfc;
+}
+
+/* Hero (splash homepage): make the tagline PT Sans and the action button
+   read like the website's red CTA. */
+.hero .tagline {
+	font-family: 'PT Sans', Arial, sans-serif;
+}
+
+.action.primary {
+	text-transform: uppercase;
+	font-family: alternate-gothic-atf, 'Oswald', Arial, sans-serif;
+	letter-spacing: 0.04em;
+	background: #d00a0b;
+	color: #fcfcfc;
+}
+
+/* Branded keyboard focus, same as the website: red ring with a halo that
+   reads on white, evergreen, and red surfaces alike. */
+:focus-visible {
+	outline: 2px solid #d00a0b;
+	outline-offset: 2px;
+	box-shadow: 0 0 0 2px var(--sl-color-black);
+	border-radius: 2px;
 }
