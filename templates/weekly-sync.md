@@ -4,6 +4,7 @@
 
 ## Agenda
 
+- Walk last week's action items
 -
 
 ## Notes

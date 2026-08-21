@@ -36,5 +36,6 @@ Obsidian vault for project documentation, meeting notes, research, and design de
 - Weekly sync notes: `meetings/YYYY-MM-DD-weekly-sync.md`, started from [[weekly-sync]] template in `templates/`
 - Progress logs: `progress/YYYY-MM-DD.md` (date only). Append to the existing file if one exists for today. Start each file with frontmatter `author: claude` and the banner line `> Machine-written session log — raw technical record, not project status.`
 - Decisions and tasks are tracked **in this vault** (`project/open-decisions.md`, `project/build-phases.md`), not in GitHub Issues
+- Action items live in the weekly sync notes' table and nowhere else. Tasks are created only when a person commits to one in a meeting — Claude never creates or files tasks anywhere unless Darius explicitly hands one over. Assignment happens by Darius emailing owners after each sync, and each sync opens by walking the previous week's table. (Decided 2026-08-20: this replaces GitHub Issues, which failed on auto-generated task noise and non-technical assignees.)
 - Keep docs concise and update them as decisions change
 - Tag open questions with `#decision-needed`
