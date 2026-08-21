@@ -1,4 +1,4 @@
-# Weekly Sync — YYYY-MM-DD
+# YYYY-MM-DD Weekly Sync
 
 **Attendees:**
 
@@ -20,7 +20,9 @@
 
 <!-- One line each: what, owner, due -->
 
-- [ ] Task — **Owner**, due YYYY-MM-DD
+| Action | Owner | Due |
+| --- | --- | --- |
+| Task | **Owner** | YYYY-MM-DD |
 
 ## Parking lot / open questions
 
