@@ -30,11 +30,11 @@ Managed at sanity.io/manage → API → CORS Origins. Sanity does **not** suppor
 Current origins:
 
 - `http://localhost:3000` (with credentials)
+- `https://website-phi-six-25.vercel.app` (confirmed registered 2026-08-24)
 
-Still needed (⚠️ launch blocker — only localhost is registered today):
+Still needed (⚠️ launch blocker):
 
 - Production domain when live — **`https://holidayriver.com`** (see [[open-decisions#Domain]])
-- Vercel production URL (`https://website-phi-six-25.vercel.app`)
 - Beta subdomain when configured (`https://beta.holidayriver.com`)
 
 ## File Structure
@@ -230,7 +230,7 @@ Sanity Studio is embedded in the Next.js app at `/studio` via a catch-all route 
 
 **Access:** Log in with standard Sanity credentials. Project owner has full access. Other team members need to be invited at sanity.io/manage → Members.
 
-**Adding content:** Navigate to `/studio`, select a document type from the sidebar, create/edit documents. Changes publish immediately (no draft/publish workflow configured yet).
+**Adding content:** Navigate to `/studio`, select a document type from the sidebar, create/edit documents. Edits save as a draft and go live when the editor presses **Publish** (Sanity's default draft → publish flow; no review/approval workflow is configured on top of it). Editor-facing walkthrough: [[sanity-editor-guide]].
 
 ## Adding a New Schema
 

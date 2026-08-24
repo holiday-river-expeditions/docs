@@ -73,4 +73,5 @@ sources). Mock shows:**
 
 ## Related
 
+- [[sanity-editor-guide]] — upload guidelines, formats, and what Sanity does for image optimization
 - [[sanity-revalidation-webhook]] — how publishes go live instantly
