@@ -81,7 +81,7 @@ Design feedback session. Justin walked through mockups and most of the meeting w
 | ------------------------------------------------------------------ | ----------------- | -------------------- |
 | Research map libraries (topographic, interactive)                  | **Darius**        | Aug 27               |
 | Mock up different trip page options                                | **Darius**        | Aug 27               |
-| Photo guidelines and format, and what Sanity does for image optimization | **Darius**        | Aug 27               |
+| Photo guidelines and format, and what Sanity does for image optimization | **Darius**        | Done Aug 24, see [[sanity-editor-guide]] |
 | Research email hosting options                                     | **Darius**        | TBD                  |
 | Start filling out trips and photos in the Studio                   | **Justin**        | TBD, time permitting |
 | Research video content and a Holiday "history" video for the hero  | **Justin, then Ezra** | TBD, time permitting |
