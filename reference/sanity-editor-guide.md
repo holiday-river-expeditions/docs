@@ -90,10 +90,6 @@ This has one big consequence: **upload the biggest, best original you have, and 
 - **Write Alt Text** wherever the field appears: one sentence describing the scene, like "Rafts on a beach below red canyon walls." Screen readers speak it and Google reads it.
 - **Captions** on trip photos are optional and currently not shown on the site.
 
-### Videos (itinerary loops)
-
-The day-by-day itinerary section can show a short ambient video. The spec is deliberately strict: silent MP4, portrait 3:4, roughly 10 to 15 seconds, under about 4 MB, no audio track, no burned-in captions. Always set the Poster image and its Alt Text, because the poster shows while the video loads and stands in for it entirely when no video is set.
-
 ## Related
 
 - [[photo-upload-checklist]] — which photos still need replacing, and where the current ones came from
