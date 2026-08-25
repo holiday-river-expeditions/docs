@@ -9,7 +9,7 @@ As of 2026-08-20:
 | Vitest (unit + integration) | 6 | 37 |
 | Playwright (E2E) | 4 | 7 |
 
-The four E2E specs are `a11y.spec.ts`, `header.spec.ts`, `home.spec.ts`, and `itinerary-video.spec.ts`.
+The three E2E specs are `a11y.spec.ts`, `header.spec.ts`, and `home.spec.ts`.
 
 ## Running Tests
 
