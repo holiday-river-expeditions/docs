@@ -2,14 +2,14 @@
 
 ## Current Suite Size
 
-As of 2026-08-20:
+As of 2026-08-27:
 
 | Suite | Files | Cases |
 |-------|-------|-------|
-| Vitest (unit + integration) | 6 | 37 |
-| Playwright (E2E) | 4 | 7 |
+| Vitest (unit + integration) | 14 | 117 |
+| Playwright (E2E) | 8 | 28 |
 
-The three E2E specs are `a11y.spec.ts`, `header.spec.ts`, and `home.spec.ts`.
+The E2E specs are `a11y.spec.ts`, `book-filter.spec.ts`, `demo-flags.spec.ts`, `header.spec.ts`, `home.spec.ts`, `section-nav.spec.ts`, `trip-finder.spec.ts`, and `trips-map.spec.ts`. The a11y spec registers one test per scanned route (9 routes as of this count), so its runtime case count grows whenever a route joins the axe sweep.
 
 ## Running Tests
 
@@ -103,7 +103,7 @@ One workflow — `.github/workflows/ci.yml` — with two jobs, triggered on push
 
 ## Coverage Gaps
 
-Known untested areas as of 2026-08-20 — the booking path is the least-covered code in the repo:
+Known untested areas as of 2026-08-27 — the booking path is the least-covered code in the repo:
 
 - **No tests on any `/api/*` route handler.** Every route handler under `src/app/api/` is uncovered, despite [[tech-stack]] listing "API route handlers (with mocked Arctic responses)" as an integration-test layer. That layer does not exist yet.
 - **No tests on `src/lib/cart-cookie.ts`.** Cart state is serialized through this module on the way to the Arctic handoff, and nothing exercises it.

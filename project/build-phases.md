@@ -9,7 +9,7 @@
 - [x] Initialize Next.js project with App Router and TypeScript (strict mode) — _started on 15, now on 16.3_
 - [x] Configure ESLint + Prettier for consistent code style
 - [x] Set up Tailwind CSS with brand design tokens (colors, typography, spacing) — _Done (2026-03-02). Tailwind v4 `@theme inline` with 7 brand colors, 2 fonts; type scale has since grown to 8 steps (see [[tailwind-tokens]])._
-- [x] Configure Sanity Studio project with initial content models (typed schemas) — _Done (2026-02-28). Sanity Studio embedded at `/studio`, typegen configured. Now on Sanity v5 with **13 schema types** (11 documents + 2 page-builder blocks)._
+- [x] Configure Sanity Studio project with initial content models (typed schemas) — _Done (2026-02-28). Sanity Studio embedded at `/studio`, typegen configured. Now on Sanity v5 with **14 schema types** (12 documents + 2 page-builder blocks) — see [[architecture]] for the current model list._
 - [x] Configure GitHub Actions CI pipeline (lint → type-check → test → build)
 - [x] Set up Vercel project with Git-based deploys + PR preview deployments
 - [ ] Configure beta subdomain on Vercel for stakeholder testing — _`vercel.json` has the noindex host rule, but no DNS is pointed at it yet; target is now `beta.holidayriver.com` (see [[environments]])._
@@ -42,7 +42,7 @@
 - [x] Build typed API client in `src/lib/arctic/` with Zod validation — _Done (2026-08-10). Token cache, retry/backoff, 403 re-auth, graceful unconfigured fallback._
 - [x] Set up API proxy routes in Next.js — _Not needed for reads (server components call the client directly). Built for writes (2026-08-11): `/api/book`, `/api/cart`, `/api/book/pricing/[triptypeid]`. Credentials never reach the browser._
 - [x] Read-only endpoints first: trip sync, availability display — _Done (2026-08-10), verified against live data._
-- [x] Build open seats page with real-time availability — _Done (2026-08-10): `/open-seats`, grouped by trip, charter-filtered via `orenable`._
+- [x] Build open seats page with real-time availability — _Done (2026-08-10): `/open-seats`, grouped by trip, charter-filtered via `orenable`. Moved to `/book` ("Book Your Trip") 2026-08-27 with per-trip identity cards and a server-side month filter bar; `/open-seats` now redirects there preserving `?month`._
 - [x] Connect trip detail pages to Arctic for live availability — _Done (2026-08-10): Dates & Availability section with seat badges + interim Book links (Arctic `onlinebookingurl`)._
 - [x] Trip-specific "View Open Seats" functionality — _Covered by the trip-detail availability section._
 - [x] Build native trip browsing & selection UI (dates, party size) — _Done (2026-08-11). `DepartureList` + `BookingRow` + `PartySizeSelector`, gated behind the `BOOKING_NATIVE` flag (on locally, **off in production**). Add-ons not built — see below._
@@ -82,6 +82,19 @@
 - [ ] Performance optimization (image optimization, lazy loading, Core Web Vitals)
 - [ ] Responsive design QA across devices
 - [x] Accessibility audit (WCAG 2.1 AA) — _First pass done (2026-08-11): axe-core Playwright suite (`e2e/a11y.spec.ts`) scans 5 routes; real contrast failures found and fixed. Not yet a full-site audit; alt text on trip photos is still outstanding ([[photo-upload-checklist]])._
+
+## Shipped Outside the Phases (Aug 20–27, 2026)
+
+Work from the Aug 20 sync feedback and the exploration week that no phase checkbox covers — all on `main` unless noted:
+
+- **Per-browser demo flags** — localStorage-backed system for demoing design ideas on production without exposing them to real visitors (`/admin` arms the overlay). Full description in [[architecture]].
+- **Logo treatments** — default reverted to the original horizontal SVG lockup (Aug 20 decision); five alternate treatments live behind mutually exclusive demo flags, awaiting a pick.
+- **Specialty restructure** — per-family parent pages removed; families are now anchored sections on `/specialty` with in-place catalog expansion.
+- **Floating section menu** — `SectionNav` pill bar on trip pages and the specialty hub.
+- **Live river flow (CFS)** — USGS-driven flow chip + 7-day sparkline on trip and river pages, behind the `river-flow` flag until Holiday signs off.
+- **Booking IA** — `/book` "Book Your Trip" page with month filter (see Phase 3 note above); Book Now CTA and footer Trip Dates both point there.
+- **Trips map** — MapLibre map of trips over USGS topo/relief tiles, replacing the river-selector carousel; Relief + Region chosen as default. Graduating from demo flag to permanent homepage section in PR #70 (in review as of 2026-08-27); outpost data (incl. the Vernal HQ addition) pending Holiday confirmation.
+- **Find Your Trip wizard** — `/trip-finder`, merged behind the default-OFF `trip-finder` flag; scorer fields seeded with placeholder values pending Holiday confirmation.
 
 ## Known Gaps Not Yet Phased
 

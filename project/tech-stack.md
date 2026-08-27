@@ -10,6 +10,7 @@
 | **CMS** | Sanity | `^5.31.1` | Visual editing studio for non-technical staff, structured content with custom fields (replaces WP custom fields), real-time preview, generous free tier, excellent Next.js integration |
 | **Styling** | Tailwind CSS | `^4.3.3` | Rapid responsive development, design system consistency, small bundle size |
 | **Validation** | Zod | `^4.4.3` | Runtime validation at API boundaries (Arctic responses, route handler inputs) |
+| **Mapping** | MapLibre GL + react-map-gl | `^6.6.0` / `^8.1.2` | Homepage trips map over public-domain USGS tiles (added 2026-08-27, PR #61). Loaded via `next/dynamic` so the ~200 KB bundle is only fetched when the map renders |
 | **Hosting** | Vercel | — | Native Next.js support, global CDN, serverless functions for API proxying, Git-based deploys |
 | **Booking** | Arctic Reservations REST API | — | Replace iframes with native UI — public API for availability/search, authenticated API for reservations |
 | **Analytics** | Google Analytics + Meta Pixel (PostHog added later for product analytics) | — | GA for standard metrics, Meta pixel for retargeting. PostHog added once booking flow is live for conversion/funnel analysis |
