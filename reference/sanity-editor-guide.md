@@ -19,17 +19,17 @@ Two things in the Studio to ignore: the **Vision** tab (a developer query tool) 
 
 ## 2. Cheat sheet: what's what in our Studio
 
-The Studio sidebar lists our content types. **Homepage** and **Site Settings** are pinned at the top because there is exactly one of each. Everything below the divider is a list you can add to.
+The Studio sidebar is grouped. **Trips** sits at the top on its own. **Pages & Posts** and **Taxonomy** are folders you open. **Homepage** and **Site Settings** are pinned because there is exactly one of each, and **Form Submissions** holds the read-only inboxes.
 
 | Type | What it controls |
 | --- | --- |
 | **Homepage** | The homepage, organized in tabs: Hero, Featured Trips, Rafting Since 1966, River Selector, Learn & Get Inspired. Drag to reorder featured trips and rivers. |
 | **Site Settings** | Phone, email, address, review links, and social links shown across the whole site. |
 | **Trip** | The big one. Each Trip document is one trip page at `/trips/...`. Details below. |
-| **River** | Name, short description, and photo for each river. Powers the homepage river selector and the river pages. |
-| **Activity** | Rafting and biking. Powers the activity landing pages. |
-| **Trip Category** | Grouping labels for trips (used for filtering). |
-| **Specialty Type** | Specialty families like Canyon Concerts or Stargazing. Powers the `/specialty` hub and its pages. |
+| **Section** (under Taxonomy) | One per stretch of river or country — Westwater, Cataract, White Rim. **Section Name** is the stretch; **River Name** is the actual river ("Colorado River") and is what trip cards show. Powers the section pages at `/rivers/...`. |
+| **Trip Type** (under Taxonomy) | Rafting, Biking, and Combo. Powers the `/rafting` and `/biking` landing pages and the coloured tag on every trip card. |
+| **Specialty Type** (under Taxonomy) | Specialty families like Canyon Concerts or Stargazing. Powers the sections on the `/specialty` page — these no longer have pages of their own. |
+| **Trip Info Section** (under Pages & Posts) | Shared panels that appear near the bottom of every trip page — Packing List, Getting Here, Before You Go. Write it once here and it updates on every trip that uses it. |
 | **FAQ** | Question-and-answer entries with a category and a sort order. Trips reference these on their pages. |
 | **Page** | Freeform pages like About and Trip Insurance, built from Hero and Content blocks. |
 | **Blog Post** | Blog entries with a title, category, main image, and body. |
@@ -37,11 +37,16 @@ The Studio sidebar lists our content types. **Homepage** and **Site Settings** a
 
 ### The Trip document
 
-Trips have a lot of fields. The required ones are just **Trip Name**, **Slug**, and **River**. The rest fill out the page and the trip cards:
+Trip fields are split into tabs across the top of the document, so you only see one group at a time. The required ones are **Trip Name**, **Slug**, **Section**, and **Trip Type**.
 
-- **Card fields** (how the trip looks in grids): Card Tagline, Starting Price, Duration Label, and the first photo in **Photos** becomes the card image.
-- **Page body**: Description, Highlights, Itinerary (day-by-day entries), Photos (the page gallery, aim for 2 to 6), Trip FAQs, and Featured Review (one standout guest quote).
-- **Specialty fields**: adding a Specialty Type flags the trip as specialty and lists it on `/specialty`. Specialty Ribbon and Specialty Subtitle control the red card treatment.
+- **Basics**: name, slug, which Section the trip runs, and its Trip Type.
+- **Card** (how the trip looks in grids): Card Tagline, Starting Price, Duration Label, and Photos — the first photo becomes the card image and the page banner.
+- **Quick Facts** (the bar under the banner): Who's This Trip For, Meeting Place, Deposit, Minimum Age, Season.
+- **Trip Details** (the page body): **Trip Description**, Highlights, What's Included, Video, Itinerary, Trip Info Sections, Featured Review, Trip FAQs, and Related Trips.
+- **Trip Finder**: the structured fields the wizard matches on — Duration in days, Max Rapid Class, Season months, age overrides, craft types. Max Rapid Class also shows in the quick facts bar.
+- **Specialty**: adding a Specialty Type flags the trip as specialty and lists it in that family's section on `/specialty`. Specialty Ribbon and Specialty Subtitle (under Card) control the red card treatment.
+
+**Two fields are called Description, and they are not the same.** **Trip Description** (Trip Details tab) is this trip's own story and shows on `/trips/...`. **Section Description**, on the Section document, describes the stretch of river and shows on `/rivers/...`. Copy written for a trip page must go on the Trip.
 
 ### Things that are easy to get wrong
 
