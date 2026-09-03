@@ -23,7 +23,7 @@ The Studio sidebar is grouped. **Trips** sits at the top on its own. **Pages & P
 
 | Type | What it controls |
 | --- | --- |
-| **Homepage** | The homepage, organized in tabs: Hero, Featured Trips, Rafting Since 1966, River Selector, Learn & Get Inspired. Drag to reorder featured trips. The **River Selector** tab is an old name: the sections you pick there now appear as pins on the homepage map, and there is no longer a river carousel. |
+| **Homepage** | The homepage, organized in tabs: Hero, Featured Trips, Rafting Since 1966, Map, Learn & Get Inspired. Drag to reorder featured trips. The **Map** tab lists the Sections that appear as pins on the homepage map; order does not matter, and a new Section only shows once Darius has added its coordinates. |
 | **Site Settings** | Phone, email, address, review links, and social links shown across the whole site. |
 | **Trip** | The big one. Each Trip document is one trip page at `/trips/...`. Details below. |
 | **Section** (under Taxonomy) | One per stretch of river or country — Westwater, Cataract, White Rim. **Section Name** is the stretch; **River Name** is the actual river ("Colorado River") and is what trip cards show. Powers the section pages at `/rivers/...`. |
