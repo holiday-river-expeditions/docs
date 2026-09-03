@@ -9,7 +9,7 @@ A plain-English guide for Holiday's content editors. No coding involved. It cove
 One thing to know up front: almost all of Sanity's official training (the courses at [sanity.io/learn](https://www.sanity.io/learn)) is for developers building a Studio, not for editors using one. You can skip all of it. Our Studio is already built and customized for Holiday, so the fastest way to learn is inside it:
 
 1. Log in at [/studio](https://website-phi-six-25.vercel.app/studio) with the email you were invited with.
-2. Open **Trip → Cataract Canyon**. It is the model trip, fully filled out. Click through its fields and compare them with the live page at [/trips/cataract-canyon](https://website-phi-six-25.vercel.app/trips/cataract-canyon) to see what maps to what.
+2. Open **Trips → Cataract Canyon**. It is the model trip, fully filled out. Click through its fields and compare them with the live page at [/trips/cataract-canyon](https://website-phi-six-25.vercel.app/trips/cataract-canyon) to see what maps to what.
 3. Change something small (the Card Tagline is a good first edit), press **Publish**, and refresh the trip page. Seeing your own edit go live teaches more than any tutorial.
 4. Then draft one trip you know cold, using Cataract as the template.
 
@@ -23,7 +23,7 @@ The Studio sidebar is grouped. **Trips** sits at the top on its own. **Pages & P
 
 | Type | What it controls |
 | --- | --- |
-| **Homepage** | The homepage, organized in tabs: Hero, Featured Trips, Rafting Since 1966, River Selector, Learn & Get Inspired. Drag to reorder featured trips and rivers. |
+| **Homepage** | The homepage, organized in tabs: Hero, Featured Trips, Rafting Since 1966, River Selector, Learn & Get Inspired. Drag to reorder featured trips. The **River Selector** tab is an old name: the sections you pick there now appear as pins on the homepage map, and there is no longer a river carousel. |
 | **Site Settings** | Phone, email, address, review links, and social links shown across the whole site. |
 | **Trip** | The big one. Each Trip document is one trip page at `/trips/...`. Details below. |
 | **Section** (under Taxonomy) | One per stretch of river or country — Westwater, Cataract, White Rim. **Section Name** is the stretch; **River Name** is the actual river ("Colorado River") and is what trip cards show. Powers the section pages at `/rivers/...`. |
@@ -51,7 +51,7 @@ Trip fields are split into tabs across the top of the document, so you only see 
 ### Things that are easy to get wrong
 
 - **Slugs**: press the Generate button next to the slug field rather than typing one. Do not change a slug after a page is being shared, because the old link stops working.
-- **Related Trips can stay empty.** If you leave it empty, the site automatically shows three trips from the same river or activity. Only fill it when you want a specific hand-picked set.
+- **Related Trips can stay empty.** If you leave it empty, the site automatically shows three trips from the same Section or of the same Trip Type. Only fill it when you want a specific hand-picked set.
 - **The card ribbon has a fallback.** If a trip has no Specialty Ribbon of its own, it uses the Card Ribbon Label from its Specialty Type. You usually only need to set it in one place, on the Specialty Type.
 - **Specialty Departure dates must match Arctic exactly.** When you call out a single departure (for example the September bluegrass date), the Departure Start Date has to be the exact start date in Arctic Reservations. If the date is off by a day, the callout silently does not appear.
 - **Page slugs have reserved words.** A Page document cannot use slugs the site already owns, like `trips`, `contact`, `faq`, or `blog`. If a new Page does not show up, an unusual slug conflict is the first thing to check.
@@ -88,7 +88,7 @@ This has one big consequence: **upload the biggest, best original you have, and 
 
 - **Format**: JPEG is the right choice for photography. Export from your phone or photo library as JPEG (not HEIC). PNG is only for graphics like logos.
 - **File size**: large files are fine. A 5 to 20 MB JPEG is normal for a good original.
-- **Resolution**: for full-width banner spots (homepage hero, trip and river page heroes, the river selector), the site pulls copies up to 2880 pixels wide, so originals should be at least ~3000 px on the long edge. Cards and gallery photos need less, ~1600 px, but the same photo often fills both a card and a banner, so the simple rule is: if the original is under ~2500 px wide, look for a better one.
+- **Resolution**: for full-width banner spots (homepage hero, trip and section page heroes, the homepage map pins), the site pulls copies up to 2880 pixels wide, so originals should be at least ~3000 px on the long edge. Cards and gallery photos need less, ~1600 px, but the same photo often fills both a card and a banner, so the simple rule is: if the original is under ~2500 px wide, look for a better one.
 - **Orientation**: landscape for hero, river, and trip photos (heroes crop very wide, cards crop roughly square). Portrait, about 3:4, for the story photos and the Learn cards.
 - **No banner strips.** Do not reuse skinny pre-cropped headers from the old site (for example 2250×600 strips). They look grainy when the new site stretches them full-width. This is exactly what is wrong with several current river photos that are on the replace list in [[photo-upload-checklist]].
 - **Set the hotspot** after uploading: click the crop tool on the image, drag the circle onto the subject. Different spots on the site crop the same photo to different shapes, and the hotspot is what keeps the subject in frame everywhere.
