@@ -32,7 +32,7 @@ When the site is ready to launch:
 2. Make both repos private again (one click each in GitHub settings)
 3. Create new Vercel Pro projects connected to the private org repos
 4. Copy env vars, add domains (`holidayriver.com`, `beta.holidayriver.com`, docs domain)
-5. Point `holidayriverexpeditions.com` and `bikeraft.com` at 301 redirects to `holidayriver.com`
+5. Point `holidayriverexpeditions.com` and `bikeraft.com` at 301 redirects to `holidayriver.com` — full plan, per-domain rules, and the URL map in [[redirects]] and [[redirect-map]]. Note `holidayriver.com` is currently parked on SiteGround (301 to bikeraft.com, verified 2026-09-04), so its DNS has to move off SiteGround as part of this step
 6. Set `NEXT_PUBLIC_SITE_URL=https://holidayriver.com` (currently empty, so it falls back to the Vercel URL) and update the `vercel.json` beta host match
 7. Add the production domain to Sanity CORS origins (only `localhost:3000` is registered today — see [[sanity]])
 8. Update DNS, tear down Hobby projects
