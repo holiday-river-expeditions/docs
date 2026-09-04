@@ -1,0 +1,31 @@
+# Discussion
+- Lauren
+	- Trip wizard flow chart
+		- Default 3 day Westwater
+		- Add a panel with the logic exposed
+		- Expose the sources of data
+		- Specialty trips
+		- Pick multiple options
+			- Get rid of the bike + raft combo
+			- Specialty trips?
+			- Suggest multiple options
+		- One option is good
+	- Booking
+		- Floating menu option on the top
+		- Mobile pass through the website and create a floating menu
+		- Border on the menu
+		- Floating menu is out of order
+	- Contact us page
+		- info@holidayriver.com
+	- Map
+		- Aesthetic elements
+		- Highlighting the river stretch itself
+		- Key for rivers
+		- Hilary's map with the segment
+		- Draw a big line around the rough boundary of the Colorado plateau
+		- Oars on the map panel
+	- Map on the trip page
+		- More aesthetic and artsy
+		- Can still be interactive
+	- Fix broken publish workflow
+	- Automate the 60 badge with the current year
