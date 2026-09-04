@@ -25,6 +25,7 @@ The Studio sidebar is grouped. **Trips** sits at the top on its own. **Pages & P
 | --- | --- |
 | **Homepage** | The homepage, organized in tabs: Hero, Featured Trips, Rafting Since 1966, Map, Learn & Get Inspired. Drag to reorder featured trips. The **Map** tab lists the Sections that appear as pins on the homepage map; order does not matter, and a new Section only shows once Darius has added its coordinates. |
 | **Site Settings** | Phone, email, address, review links, and social links shown across the whole site. |
+| **Trip Finder** | The "Find Your Trip" wizard: its questions, answer buttons, photos, and how much each question counts. See [[trip-finder]]. |
 | **Trip** | The big one. Each Trip document is one trip page at `/trips/...`. Details below. |
 | **Section** (under Taxonomy) | One per stretch of river or country — Westwater, Cataract, White Rim. **Section Name** is the stretch; **River Name** is the actual river ("Colorado River") and is what trip cards show. Powers the section pages at `/rivers/...`. |
 | **Trip Type** (under Taxonomy) | Rafting, Biking, and Combo. Powers the `/rafting` and `/biking` landing pages and the coloured tag on every trip card. |
@@ -43,7 +44,7 @@ Trip fields are split into tabs across the top of the document, so you only see 
 - **Card** (how the trip looks in grids): Card Tagline, Starting Price, Duration Label, and Photos — the first photo becomes the card image and the page banner.
 - **Quick Facts** (the bar under the banner): Who's This Trip For, Meeting Place, Deposit, Minimum Age, Season.
 - **Trip Details** (the page body): **Trip Description**, Highlights, What's Included, Video, Itinerary, Trip Info Sections, Featured Review, Trip FAQs, and Related Trips.
-- **Trip Finder**: the structured fields the wizard matches on — Duration in days, Max Rapid Class, Season months, age overrides, craft types. Max Rapid Class also shows in the quick facts bar.
+- **Trip Finder**: the facts the wizard matches on: Duration in days, Max Rapid Class, Season months, age overrides, craft types. Max Rapid Class also shows in the quick facts bar. What each one does to matching is in [[trip-finder]], section 2. The current values are placeholders that need Holiday's confirmation.
 - **Specialty**: adding a Specialty Type flags the trip as specialty and lists it in that family's section on `/specialty`. Specialty Ribbon and Specialty Subtitle (under Card) control the red card treatment.
 
 **Two fields are called Description, and they are not the same.** **Trip Description** (Trip Details tab) is this trip's own story and shows on `/trips/...`. **Section Description**, on the Section document, describes the stretch of river and shows on `/rivers/...`. Copy written for a trip page must go on the Trip.
@@ -55,6 +56,10 @@ Trip fields are split into tabs across the top of the document, so you only see 
 - **The card ribbon has a fallback.** If a trip has no Specialty Ribbon of its own, it uses the Card Ribbon Label from its Specialty Type. You usually only need to set it in one place, on the Specialty Type.
 - **Specialty Departure dates must match Arctic exactly.** When you call out a single departure (for example the September bluegrass date), the Departure Start Date has to be the exact start date in Arctic Reservations. If the date is off by a day, the callout silently does not appear.
 - **Page slugs have reserved words.** A Page document cannot use slugs the site already owns, like `trips`, `contact`, `faq`, or `blog`. If a new Page does not show up, an unusual slug conflict is the first thing to check.
+
+### The Trip Finder document
+
+The wizard's questions are content too. Open **Trip Finder** in the sidebar to see them in order. Each question has its words, its background photo, a weight, optional "only ask when" and "skip when" rules, and its answer buttons. Each answer carries one number (a "dial") telling the matcher what it means, such as "Some splash" meaning Class 3. The one field to leave alone is **Kind**, which links a question to its matcher. Everything else, including adding and removing answers, is yours to change. The full walkthrough is in [[trip-finder]].
 
 ### What is not in Sanity
 
@@ -100,3 +105,5 @@ This has one big consequence: **upload the biggest, best original you have, and 
 - [[photo-upload-checklist]] — which photos still need replacing, and where the current ones came from
 - [[sanity]] — technical reference for the Sanity setup
 - [[sanity-revalidation-webhook]] — how publishes reach the site
+- [[trip-finder]] — the Find Your Trip wizard and what you can edit in it
+- [[demo-panel-guide]] — the hidden switches for previewing unreleased ideas on the test site
