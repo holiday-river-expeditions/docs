@@ -94,7 +94,7 @@ Work from the Aug 20 sync feedback and the exploration week that no phase checkb
 - **Live river flow (CFS)** — USGS-driven flow chip + 7-day sparkline on trip and river pages, behind the `river-flow` flag until Holiday signs off.
 - **Booking IA** — `/book` "Book Your Trip" page with month filter (see Phase 3 note above); Book Now CTA and footer Trip Dates both point there.
 - **Trips map** — MapLibre map of trips over USGS relief tiles, now the permanent public homepage section replacing the river-selector carousel (PR #70, merged 2026-08-27; the `trips-map` demo flag is retired). Relief + Region default; outpost data (incl. the Vernal HQ addition) pending Holiday confirmation.
-- **Find Your Trip wizard** — `/trip-finder`, merged behind the default-OFF `trip-finder` flag; scorer fields seeded with placeholder values pending Holiday confirmation.
+- **Find Your Trip wizard** — `/trip-finder`, merged behind the `trip-finder` flag on 2026-08-27 and graduated to live-for-everyone on 2026-09-04, when its questions moved into the Sanity Trip Finder singleton. Per-trip scorer fields still carry placeholder values pending Holiday confirmation. See [[trip-finder]].
 
 ## Known Gaps Not Yet Phased
 

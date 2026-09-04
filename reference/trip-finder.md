@@ -8,7 +8,7 @@ A plain-English guide to the "Find Your Trip" wizard: what it is, which parts Ho
 
 The wizard lives at [/trip-finder](https://website-phi-six-25.vercel.app/trip-finder). Each question is a full-screen photo with a handful of answer buttons and a skip link. Every answer button is an ordinary link that adds one word to the page address, so a half-finished wizard can be shared, the browser's Back button works, and it needs no JavaScript.
 
-Right now the entry points (the homepage "Find Your Trip" band, the floating pill, and the hero button) are hidden behind the **Find Your Trip wizard** switch in the demo panel. See [[demo-panel-guide]] for how to turn that on. The page itself can always be reached by typing the address.
+It is live for every visitor: the homepage has a "Find Your Trip" band with the first question already on it, a floating "Find Your Trip" pill follows visitors around the site, and the homepage hero button goes wherever the Studio's Homepage → Hero CTA Link points (set it to `/trip-finder` to send people straight in).
 
 ## 2. What Holiday can change without a developer
 
@@ -116,13 +116,13 @@ Because every answer is a link, the panel updates with each click.
 - Questions: Sanity document type `tripFinderSpec` (singleton, `website/src/sanity/schemas/trip-finder-spec.ts`), read by `tripFinderSpecQuery`, validated with Zod and normalised in `src/lib/trip-finder-spec.ts`. `resolveTripFinderSpec()` returns the live spec or `DEFAULT_TRIP_FINDER_SPEC` from `src/lib/trip-finder.ts`, and never throws.
 - Logic: `src/lib/trip-finder.ts`. Pure functions, every one taking the spec first: URL parsing, step and progress rules, `scoreTrips()`. The formula constants are the exported `SCORING` object. Each `TripMatch` carries a per-question `breakdown`.
 - Route: `src/app/trip-finder/page.tsx`, ISR with `revalidate = 60`. Fetches the spec and the catalog on every step, and Arctic departures only on results.
-- Components: `TripFinderWizard`, `TripFinderResults`, `TripFinderEntry` (homepage), `TripFinderFab` (floating pill, the only client component), `TripFinderLogicPanel` (gated by the `finder-logic` flag).
+- Components: `TripFinderWizard`, `TripFinderResults`, `TripFinderEntry` (homepage), `TripFinderFab` (floating pill, the only client component), `TripFinderLogicPanel` (gated by the `finder-logic` flag). The `trip-finder` entry-point flag was retired 2026-09-04.
 - Seed: `scripts/seed-trip-finder-spec.mjs` writes the singleton from the in-code default and uploads the background photos. Run with `node --experimental-strip-types`. Idempotent.
 - Tests: `src/lib/trip-finder.test.ts`, `src/lib/trip-finder-spec.test.ts`, `src/components/ui/TripFinderLogicPanel.test.tsx`, `src/app/trip-finder/page.test.tsx`, `e2e/trip-finder.spec.ts`, and two entries in `e2e/a11y.spec.ts`.
 
 ## Related
 
-- [[demo-panel-guide]] — turning on the wizard entry points and the logic panel
+- [[demo-panel-guide]] — turning on the logic panel
 - [[sanity-editor-guide]] — the Studio in general, and the Trip document's tabs
 - [[architecture]] — where the route and the content models sit
 - [[arctic-api-endpoints]] — the Arctic calls behind the availability line

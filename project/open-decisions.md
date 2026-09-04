@@ -35,8 +35,8 @@ We're proposing a simplified 6-item nav (down from 7 with overlapping categories
 - Whether Mountain Biking needs its own top-level nav item
 - Whether any trip categories must stay top-level (vs. becoming filters)
 
-## Trip Finder / Quiz #decision-needed
-Proposing an interactive "Help me choose" flow for new visitors. Is this a launch priority (Phase 1) or can it come later (Phase 2)? Significant build effort.
+## Trip Finder / Quiz ✅ Decided
+Launch priority (Phase 1). Decided 2026-09-04. Built as the "Find Your Trip" wizard at `/trip-finder`, live for every visitor since 2026-09-04 (homepage section, hero button, floating pill). Its questions, answers, photos and weights are edited in the Studio under Trip Finder; the six trips' matching values are placeholders Holiday still needs to confirm. See [[trip-finder]].
 
 ## Blog Migration Scope #decision-needed
 Current site has **167 blog posts** across 5 categories. Options:

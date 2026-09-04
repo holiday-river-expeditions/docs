@@ -38,14 +38,15 @@ The logo in the header and footer. The default is the original horizontal lockup
 
 ### Find Your Trip
 
-- **Find Your Trip wizard.** Shows the homepage "Find Your Trip" band, swaps the hero button to point at the wizard, and adds a floating link on every page. The wizard itself is always reachable at `/trip-finder`; this switch only controls the ways in. See [[trip-finder]].
+The wizard itself is live for everyone as of 2026-09-04, so there is no longer a switch for it. One switch remains:
+
 - **Trip finder logic panel.** Adds an explainer under the wizard and its results showing where the questions came from, what has been answered, how every trip scored and why, and which trips are missing facts. Meant for reviewing the wizard, not for visitors. See [[trip-finder]], section 6.
 
 ## 3. Things worth knowing
 
 - **Nothing is deployed by flipping a switch.** Every variant is already built into the site and hidden. A switch just reveals it in your browser. Making one the default for everybody is a code change and a request for Darius.
 - **The `/admin` page has no password.** That is on purpose: the switches only ever change the visitor's own browser, so there is nothing to protect. The page is kept out of search engines.
-- **Switches only hide things.** Anyone who knows the address `/trip-finder` can open the wizard whether or not the switch is on. That is inherent to how per-browser switches work and is fine on the unlisted test site.
+- **Switches only hide things.** A page or feature behind a switch is still on the site, just not linked to. Anyone who knows its address can open it. That is inherent to how per-browser switches work and is fine on the unlisted test site.
 - **Demoing to someone else.** Have them visit `/admin` on their own device and tick the same switches. There is no way to turn a switch on for someone else remotely.
 
 ## Related
