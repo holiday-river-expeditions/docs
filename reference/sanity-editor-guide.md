@@ -51,6 +51,7 @@ Trip fields are split into tabs across the top of the document, so you only see 
 
 ### Things that are easy to get wrong
 
+- **Old drafts can overwrite good content.** If you open a document and the Studio shows changes you do not remember making (a yellow "unpublished changes" note, or fields that look older than the live site), do not edit on top of them. Open the document menu (three dots by Publish) and choose **Discard changes** first, then make your edit and publish. Publishing a stale draft replaces the whole document with the draft's version. This happened on 2026-09-04: a hero link edit on the Homepage published an old draft and dropped the two story photos and the button text, which had to be restored from history.
 - **Slugs**: press the Generate button next to the slug field rather than typing one. Do not change a slug after a page is being shared, because the old link stops working.
 - **Related Trips can stay empty.** If you leave it empty, the site automatically shows three trips from the same Section or of the same Trip Type. Only fill it when you want a specific hand-picked set.
 - **The card ribbon has a fallback.** If a trip has no Specialty Ribbon of its own, it uses the Card Ribbon Label from its Specialty Type. You usually only need to set it in one place, on the Specialty Type.
