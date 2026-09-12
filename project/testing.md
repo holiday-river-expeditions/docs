@@ -2,12 +2,12 @@
 
 ## Current Suite Size
 
-As of 2026-08-27:
+As of 2026-09-10:
 
 | Suite | Files | Cases |
 |-------|-------|-------|
-| Vitest (unit + integration) | 14 | 117 |
-| Playwright (E2E) | 8 | 28 |
+| Vitest (unit + integration) | 20 | 158 |
+| Playwright (E2E) | 8 | 24 |
 
 The E2E specs are `a11y.spec.ts`, `book-filter.spec.ts`, `demo-flags.spec.ts`, `header.spec.ts`, `home.spec.ts`, `section-nav.spec.ts`, `trip-finder.spec.ts`, and `trips-map.spec.ts`. The a11y spec registers one test per scanned route (9 routes as of this count), so its runtime case count grows whenever a route joins the axe sweep.
 

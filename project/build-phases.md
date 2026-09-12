@@ -67,7 +67,7 @@
 - [ ] TripAdvisor review integration (embed or API)
 - [ ] Google Reviews display
 - [ ] Authority badges/callouts (60 years, awards, certifications)
-- [ ] Push visitors to leave reviews on 3rd party platforms
+- [ ] Push visitors to leave reviews on 3rd party platforms — _partly: trip pages carry a "What Guests Say" carousel of curated quotes with "Read more on TripAdvisor" / Google links (2026-09-10); no embed or API yet_
 
 ## Phase 6: Analytics, SEO & Polish
 
@@ -95,6 +95,18 @@ Work from the Aug 20 sync feedback and the exploration week that no phase checkb
 - **Booking IA** — `/book` "Book Your Trip" page with month filter (see Phase 3 note above); Book Now CTA and footer Trip Dates both point there.
 - **Trips map** — MapLibre map of trips over USGS relief tiles, now the permanent public homepage section replacing the river-selector carousel (PR #70, merged 2026-08-27; the `trips-map` demo flag is retired). Relief + Region default; outpost data (incl. the Vernal HQ addition) pending Holiday confirmation.
 - **Find Your Trip wizard** — `/trip-finder`, merged behind the `trip-finder` flag on 2026-08-27 and graduated to live-for-everyone on 2026-09-04, when its questions moved into the Sanity Trip Finder singleton. Per-trip scorer fields still carry placeholder values pending Holiday confirmation. See [[trip-finder]].
+
+## Shipped Outside the Phases (Sep 10, 2026)
+
+The remaining Aug 20 and Sep 3 feedback, on branch `feature/remaining-feedback` (see the 2026-09-10 session log for the technical record):
+
+- **Trip page rebuilt to Justin's build-out doc** — hero-height banner; vertical quick facts beside an interactive map of the section's stretch with photo points from the Section document; photo slideshow; Dates & Availability last; reviews carousel with platform links after it.
+- **Homepage map** — real river-stretch geometry (USGS NHD) with a per-river key, dashed White Rim route, and a rough Colorado Plateau outline.
+- **Rafting / Biking pages** — "View All Trips" expands the rest of the catalog in place.
+- **Anniversary seal** — year count computed from 1966; the 60 artwork stays, and a plus is added ("60+") once it passes 60.
+- **Trip finder go-to trip** — Studio-set fallback (Gates of Lodore) leads the results when the visitor has answered fewer than two questions.
+- **Contact page** — email now comes from Site Settings; code fallback is `info@holidayriver.com`. The Studio still holds the old address (Darius/Holiday to change once the mailbox exists).
+- **`bars-top` demo flag** — floating bars docked under the header, for comparison.
 
 ## Known Gaps Not Yet Phased
 

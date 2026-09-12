@@ -32,9 +32,10 @@ The logo in the header and footer. The default is the original horizontal lockup
 ### Layout and behaviour
 
 - **Floating bars appear on scroll.** The floating section menu and the booking filter bar stay hidden until you scroll. Off, they are always visible.
+- **Floating bars at the top.** The same two bars dock just under the header instead of sitting at the bottom of the screen (Lauren's Sep 3 suggestion). Off, they stay at the bottom.
 - **Sticky header.** The header with the logo and navigation stays at the top while scrolling.
 - **Live river flow (CFS).** A current flow reading with a seven-day sparkline on trip and section pages, from USGS gauges.
-- **Animated anniversary badge.** The 60-year seal on the homepage hero stamps into place on load.
+- **Animated anniversary badge.** The anniversary seal on the homepage hero stamps into place on load. (The number on the seal is not a switch: it is worked out from 1966 automatically, so it will read "60+" from 1 January 2027 by itself.)
 
 ### Find Your Trip
 

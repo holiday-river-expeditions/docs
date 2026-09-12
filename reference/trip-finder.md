@@ -65,7 +65,7 @@ Leaving a field empty is safe. The matcher treats a missing fact as unknown and 
 
 ## 4. How a pick is made
 
-In words: every question the visitor actually answered gives each trip a score from 0 to 1. Those scores are averaged, with heavier questions counting more. Skipped questions are left out entirely, so skipping never hurts a trip. The highest average is the best match and the next two are the runners-up. If even the best score is low, the page stops calling it a "Best Match" and leads with the phone number instead.
+In words: every question the visitor actually answered gives each trip a score from 0 to 1. Those scores are averaged, with heavier questions counting more. Skipped questions are left out entirely, so skipping never hurts a trip. The highest average is the best match and the next two are the runners-up. If the visitor answered fewer than two questions, the page stops calling it a "Best Match": the **Go-to trip** from the Tuning tab leads the results as "a good place to start", with the top scorers following it, and the phone number is offered alongside (with no go-to trip set, the page leads with the phone number alone). If the visitor answered everything and the best score is still low, the page keeps the scored order and says so ("Close — this is what guides are for"). If the youngest guest is under every trip's minimum age, the page says that instead ("The littlest one needs a few more birthdays") and shows the nearest trip with its age rule — every trip Holiday runs has a minimum age of 7 or more, so "kids under 5" always lands here.
 
 The numbers, for anyone who wants them:
 
@@ -78,6 +78,7 @@ The numbers, for anyone who wants them:
 - **Ties** go to the trip with more known facts, then alphabetically.
 - **Best Match threshold** is 0.35 (Studio → Trip Finder → Tuning). The page also needs at least two real answers before it will claim a best match.
 - **Results shown** is 3 (same Tuning tab).
+- **Go-to trip** (same Tuning tab, added 2026-09-10) is the trip that leads when the visitor has answered fewer than two questions. Set to Gates of Lodore (Darius, 2026-09-11; Lauren had suggested the 3-day Westwater at the Sep 3 sync). It is skipped if the visitor's youngest guest is under its minimum age.
 
 ## 5. Where the information comes from
 

@@ -27,7 +27,7 @@ The Studio sidebar is grouped. **Trips** sits at the top on its own. **Pages & P
 | **Site Settings** | Phone, email, address, review links, and social links shown across the whole site. |
 | **Trip Finder** | The "Find Your Trip" wizard: its questions, answer buttons, photos, and how much each question counts. See [[trip-finder]]. |
 | **Trip** | The big one. Each Trip document is one trip page at `/trips/...`. Details below. |
-| **Section** (under Taxonomy) | One per stretch of river or country — Westwater, Cataract, White Rim. **Section Name** is the stretch; **River Name** is the actual river ("Colorado River") and is what trip cards show. Powers the section pages at `/rivers/...`. |
+| **Section** (under Taxonomy) | One per stretch of river or country — Westwater, Cataract, White Rim. **Section Name** is the stretch; **River Name** is the actual river ("Colorado River") and is what trip cards show. Powers the section pages at `/rivers/...`. **Map Photo Points** pins photos to places along the stretch (a rapid, a camp, a side canyon): click the little map in the Location field to drop the pin, add the photo and a caption, and every trip on that section shows it on its trip-page map. |
 | **Trip Type** (under Taxonomy) | Rafting, Biking, and Combo. Powers the `/rafting` and `/biking` landing pages and the coloured tag on every trip card. |
 | **Specialty Type** (under Taxonomy) | Specialty families like Canyon Concerts or Stargazing. Powers the sections on the `/specialty` page — these no longer have pages of their own. |
 | **Trip Info Section** (under Pages & Posts) | Shared panels that appear near the bottom of every trip page — Packing List, Getting Here, Before You Go. Write it once here and it updates on every trip that uses it. |
@@ -43,7 +43,7 @@ Trip fields are split into tabs across the top of the document, so you only see 
 - **Basics**: name, slug, which Section the trip runs, and its Trip Type.
 - **Card** (how the trip looks in grids): Card Tagline, Starting Price, Duration Label, and Photos — the first photo becomes the card image and the page banner.
 - **Quick Facts** (the bar under the banner): Who's This Trip For, Meeting Place, Deposit, Minimum Age, Season.
-- **Trip Details** (the page body): **Trip Description**, Highlights, What's Included, Video, Itinerary, Trip Info Sections, Featured Review, Trip FAQs, and Related Trips.
+- **Trip Details** (the page body): **Trip Description**, Highlights, What's Included, Video, Itinerary, Trip Info Sections, Lead Review and More Reviews (together they fill the "What Guests Say" carousel near the bottom of the trip page; paste quotes from TripAdvisor or Google with the reviewer's name and the platform as the source), Trip FAQs, and Related Trips.
 - **Trip Finder**: the facts the wizard matches on: Duration in days, Max Rapid Class, Season months, age overrides, craft types. Max Rapid Class also shows in the quick facts bar. What each one does to matching is in [[trip-finder]], section 2. The current values are placeholders that need Holiday's confirmation.
 - **Specialty**: adding a Specialty Type flags the trip as specialty and lists it in that family's section on `/specialty`. Specialty Ribbon and Specialty Subtitle (under Card) control the red card treatment.
 
@@ -60,7 +60,7 @@ Trip fields are split into tabs across the top of the document, so you only see 
 
 ### The Trip Finder document
 
-The wizard's questions are content too. Open **Trip Finder** in the sidebar to see them in order. Each question has its words, its background photo, a weight, optional "only ask when" and "skip when" rules, and its answer buttons. Each answer carries one number (a "dial") telling the matcher what it means, such as "Some splash" meaning Class 3. The one field to leave alone is **Kind**, which links a question to its matcher. Everything else, including adding and removing answers, is yours to change. The full walkthrough is in [[trip-finder]].
+The wizard's questions are content too. Open **Trip Finder** in the sidebar to see them in order. Each question has its words, its background photo, a weight, optional "only ask when" and "skip when" rules, and its answer buttons. Each answer carries one number (a "dial") telling the matcher what it means, such as "Some splash" meaning Class 3. The one field to leave alone is **Kind**, which links a question to its matcher. Everything else, including adding and removing answers, is yours to change. The **Tuning** tab also holds the **Go-to trip**: when a visitor's answers are too thin to call a Best Match, this trip leads the results as "a good place to start" (currently Gates of Lodore). The full walkthrough is in [[trip-finder]].
 
 ### What is not in Sanity
 
