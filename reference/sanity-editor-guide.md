@@ -24,7 +24,7 @@ The Studio sidebar is grouped. **Trips** sits at the top on its own. **Pages & P
 | Type | What it controls |
 | --- | --- |
 | **Homepage** | The homepage, organized in tabs: Hero, Featured Trips, Rafting Since 1966, Map, Learn & Get Inspired. Drag to reorder featured trips. The **Map** tab lists the Sections that appear as pins on the homepage map; order does not matter, and a new Section only shows once Darius has added its coordinates. |
-| **Site Settings** | Phone, email, address, review links, and social links shown across the whole site. |
+| **Site Settings** | Phone, email, address, review links, social links, and the What's Included list that every trip page shows. |
 | **Trip Finder** | The "Find Your Trip" wizard: its questions, answer buttons, photos, and how much each question counts. See [[trip-finder]]. |
 | **Trip** | The big one. Each Trip document is one trip page at `/trips/...`. Details below. |
 | **Section** (under Taxonomy) | One per stretch of river or country — Westwater, Cataract, White Rim. **Section Name** is the stretch; **River Name** is the actual river ("Colorado River") and is what trip cards show. Powers the section pages at `/rivers/...`. **Map Photo Points** pins photos to places along the stretch (a rapid, a camp, a side canyon): click the little map in the Location field to drop the pin, add the photo and a caption, and every trip on that section shows it on its trip-page map. |
@@ -43,9 +43,15 @@ Trip fields are split into tabs across the top of the document, so you only see 
 - **Basics**: name, slug, which Section the trip runs, and its Trip Type.
 - **Card** (how the trip looks in grids): Card Tagline, Starting Price, Duration Label, and Photos — the first photo becomes the card image and the page banner.
 - **Quick Facts** (the bar under the banner): Who's This Trip For, Meeting Place, Deposit, Minimum Age, Season.
-- **Trip Details** (the page body): **Trip Description**, Highlights, What's Included, Video, Itinerary, Trip Info Sections, Lead Review and More Reviews (together they fill the "What Guests Say" carousel near the bottom of the trip page; paste quotes from TripAdvisor or Google with the reviewer's name and the platform as the source), Trip FAQs, and Related Trips.
+- **Trip Details** (the page body): **Trip Description**, Highlights, What's Included (override), Land Acknowledgement, Video, Itinerary, Trip Info Sections, Lead Review and More Reviews (together they fill the "What Guests Say" carousel near the bottom of the trip page; paste quotes from TripAdvisor or Google with the reviewer's name and the platform as the source), Trip FAQs, and Related Trips.
 - **Trip Finder**: the facts the wizard matches on: Duration in days, Max Rapid Class, Season months, age overrides, craft types. Max Rapid Class also shows in the quick facts bar. What each one does to matching is in [[trip-finder]], section 2. The current values are placeholders that need Holiday's confirmation.
 - **Specialty**: adding a Specialty Type flags the trip as specialty and lists it in that family's section on `/specialty`. Specialty Ribbon and Specialty Subtitle (under Card) control the red card treatment.
+
+**What's Included is written once.** The checklist under Highlights is the same on every trip, so the list lives on **Site Settings** and the trip's own What's Included field stays empty. Fill the trip's field only when that trip differs (Desolation), and it replaces the shared list on that page alone.
+
+**Land Acknowledgement** is one short paragraph per trip, naming the homelands the trip travels through with a link to the full acknowledgement. It shows in its own box under the description.
+
+**Horizontal rules.** Every text editor (Trip Description, FAQ answers, Trip Info Sections, page content) can insert a horizontal rule: put the cursor on an empty line, open the insert menu (the **+** in the toolbar) and pick **Horizontal Rule**. It draws a thin line across the text on the site.
 
 **Two fields are called Description, and they are not the same.** **Trip Description** (Trip Details tab) is this trip's own story and shows on `/trips/...`. **Section Description**, on the Section document, describes the stretch of river and shows on `/rivers/...`. Copy written for a trip page must go on the Trip.
 
