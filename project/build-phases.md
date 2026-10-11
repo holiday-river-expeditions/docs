@@ -113,7 +113,7 @@ The remaining Aug 20 and Sep 3 feedback, on branch `feature/remaining-feedback` 
 - No `generateStaticParams` anywhere — every dynamic route is ISR-on-demand (60s), nothing is prebuilt
 - No tests on any `/api/*` route handler or `cart-cookie.ts` — the booking path is the least-covered code
 - `/rivers` index does not exist (only `/rivers/[slug]`); `/store` and `/trip-dates` are reserved slugs that 404
-- ~12 bookable Arctic products still have no Sanity trip page ([[arctic-api]])
+- ~~~12 bookable Arctic products still have no Sanity trip page~~ Resolved 2026-10-11: every Arctic trip type with 2027 departures is linked to a trip page. White Rim, San Rafael Swell, Labyrinth Canyon and the two combos got new pages, and the 8 and 12 day fall hiking trips and Westwater/Ruby 4 day became length options on Cataract and Westwater ([[arctic-api]])
 - 167 legacy blog posts remain unmigrated pending the migration-scope decision ([[open-decisions]])
 
 ## Related

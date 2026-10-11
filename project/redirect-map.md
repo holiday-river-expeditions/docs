@@ -13,7 +13,7 @@
 
 Rule order matters in WordPress: exact rows first, then pattern rows, then the catch-all. Run `node website/scripts/verify-redirect-map.mjs docs/project/redirect-map.md --targets <prod url>` to re-check every `ready` and `pending` row against production.
 
-The new site's `/rivers/<slug>` pages are **canyon sections** (Cataract, Desolation, Westwater, White Rim, the Maze, San Rafael, Gates of Lodore, San Juan, Yampa), not the old "Green River / Colorado River" landing pages. Old canyon pages map there when no bookable `/trips/<slug>` exists yet.
+The new site's `/rivers/<slug>` pages are **canyon sections** (Cataract, Desolation, Westwater, White Rim, the Maze, San Rafael, Labyrinth, Gates of Lodore, San Juan, Yampa), not the old "Green River / Colorado River" landing pages. Old canyon pages map there when no bookable `/trips/<slug>` exists yet.
 
 ---
 
@@ -52,10 +52,10 @@ The new site's `/rivers/<slug>` pages are **canyon sections** (Cataract, Desolat
 | `/utah-white-water-rafting/desolation-canyon/` | `/rivers/desolation` | 1:1 | ready | Only the bluegrass music trip is live under `/trips`. Switch to `/trips/desolation-canyon` when the standard trip ships. |
 | `/utah-white-water-rafting/fisher-towers-moab-river-rafting/` | `/trips/fisher-towers` | 1:1 | pending | No river or trip page yet. |
 | `/utah-white-water-rafting/westwater-canyon-rafting/` | `/trips/westwater-canyon` | 1:1 | ready | |
-| `/utah-white-water-rafting/san-juan-upper-canyon/` | `/trips/san-juan-river` | section | ready | Upper/Lower/Full are one trip on the new site so far. Split later if Holiday wants three. |
+| `/utah-white-water-rafting/san-juan-upper-canyon/` | `/trips/san-juan-river` | section | ready | Upper, Lower and Full are length options on one trip page (linked to all three Arctic trips 2026-10-11). |
 | `/utah-white-water-rafting/san-juan-lower-canyon/` | `/trips/san-juan-river` | section | ready | |
 | `/utah-white-water-rafting/san-juan-river/` | `/trips/san-juan-river` | 1:1 | ready | |
-| `/green-river-rafting/labyrinth-canyon-rafting-trip/` | `/trips/labyrinth-canyon` | 1:1 | pending | No river or trip page yet. |
+| `/green-river-rafting/labyrinth-canyon-rafting-trip/` | `/trips/labyrinth-canyon` | 1:1 | ready | Trip page published 2026-10-11. |
 | `/colorado-white-water-rafting/lodore-canyon/` | `/trips/gates-of-lodore` | 1:1 | ready | |
 
 ## Mountain biking
@@ -63,17 +63,17 @@ The new site's `/rivers/<slug>` pages are **canyon sections** (Cataract, Desolat
 | Old path | New target | Kind | Status | Note |
 |---|---|---|---|---|
 | `/mountain-biking-trips/` | `/biking` | 1:1 | ready | |
-| `/mountain-biking-trips/white-rim-trail-mountain-bike-tour/` | `/rivers/white-rim` | 1:1 | ready | Switch to `/trips/white-rim` when the trip ships. |
+| `/mountain-biking-trips/white-rim-trail-mountain-bike-tour/` | `/trips/white-rim` | 1:1 | ready | Trip page published 2026-10-11. |
 | `/mountain-biking-trips/the-maze/` | `/trips/the-maze` | 1:1 | ready | |
-| `/mountain-biking-trips/san-rafael-swell/` | `/rivers/san-rafael` | 1:1 | ready | Switch to `/trips/san-rafael-swell` when the trip ships. |
+| `/mountain-biking-trips/san-rafael-swell/` | `/trips/san-rafael-swell` | 1:1 | ready | Trip page published 2026-10-11. |
 
 ## Multi-sport combinations
 
 | Old path | New target | Kind | Status | Note |
 |---|---|---|---|---|
-| `/multi-sport-combination/` | `/biking` | section | decision | No combo trips on the new site yet. |
-| `/multi-sport-combination/moab-westwater-combination/` | `/biking` | section | decision | Or `/trips/westwater-canyon`. |
-| `/multi-sport-combination/white-rim-trail-cataract-canyon-combination/` | `/biking` | section | decision | Or `/trips/cataract-canyon`. |
+| `/multi-sport-combination/` | `/biking` | section | ready | Combo trips list under Biking. |
+| `/multi-sport-combination/moab-westwater-combination/` | `/trips/moab-westwater-combination` | 1:1 | ready | Trip page published 2026-10-11. |
+| `/multi-sport-combination/white-rim-trail-cataract-canyon-combination/` | `/trips/white-rim-cataract-combination` | 1:1 | ready | Trip page published 2026-10-11. |
 
 ## Trip type / category pages
 
@@ -130,8 +130,8 @@ The `/specialty` hub has anchors `canyon-concerts`, `stargazing`, `womens`, `you
 |---|---|---|---|---|
 | `/specialty-river-rafting-trips/` | `/specialty` | 1:1 | ready | |
 | `/specialty-river-rafting-trips/kayak-workshop/` | `/specialty` | section | decision | No kayak family. Is the workshop continuing? |
-| `/specialty-river-rafting-trips/fall-extended-hiking-trip-stargazing/` | `/specialty#stargazing` | section | ready | |
-| `/specialty-river-rafting-trips/green-river-rafting-labyrinth-canyon-hiking-trip/` | `/specialty` | section | decision | Or `/trips/labyrinth-canyon` once it exists. |
+| `/specialty-river-rafting-trips/fall-extended-hiking-trip-stargazing/` | `/trips/cataract-canyon` | section | ready | The 8 and 12 day fall hiking trips are length options on the Cataract page (2026-10-11). There is no hiker page. |
+| `/specialty-river-rafting-trips/green-river-rafting-labyrinth-canyon-hiking-trip/` | `/trips/labyrinth-canyon` | section | ready | Labyrinth's 2027 departures are these hiking specials. |
 | `/specialty-river-rafting-trips/meditation-and-sound-baths-on-the-green-river/` | `/trips/cataract-canyon` | section | ready | Already a two-hop chain on the old site (→ Boats, Buddha & the Blues → Cataract). Retarget directly. |
 | `/specialty-river-rafting-trips/river-read-author-series-with-craig-childs/` | `/specialty` | section | decision | |
 | `/specialty-river-rafting-trips/writers-workshop-on-the-yampa-river/` | `/specialty` | section | decision | |
@@ -246,7 +246,7 @@ Posts whose subject has a clear home on the new site. Everything else falls thro
 | `/understanding-san-juan-river-water-levels/` | `/rivers/san-juan` | section | ready | |
 | `/who-wants-to-play-in-the-doll-house/` | `/rivers/maze` | section | ready | The Doll House is in the Maze district. |
 | `/insiders-guide-to-rafting-the-colorado-river-through-cataract-canyon/` | `/trips/cataract-canyon` | section | ready | Live but not in the sitemap (noindexed). Old SEO plan consolidation. |
-| `/insiders-guide-to-floating-on-the-green-river-through-labyrinth-canyon/` | `/trips/labyrinth-canyon` | section | pending | Live but not in the sitemap. |
+| `/insiders-guide-to-floating-on-the-green-river-through-labyrinth-canyon/` | `/trips/labyrinth-canyon` | section | ready | Live but not in the sitemap. |
 | `/insiders-guide-to-biking-utahs-white-rim-trail/` | `/rivers/white-rim` | section | ready | Live but not in the sitemap. Existing WordPress rule sends the "top five reasons" post here. |
 | `/the-story-of-dark-canyon-rapid-part-1/` | `/rivers/cataract` | section | ready | Dark Canyon rapid is in Cataract. Old SEO plan flags this post as ranking; consider migrating it 1:1 instead. |
 | `/the-story-of-dark-canyon-rapid-continued/` | `/rivers/cataract` | section | ready | |
