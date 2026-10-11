@@ -189,6 +189,7 @@ Full cart lifecycle exercised against production (test cart created + emptied; c
 - Trip detail pages: "Dates & Availability" section (`AvailabilitySection` + `DepartureList`) with seat-count urgency badges and per-departure Book links.
 - `/open-seats`: all public upcoming departures grouped by trip, linked to Sanity trip pages via the `arcticTripId` mapping. Footer "Trip Dates" and `/book` point here.
 - Unit tests mock fetch per the no-sandbox decision (`src/lib/arctic/client.test.ts`).
+- **Fetch caching (2026-10-11):** Arctic fetches pass no `cache` option. `cache: 'no-store'` turned every ISR page that shows Arctic data into a dynamic route. With no option, Next fetches fresh on each ISR regeneration and on each route-handler request, so prices and dates stay at most 60s behind (plus the 10-minute in-process caches). Every catch in `src/lib/arctic/` calls `unstable_rethrow` first, so a Next control-flow error is never logged and swallowed as an Arctic failure.
 
 ## Built (cart + booking slice, 2026-08-11)
 
