@@ -23,7 +23,7 @@ Obsidian vault for project documentation, meeting notes, research, and design de
 
 - `meetings/` — all meeting notes, including weekly syncs
 - `project/open-decisions.md` — decisions and their status
-- Task lists and action items anywhere in the vault
+- Task lists and action items anywhere in the vault (Claude keeps Darius's to-do list outside the vault, see Conventions)
 
 **Machine-owned (Claude):**
 
@@ -36,6 +36,6 @@ Obsidian vault for project documentation, meeting notes, research, and design de
 - Weekly sync notes: `meetings/YYYY-MM-DD-weekly-sync.md`, started from [[weekly-sync]] template in `templates/`
 - Progress logs: `progress/YYYY-MM-DD.md` (date only). Append to the existing file if one exists for today. Start each file with frontmatter `author: claude` and the banner line `> Machine-written session log — raw technical record, not project status.`
 - Decisions and tasks are tracked **in this vault** (`project/open-decisions.md`, `project/build-phases.md`), not in GitHub Issues
-- Action items live in the weekly sync notes' table and nowhere else. Tasks are created only when a person commits to one in a meeting — Claude never creates or files tasks anywhere unless Darius explicitly hands one over. Assignment happens by Darius emailing owners after each sync, and each sync opens by walking the previous week's table. (Decided 2026-08-20: this replaces GitHub Issues, which failed on auto-generated task noise and non-technical assignees.)
+- Darius's to-do list is the **HRE Launch List** artifact on claude.ai (https://claude.ai/artifact/JEC6mC7TmCybNEhrLTbEiE, private to Darius), not a file in this vault. It has lanes for this week, before launch (grouped by build phase), waiting on Holiday, and after launch. Claude drafts and maintains it: adds items from the syncs, the build plan and coding sessions, and at the end of each coding session ticks what shipped. Claude always tells Darius in chat exactly what it changed on the list. Darius prunes it. Sync notes still record action items as said in the meeting, and Darius still emails owners after each sync. `project/build-phases.md` stays the technical record of the plan. (Decided 2026-10-11, reversing the 2026-08-20 rule that Claude never creates tasks. The sync-note-only setup stalled when the syncs lapsed and never covered the build plan.)
 - Keep docs concise and update them as decisions change
 - Tag open questions with `#decision-needed`
