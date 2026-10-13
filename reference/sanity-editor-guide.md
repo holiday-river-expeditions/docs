@@ -41,7 +41,7 @@ The Studio sidebar is grouped. **Trips** sits at the top on its own. **Pages & P
 Trip fields are split into tabs across the top of the document, so you only see one group at a time. The required ones are **Trip Name**, **Slug**, **Section**, and **Trip Type**.
 
 - **Basics**: name, slug, which Section the trip runs, and its Trip Type.
-- **Card** (how the trip looks in grids): Card Tagline, Starting Price, Duration Label, and Photos — the first photo becomes the card image and the page banner.
+- **Card** (how the trip looks in grids): Card Tagline, Starting Price, Duration Label, and Photos. The first photo becomes the card image and the page banner. The site shows the price from Arctic Reservations whenever the trip has Arctic Trip Type IDs (Booking tab), so change prices in Arctic. The Starting Price field here is only a backup for trips without Arctic IDs.
 - **Quick Facts** (the bar under the banner): Who's This Trip For, Meeting Place, Deposit, Minimum Age, Season.
 - **Trip Details** (the page body): **Trip Description**, Highlights, What's Included (override), Land Acknowledgement, Video, Itinerary, Trip Info Sections, Lead Review and More Reviews (together they fill the "What Guests Say" carousel near the bottom of the trip page; paste quotes from TripAdvisor or Google with the reviewer's name and the platform as the source), Trip FAQs (shown under the heading "FAQs" on the trip page), and Related Trips.
 - **Trip Finder**: the facts the wizard matches on: Duration in days, Max Rapid Class, Season months, age overrides, craft types. Max Rapid Class also shows in the quick facts bar. What each one does to matching is in [[trip-finder]], section 2. The current values are placeholders that need Holiday's confirmation.
