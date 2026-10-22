@@ -192,6 +192,7 @@ Full cart lifecycle exercised against production (test cart created + emptied; c
 - **Starting prices (2026-10-11, PR #77):** "Starts at" on cards, the trip info bar, `/book` and the trip finder comes from Arctic, not Sanity. `src/lib/arctic/prices.ts` takes each linked trip type's full fare (the Adult level, or Regular on bike trips) and shows the lowest across the types that have upcoming departures, so a length Holiday isn't running doesn't set the price. Every trip-card fetch in `src/lib/sanity/fetch.ts` goes through `withArcticPrices`. The Sanity `startingPrice` field is only a backup for trips with no Arctic ids or when Arctic is down.
 - **One login at a time (2026-10-12, PR #81):** a page makes many Arctic calls at once (prices and dates for every trip on a grid). `client.ts` now shares one in-flight token request between them. Before that, an expired token sent every call to the token endpoint at once.
 - **Failed logins get the IP blocked.** On 2026-10-11, bursts of failed logins from local dev servers and builds got the developer's IP blocked by Arctic, admin web login included, and repeated builds kept renewing the block. Arctic support cleared it on request (give them the IP, the site and the API client name). A local `pnpm build`, `pnpm dev` or E2E run calls live Arctic with the `.env.local` credentials, and one build makes hundreds of calls. If "Arctic auth failed" shows up locally, stop the server straight away. Production on Vercel uses different IPs and wasn't affected.
+- **Departure paging (2026-10-21, PR #83):** `getAllUpcomingDepartures()` made one request, so `/book` and the trip finder only got Arctic's first 50 departures (April and May 2027). Both departure fetchers in `trips.ts` now go through `queryDepartures()`, which pages with `LIMIT offset, 200` in the query, ordered by `start, id`. It stops at a short page or after 10 pages (2,000 rows) and drops any departure seen twice. `/book` went from 44 departures to 212, April to October 2027. `getBookableTripTypes()` still uses a single `LIMIT 0, 200` request, which covers all 70 trip types.
 - **Fetch caching (2026-10-11):** Arctic fetches pass no `cache` option. `cache: 'no-store'` turned every ISR page that shows Arctic data into a dynamic route. With no option, Next fetches fresh on each ISR regeneration and on each route-handler request, so prices and dates stay at most 60s behind (plus the 10-minute in-process caches). Every catch in `src/lib/arctic/` calls `unstable_rethrow` first, so a Next control-flow error is never logged and swallowed as an Arctic failure.
 
 ## Built (cart + booking slice, 2026-08-11)
@@ -228,6 +229,11 @@ Probed `/api/rest/triptype` across all 70 records (37 current + non-deleted).
   (Westwater, Yampa, Lodore 3/5 Day, Cataract 8 day) all live on page 2.
   Every existing `arcticTripId` mapping in Sanity is valid; a single-page
   fetch just makes five of them *look* dangling.
+- **A `LIMIT` clause inside the query gets past the cap** (verified live
+  2026-10-21). `query=... ORDER BY start LIMIT 0, 1000` returned all 233
+  upcoming departures in one response, and `ORDER BY start, id` is accepted.
+  The `start` URL param also pages, but only 50 rows at a time. The site
+  pages with the query clause; see "Departure paging" under Built.
 - **Arctic carries no marketing copy at all.** `ordescription`, `ordetails`,
   `orimageid`, and `notes` are empty on **all** current types. There is no
   description, image, or itinerary to import — Sanity is the only source for
