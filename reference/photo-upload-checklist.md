@@ -25,7 +25,7 @@ art-directed them — re-curate freely):**
 - Rivers: Desolation, Yampa, Cataract, San Juan
 - (Filenames start with `interim-` in the Studio media library.)
 
-> ⚠️ **These 7 photos are a launch blocker, not just a nice-to-have.** They are served from `www.bikeraft.com` (whitelisted as a `next/image` remote host in `website/next.config.ts`), and the domain decision has bikeraft.com becoming a 301 redirect to **holidayriver.com**. When that redirect goes in, these images break. They must be replaced with real photography before cutover — see [[environments#Blockers on retiring bikeraft.com]].
+> These photos are copies in Sanity, served from `cdn.sanity.io`, so they keep working after bikeraft.com redirects to **holidayriver.com** (checked 2026-10-21). Replacing them with Drive photography is about quality, not the cutover. See [[environments#Blockers on retiring bikeraft.com]].
 
 ## Mock-photo hunt results (2026-07-22)
 

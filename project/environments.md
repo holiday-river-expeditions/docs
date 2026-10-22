@@ -42,10 +42,11 @@ When the site is ready to launch:
 
 The old site is still a live production dependency, not just a redirect target:
 
-- `website/next.config.ts` allows `www.bikeraft.com` and its NitroPack CDN as `next/image` remote hosts — 7 interim trip/river photos are served from there ([[photo-upload-checklist]])
-- Arctic's per-departure `onlinebookingurl` points at bikeraft.com's reserve flow, used as the interim Book link ([[arctic-api]])
+- Arctic's per-departure `onlinebookingurl` points at bikeraft.com's reserve flow, used as the interim Book link ([[arctic-api]]). The guest site serves the same flow at `holidayriver-guest-site-1.arcticres.com/reserve/t<id>-<slug>`, so the links can point there instead, or native booking can replace them.
 
-Both must be resolved before bikeraft.com is redirected or torn down.
+This must be resolved before bikeraft.com is redirected or torn down.
+
+The interim photos taken from bikeraft.com are no longer a blocker. They were uploaded into Sanity and load from `cdn.sanity.io` (checked on all 27 trip, river and section pages, 2026-10-21). `website/next.config.ts` still lists `www.bikeraft.com` and its NitroPack CDN as `next/image` remote hosts, but no page uses them.
 
 ## Related
 - [[tech-stack]] — Hosting and CI/CD details
