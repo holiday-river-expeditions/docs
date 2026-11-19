@@ -90,9 +90,9 @@ Work from the Aug 20 sync feedback and the exploration week that no phase checkb
 - **Per-browser demo flags** — localStorage-backed system for demoing design ideas on production without exposing them to real visitors (`/admin` arms the overlay). Full description in [[architecture]].
 - **Logo treatments** — default reverted to the original horizontal SVG lockup (Aug 20 decision); five alternate treatments live behind mutually exclusive demo flags, awaiting a pick.
 - **Specialty restructure** — per-family parent pages removed; families are now anchored sections on `/specialty` with in-place catalog expansion.
-- **Floating section menu** — `SectionNav` pill bar on trip pages and the specialty hub.
+- **Floating section menu** — `SectionNav` on trip pages and the specialty hub. Reworked in Oct 2026 into a bottom dock with a section sheet on phones and a top tab row on desktop, with a See dates jump on trip pages.
 - **Live river flow (CFS)** — USGS-driven flow chip + 7-day sparkline on trip and river pages, behind the `river-flow` flag until Holiday signs off.
-- **Booking IA** — `/book` "Book Your Trip" page with month filter (see Phase 3 note above); Book Now CTA and footer Trip Dates both point there.
+- **Booking IA** — `/book` "Book Your Trip" page (see Phase 3 note above); Book Now CTA and footer Trip Dates both point there. Redesigned for 200+ departures on 2026-10-21 (PR #84): the floating month bar was replaced by in-page month, length and trip filters, and each trip became a card that previews its next 4 dates.
 - **Trips map** — MapLibre map of trips over USGS relief tiles, now the permanent public homepage section replacing the river-selector carousel (PR #70, merged 2026-08-27; the `trips-map` demo flag is retired). Relief + Region default; outpost data (incl. the Vernal HQ addition) pending Holiday confirmation.
 - **Find Your Trip wizard** — `/trip-finder`, merged behind the `trip-finder` flag on 2026-08-27 and graduated to live-for-everyone on 2026-09-04, when its questions moved into the Sanity Trip Finder singleton. Per-trip scorer fields still carry placeholder values pending Holiday confirmation. See [[trip-finder]].
 
@@ -106,7 +106,7 @@ The remaining Aug 20 and Sep 3 feedback, on branch `feature/remaining-feedback` 
 - **Anniversary seal** — year count computed from 1966; the 60 artwork stays, and a plus is added ("60+") once it passes 60.
 - **Trip finder go-to trip** — Studio-set fallback (Gates of Lodore) leads the results when the visitor has answered fewer than two questions.
 - **Contact page** — email now comes from Site Settings; code fallback is `info@holidayriver.com`. The Studio still holds the old address (Darius/Holiday to change once the mailbox exists).
-- **`bars-top` demo flag** — floating bars docked under the header, for comparison.
+- **`bars-top` demo flag** — the booking filter bar docked under the header, for comparison. The section menu no longer floats, so it is unaffected.
 
 ## Known Gaps Not Yet Phased
 

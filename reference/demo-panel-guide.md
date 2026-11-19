@@ -2,7 +2,7 @@
 
 A plain-English guide to the demo panel on the test site: what it is for, how to turn it on, and what each switch does. No coding involved.
 
-**The short version:** the test site has a hidden set of switches for previewing ideas that are not approved yet, such as alternate logos, the Find Your Trip wizard, and the live river-flow reading. Each switch only affects the browser you turn it on in. Nobody else sees a thing, and nothing you toggle changes the site for anyone else.
+**The short version:** the test site has a hidden set of switches for previewing ideas that are not approved yet. Right now there is one, the Find Your Trip logic panel. Each switch only affects the browser you turn it on in. Nobody else sees a thing, and nothing you toggle changes the site for anyone else.
 
 ## 1. Turning it on
 
@@ -17,29 +17,16 @@ Your choices are stored in your own browser, so they follow you from page to pag
 
 ## 2. What each switch does
 
-Switches come and go as ideas are tried and either adopted or dropped. Here is the list as of 2026-09-04.
+Switches come and go as ideas are tried and either adopted or dropped. Here is the list as of 2026-11-06.
 
-### Logo treatment (pick one)
+On 2026-11-06 Darius made most of the switches part of the site for everyone and removed them from the panel:
 
-The logo in the header and footer. The default is the original horizontal lockup, per the 2026-08-20 decision. The others are alternatives for comparison:
-
-- **Bold live-text lockup.** Stacked Alternate Gothic lockup from the August batch.
-- **Single line.** HOLIDAY RIVER EXPEDITIONS as live text on one line.
-- **Official secondary lockup.** The brand package's Secondary Horizontal: bigger mark, squarer.
-- **Fresh hierarchy.** HOLIDAY dominant, RIVER EXPEDITIONS letterspaced beneath.
-- **Legacy (old website).** The flag-and-waves lockup from bikeraft.com. The 2026 brand guidelines say not to mix old logos, so this is for comparison only.
-
-### Layout and behaviour
-
-- **Floating bars appear on scroll.** The floating section menu and the booking filter bar stay hidden until you scroll. Off, they are always visible.
-- **Floating bars at the top.** The same two bars dock just under the header instead of sitting at the bottom of the screen (Lauren's Sep 3 suggestion). Off, they stay at the bottom.
-- **Sticky header.** The header with the logo and navigation stays at the top while scrolling.
-- **Live river flow (CFS).** A current flow reading with a seven-day sparkline on trip and section pages, from USGS gauges.
-- **Animated anniversary badge.** The anniversary seal on the homepage hero stamps into place on load. (The number on the seal is not a switch: it is worked out from 1966 automatically, so it will read "60+" from 1 January 2027 by itself.)
+- **Now on for everyone:** the homepage hero video (the Studio photo shows if the video can't play, or for visitors who prefer less motion), the sticky header, the live river flow reading, the animated anniversary badge, the trip bar under the banner, next open dates under the trip facts, What next? at the end of trip pages, similar trips in the section menu, and the map comparison controls (until the new map design replaces them).
+- **Dropped:** the alternate logos (the original horizontal lockup stays), the three branded raft photos for the hero, and the header that slid away on scroll (the sticky header replaced it).
 
 ### Find Your Trip
 
-The wizard itself is live for everyone as of 2026-09-04, so there is no longer a switch for it. One switch remains:
+The wizard itself is live for everyone as of 2026-09-04, so there is no longer a switch for it. One switch remains, and it is the only one in the panel:
 
 - **Trip finder logic panel.** Adds an explainer under the wizard and its results showing where the questions came from, what has been answered, how every trip scored and why, and which trips are missing facts. Meant for reviewing the wizard, not for visitors. See [[trip-finder]], section 6.
 

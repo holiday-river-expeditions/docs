@@ -23,10 +23,10 @@ See [[brand-guidelines]] for the official color palette and typography specs, an
 Reflects the homepage as built from the Figma mockup. Top to bottom:
 
 ### 1. Hero
-- Full-bleed canyon/river photo with a subtle dark overlay (`bg-onyx/20`)
+- Full-bleed silent video loop (Desolation aerials, the Westwater rapid, rafts, camp) since 2026-11-06, over the Studio photo as the fallback, with a subtle dark overlay (`bg-onyx/20`)
 - Alternate Gothic H1 in white, all caps, centered: "Multi-Day Raft and Bike Expeditions in the Heart of Canyon Country"
 - Red **"60 Years of Going With the Flow"** anniversary seal straddling the bottom-left edge
-- Fixed height (~550px on desktop)
+- Height tracks a 1440:600 proportion on desktop (65vh cap) and is 460px on phones, with a separate portrait crop for phones. Taller than the inner-page banners since 2026-11-06, so the photo shows the camp and rafts. See [[architecture]].
 
 ### 2. Featured Trips
 - White background; 6 trip cards in a 3-column grid
@@ -47,6 +47,7 @@ Reflects the homepage as built from the Figma mockup. Top to bottom:
 ### 5. Learn & Get Inspired
 - White background; red section heading; 4 `ContentCard`s in a row
 - Tall photo cards with the title overlaid (white, drop shadow); a video variant shows a play badge
+- A card with no photo of its own uses the main image of the blog post it links to (since 2026-11-06)
 - "Learn More" outline button below
 
 ### 6. Footer

@@ -98,28 +98,32 @@ The new site's `/rivers/<slug>` pages are **canyon sections** (Cataract, Desolat
 
 ## Stargazing
 
+Each specialty date has its own page at `/specialty/<name>` since 2026-11-19. Old trip pages in this section, Canyon Concerts and the women's trips point at the matching 2027 date page when there is one, and at the family's section of `/specialty` when there isn't.
+
+These targets are for the 2027 season. A date page's address is built from the label, the trip and the start date, so it changes when any of those is edited, and next year's date gets a new page. Re-check these rows with the verifier before cutover and again each season. After a date has run, its page stays up but says the date has passed, so a row whose date falls before cutover should go back to the family section. To keep an address fixed, fill in Page Address on the Specialty Departure in the Studio and use that here.
+
 | Old path | New target | Kind | Status | Note |
 |---|---|---|---|---|
 | `/dark-sky-stargazing-trip-series/` | `/specialty#stargazing` | 1:1 | ready | |
-| `/dark-sky-stargazing-trip-series/cataract-canyon-stargazing-trip/` | `/specialty#stargazing` | section | ready | Swap to the trip page when a stargazing trip ships under `/trips`. |
-| `/dark-sky-stargazing-trip-series/desolation-canyon-stargazing-trip/` | `/specialty#stargazing` | section | ready | |
-| `/dark-sky-stargazing-trip-series/labyrinth-canyon-stargazing-and-hiking-river-trip/` | `/specialty#stargazing` | section | ready | |
-| `/dark-sky-stargazing-trip-series/white-rim-trail-stargazing-trip/` | `/specialty#stargazing` | section | ready | |
-| `/dark-sky-stargazing-trip-series/yampa-river-stargazing-rafting-camping-trip/` | `/specialty#stargazing` | section | ready | |
-| `/dark-sky-stargazing-trip-series/lodore-canyon-stargazing-trip/` | `/specialty#stargazing` | section | ready | Not in the Feb audit; in the live sitemap. |
+| `/dark-sky-stargazing-trip-series/cataract-canyon-stargazing-trip/` | `/specialty/stargazing-special-cataract-canyon-2027-08-01` | 1:1 | ready | 2027 date page. |
+| `/dark-sky-stargazing-trip-series/desolation-canyon-stargazing-trip/` | `/specialty/stargazing-special-desolation-canyon-2027-08-30` | 1:1 | ready | 2027 date page. |
+| `/dark-sky-stargazing-trip-series/labyrinth-canyon-stargazing-and-hiking-river-trip/` | `/specialty/stargazing-special-labyrinth-canyon-2027-09-27` | 1:1 | ready | 2027 date page. |
+| `/dark-sky-stargazing-trip-series/white-rim-trail-stargazing-trip/` | `/specialty#stargazing` | section | ready | No White Rim stargazing date in 2027. |
+| `/dark-sky-stargazing-trip-series/yampa-river-stargazing-rafting-camping-trip/` | `/specialty/stargazing-special-yampa-2027-05-26` | 1:1 | ready | 2027 date page. |
+| `/dark-sky-stargazing-trip-series/lodore-canyon-stargazing-trip/` | `/specialty/stargazing-special-gates-of-lodore-2027-06-29` | 1:1 | ready | 2027 date page. Not in the Feb audit, but in the live sitemap. |
 
 ## Canyon Concerts
 
 | Old path | New target | Kind | Status | Note |
 |---|---|---|---|---|
 | `/music-river-rafting-trips-in-ut-co/` | `/specialty#canyon-concerts` | 1:1 | ready | |
-| `/music-river-rafting-trips-in-ut-co/gates-of-lodore-rafting-with-theoretical-blonde/` | `/specialty#canyon-concerts` | section | ready | |
-| `/music-river-rafting-trips-in-ut-co/green-river-rafting-trip-with-ben-weiss-and-friends/` | `/specialty#canyon-concerts` | section | ready | |
-| `/music-river-rafting-trips-in-ut-co/pickpockets-bluegrass-band-on-the-green-river/` | `/specialty#stargazing` | section | ready | WordPress already redirects this to the Lodore stargazing trip, so the concert was replaced. Retarget that rule. |
-| `/music-river-rafting-trips-in-ut-co/pompe-n-honey-on-the-yampa-river/` | `/specialty#canyon-concerts` | section | ready | |
-| `/music-river-rafting-trips-in-ut-co/westwater-canyon-with-the-last-wild-buffalo/` | `/specialty#canyon-concerts` | section | ready | |
-| `/music-river-rafting-trips-in-ut-co/westwater-canyon-with-the-wasatch-valley-drifters/` | `/specialty#canyon-concerts` | section | ready | |
-| `/music-river-rafting-trips-in-ut-co/yampa-river-rafting-with-members-of-the-del-sol-string-quartet/` | `/specialty#canyon-concerts` | section | ready | |
+| `/music-river-rafting-trips-in-ut-co/gates-of-lodore-rafting-with-theoretical-blonde/` | `/specialty/theoretical-blonde-westwater-canyon-2027-07-22` | 1:1 | ready | 2027 date page. The band plays Westwater in 2027, not Lodore. |
+| `/music-river-rafting-trips-in-ut-co/green-river-rafting-trip-with-ben-weiss-and-friends/` | `/specialty#canyon-concerts` | section | ready | No 2027 date for this band. |
+| `/music-river-rafting-trips-in-ut-co/pickpockets-bluegrass-band-on-the-green-river/` | `/specialty/the-pickpockets-yampa-2027-06-21` | 1:1 | ready | 2027 date page. The band plays the Yampa in 2027. WordPress redirects this to the Lodore stargazing trip today, so retarget that rule. |
+| `/music-river-rafting-trips-in-ut-co/pompe-n-honey-on-the-yampa-river/` | `/specialty/pompe-and-honey-yampa-2027-05-15` | 1:1 | ready | 2027 date page. |
+| `/music-river-rafting-trips-in-ut-co/westwater-canyon-with-the-last-wild-buffalo/` | `/specialty/the-last-wild-buffalo-gates-of-lodore-2027-08-26` | 1:1 | ready | 2027 date page. The band plays Lodore in 2027, not Westwater. |
+| `/music-river-rafting-trips-in-ut-co/westwater-canyon-with-the-wasatch-valley-drifters/` | `/specialty#canyon-concerts` | section | ready | No 2027 date for this band. |
+| `/music-river-rafting-trips-in-ut-co/yampa-river-rafting-with-members-of-the-del-sol-string-quartet/` | `/specialty/del-sol-quartet-yampa-2027-06-05` | 1:1 | ready | 2027 date page. |
 | `/boats-buddha-and-the-blues-cataract-canyon-with-bad-brad-wheeler/` | `/trips/cataract-canyon` | section | ready | WordPress already redirects this to the old Cataract page. Retarget that rule. |
 
 ## Specialty, affinity, women's
@@ -135,13 +139,13 @@ The `/specialty` hub has anchors `canyon-concerts`, `stargazing`, `womens`, `you
 | `/specialty-river-rafting-trips/meditation-and-sound-baths-on-the-green-river/` | `/trips/cataract-canyon` | section | ready | Already a two-hop chain on the old site (→ Boats, Buddha & the Blues → Cataract). Retarget directly. |
 | `/specialty-river-rafting-trips/river-read-author-series-with-craig-childs/` | `/specialty` | section | decision | |
 | `/specialty-river-rafting-trips/writers-workshop-on-the-yampa-river/` | `/specialty` | section | decision | |
-| `/lodore-canyon-rafting-and-yoga-with-seek-studio/` | `/specialty#womens` | section | ready | WordPress already redirects this to the women's yoga trip. Retarget that rule. |
+| `/lodore-canyon-rafting-and-yoga-with-seek-studio/` | `/specialty/river-and-yoga-gates-of-lodore-2027-08-12` | 1:1 | ready | 2027 date page. WordPress already redirects this to the women's yoga trip. Retarget that rule. |
 | `/the-feast/` | `/specialty` | section | decision | |
 | `/affinity-based-trips/` | `/specialty#affinity` | 1:1 | ready | |
 | `/affinity-based-trips/bipoc-westwater-canyon-rafting-trip/` | `/specialty#affinity` | section | ready | |
 | `/affinity-based-trips/lgbtq-lodore-canyon-rafting-trip/` | `/specialty#affinity` | section | ready | |
 | `/affinity-based-trips/lgbtq-westwater-canyon-family-rafting-trip/` | `/specialty#affinity` | section | ready | WordPress already redirects this to the affinity landing. Retarget that rule. |
-| `/womens-river-rafting-yoga-trip/` | `/specialty#womens` | section | ready | |
+| `/womens-river-rafting-yoga-trip/` | `/specialty/river-and-yoga-gates-of-lodore-2027-08-12` | 1:1 | ready | 2027 date page. |
 | `/womens-watercolor-workshop-in-lodore-canyon-with-the-great-old-broads/` | `/specialty#womens` | section | ready | |
 
 ## About pages
